@@ -15,7 +15,7 @@ public class User {
 	public User(String acount, String password) {
 		this.acount = acount;
 		this.password = password;
-		if(this.nickName==null)this.setNickName(randomNickName());
+		//if(this.nickName==null)this.setNickName(randomNickName());
 		this.conn = ConnectionManager.getConnection();
 	}
 	private static String randomNickName()

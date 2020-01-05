@@ -62,9 +62,15 @@ public class UserDaoJdbcImpl implements UserDao
 			pStatement.setString(1, user.getAcount());
 			resultSet = pStatement.executeQuery();
 			String pwd = null;
+			String nickName = null;
 			if(resultSet.next())
 			{
 				pwd	= resultSet.getString("password");
+				nickName = resultSet.getString("nickName");
+				if(nickName!=null)
+				{
+					user.setNickName(nickName);
+				}
 			}			
 			System.out.println("Acount:"+user.getAcount());
 			System.out.println("Pwd:"+pwd);
