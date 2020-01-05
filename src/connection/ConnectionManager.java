@@ -3,25 +3,26 @@ package connection;
 import java.sql.*;
 
 public class ConnectionManager {
-	private static final String URL = "jdbc:mysql://49.235.47.150:3306/user";
+	private static final String URL = "jdbc:mysql://49.235.47.150:3306/user?serverTimezone=GMT%2B8&useSSL=false";
 	private static final String driverName = "com.mysql.cj.jdbc.Driver";
 	private static final String userName = "root";// root
 	private static final String password = "123456";// 123456
-	private static Connection connection = null;
 	public static Connection getConnection()
 	{
+		Connection connection = null;
 		try {
-			connection = DriverManager.getConnection(URL,userName,password);
+			connection = DriverManager.getConnection(URL, userName, password);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.out.println(new SQLException("连接服务器失败"));
 		}
+		System.out.println("连接服务器成功");
 		return connection;
 	}
 	private static void closeResultSet(ResultSet resultSet)
 	{
 		try {
-			resultSet.close();
+			if(resultSet!=null)resultSet.close();			
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.out.println(new SQLException("结果集关闭失败"));
@@ -30,7 +31,7 @@ public class ConnectionManager {
 	private static void closeStatement(PreparedStatement pStatement)
 	{
 		try {
-			pStatement.close();
+			if(pStatement!=null)pStatement.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.out.println(new SQLException("状态关闭失败"));
@@ -39,7 +40,7 @@ public class ConnectionManager {
 	private static void closeConnection(Connection conn)
 	{
 		try {
-			conn.close();
+			if(conn!=null)conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.out.println(new SQLException("连接关闭失败"));
