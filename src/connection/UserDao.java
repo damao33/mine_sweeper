@@ -13,4 +13,3 @@ public interface UserDao {
 		return false;
 	}
 }
-//git pull test
