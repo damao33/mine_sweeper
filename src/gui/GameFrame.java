@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package gui;
-//123
+
 /**
  *
  * @author 12892
@@ -12,7 +12,7 @@ package gui;
 public class GameFrame extends javax.swing.JFrame {
 
     /**
-     * Creates new form NewJFrame
+     * Creates new form GameFrame
      */
     public GameFrame() {
         initComponents();
@@ -66,8 +66,8 @@ public class GameFrame extends javax.swing.JFrame {
             .addGap(0, 536, Short.MAX_VALUE)
         );
 
-        jLabel1.setFont(new java.awt.Font("ËÎÌå", 0, 20)); // NOI18N
-        jLabel1.setText("¸öÈËĞÅÏ¢");
+        jLabel1.setFont(new java.awt.Font("å®‹ä½“", 0, 20)); // NOI18N
+        jLabel1.setText("ä¸ªäººä¿¡æ¯");
 
         javax.swing.GroupLayout playerLayout = new javax.swing.GroupLayout(player);
         player.setLayout(playerLayout);
@@ -86,8 +86,8 @@ public class GameFrame extends javax.swing.JFrame {
 
         player1.setBackground(new java.awt.Color(153, 153, 153));
 
-        jLabel2.setFont(new java.awt.Font("ËÎÌå", 0, 20)); // NOI18N
-        jLabel2.setText("Íæ¼Ò1");
+        jLabel2.setFont(new java.awt.Font("å®‹ä½“", 0, 20)); // NOI18N
+        jLabel2.setText("ç©å®¶1");
 
         jPanel3.setBackground(new java.awt.Color(204, 255, 255));
 
@@ -121,8 +121,8 @@ public class GameFrame extends javax.swing.JFrame {
 
         player2.setBackground(new java.awt.Color(153, 153, 153));
 
-        jLabel3.setFont(new java.awt.Font("ËÎÌå", 0, 20)); // NOI18N
-        jLabel3.setText("Íæ¼Ò2");
+        jLabel3.setFont(new java.awt.Font("å®‹ä½“", 0, 20)); // NOI18N
+        jLabel3.setText("ç©å®¶2");
 
         jPanel1.setBackground(new java.awt.Color(204, 255, 255));
 
@@ -156,8 +156,8 @@ public class GameFrame extends javax.swing.JFrame {
 
         player3.setBackground(new java.awt.Color(153, 153, 153));
 
-        jLabel4.setFont(new java.awt.Font("ËÎÌå", 0, 20)); // NOI18N
-        jLabel4.setText("Íæ¼Ò3");
+        jLabel4.setFont(new java.awt.Font("å®‹ä½“", 0, 20)); // NOI18N
+        jLabel4.setText("ç©å®¶3");
 
         jPanel2.setBackground(new java.awt.Color(204, 255, 255));
 
@@ -199,14 +199,14 @@ public class GameFrame extends javax.swing.JFrame {
             }
         });
 
-        send.setText("·¢ËÍ");
+        send.setText("å‘é€");
         send.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sendActionPerformed(evt);
             }
         });
 
-        jLabel5.setText("Ê°µÃµÀ¾ß");
+        jLabel5.setText("æ‹¾å¾—é“å…·");
 
         prop1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -260,16 +260,16 @@ public class GameFrame extends javax.swing.JFrame {
             .addGap(0, 48, Short.MAX_VALUE)
         );
 
-        exit.setFont(new java.awt.Font("ËÎÌå", 0, 18)); // NOI18N
-        exit.setText("ÍË³ö");
+        exit.setFont(new java.awt.Font("å®‹ä½“", 0, 18)); // NOI18N
+        exit.setText("é€€å‡º");
         exit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 exitActionPerformed(evt);
             }
         });
 
-        ready.setFont(new java.awt.Font("ËÎÌå", 0, 18)); // NOI18N
-        ready.setText("×¼±¸");
+        ready.setFont(new java.awt.Font("å®‹ä½“", 0, 18)); // NOI18N
+        ready.setText("å‡†å¤‡");
         ready.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 readyActionPerformed(evt);
