@@ -18,7 +18,7 @@ public class User {
 		//if(this.nickName==null)this.setNickName(randomNickName());
 		this.conn = ConnectionManager.getConnection();
 	}
-	private static String randomNickName()
+	public static String randomNickName()
 	{
 		String nickName="player";
 		Random r = new Random();		

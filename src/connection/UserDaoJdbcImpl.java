@@ -109,7 +109,7 @@ public class UserDaoJdbcImpl implements UserDao
 			pStatement = conn.prepareStatement(sql);
 			pStatement.setString(1, user.getAcount());
 			pStatement.setString(2, user.getPassword());
-			pStatement.setString(3, user.getNickName());
+			pStatement.setString(3, user.randomNickName());
 			pStatement.setInt(4, 0);
 			pStatement.executeUpdate();
 			return true;
