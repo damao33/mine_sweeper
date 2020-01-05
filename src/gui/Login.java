@@ -14,27 +14,27 @@ public class Login implements ActionListener{
 	
 
 public Login(){
-	mainJFrame=new JFrame("用户登录");
+	mainJFrame=new JFrame("鐢ㄦ埛鐧诲綍");
 	con=mainJFrame.getContentPane();
 	con.setLayout(new FlowLayout());
-	labTitle=new JLabel("<html><body><h1> 欢迎使用扫雷 \n <br> </h1> </body>  </html>");
+	labTitle=new JLabel("<html><body><h1> 娆㈣繋浣跨敤鎵浄 \n <br> </h1> </body>  </html>");
 	
 	
-	labName=new JLabel("  用户名:");
+	labName=new JLabel("  鐢ㄦ埛鍚?:");
 	txtName=new JTextField();
 	txtName.setColumns(20);
 	
-	labPass=new JLabel("    密码:  ");
+	labPass=new JLabel("    瀵嗙爜:  ");
 	txtPass=new JPasswordField();
 	txtPass.setColumns(20);
 	
-	login1=new JButton("登录");
+	login1=new JButton("鐧诲綍");
 	login1.addActionListener(this);
 	
-	register=new JButton("注册");
+	register=new JButton("娉ㄥ唽");
 	register.addActionListener(this);
 	
-	cancel=new JButton("取消");
+	cancel=new JButton("鍙栨秷");
 	cancel.addActionListener(this);
 	
 	

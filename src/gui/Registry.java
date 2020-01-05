@@ -17,29 +17,29 @@ public class Registry implements ActionListener {
 	ButtonGroup sexBtnGroup;
 	
 public Registry(){
-	mainJFrame=new JFrame("用户注册");
+	mainJFrame=new JFrame("鐢ㄦ埛娉ㄥ唽");
 	con=mainJFrame.getContentPane();
 	con.setLayout(new FlowLayout());
 	
-	labTitle=new JLabel("<html><body><h1>用户注册     </h1> </body>  </html> ");
+	labTitle=new JLabel("<html><body><h1>鐢ㄦ埛娉ㄥ唽     </h1> </body>  </html> ");
 	con.add(labTitle);
 	con.add(Box.createHorizontalStrut(30000));
 	
-	labName=new JLabel("用户名:   ");
+	labName=new JLabel("鐢ㄦ埛鍚?:   ");
 	txtName=new JTextField();
 	txtName.setColumns(20);
 	con.add(labName);
 	con.add(txtName);
 	con.add(Box.createHorizontalStrut(30000));
 	
-	labPass=new JLabel("密码:        ");
+	labPass=new JLabel("瀵嗙爜:        ");
 	txtPass=new JPasswordField();
 	txtPass.setColumns(20);
 	con.add(labPass);
 	con.add(txtPass);
 	con.add(Box.createHorizontalStrut(30000));
 	
-	labRPass=new JLabel("确认密码:");
+	labRPass=new JLabel("纭瀵嗙爜:");
 	txtRPass=new JPasswordField();
 	txtRPass.setColumns(20);
 	con.add(labRPass);
@@ -47,10 +47,10 @@ public Registry(){
 	con.add(Box.createHorizontalStrut(30000));
 	
 	 
-	labSex=new JLabel("性别:");
-	mRadio=new JRadioButton("男",true);
+	labSex=new JLabel("鎬у埆:");
+	mRadio=new JRadioButton("鐢?",true);
 	mRadio.addActionListener(this);
-	fRadio=new JRadioButton("女",false);
+	fRadio=new JRadioButton("濂?",false);
 	fRadio.addActionListener(this);
 	sexBtnGroup=new ButtonGroup();
 	sexBtnGroup.add(mRadio);
@@ -59,22 +59,22 @@ public Registry(){
 	con.add(mRadio);
 	con.add(fRadio);
 	
-	labAge=new JLabel("年龄:");
+	labAge=new JLabel("骞撮緞:");
 	txtAge=new JTextField();
 	txtAge.setColumns(5);
 	con.add(labAge);
 	con.add(txtAge);
 	con.add(Box.createHorizontalStrut(30000));
 	
-	regBtn=new JButton("注册");
+	regBtn=new JButton("娉ㄥ唽");
 	regBtn.addActionListener(this); 
 	con.add(regBtn);
 	
-	resetBtn=new JButton("重置");
+	resetBtn=new JButton("閲嶇疆");
 	resetBtn.addActionListener(this);
 	con.add(resetBtn);
 	
-	cancel=new JButton("取消");
+	cancel=new JButton("鍙栨秷");
 	cancel.addActionListener(this);
 	con.add(cancel);
 	
