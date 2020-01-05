@@ -73,6 +73,7 @@ public Login(){
 			if(UserDaoJdbcImpl.login(user))
 			{
 				System.out.println("登陆成功");
+				GameFrame.runGame(user);
 			}else System.out.println("登陆失败");
 		}
 	});
