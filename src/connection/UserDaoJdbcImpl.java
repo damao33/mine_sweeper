@@ -68,7 +68,7 @@ public class UserDaoJdbcImpl implements UserDao
 				return false;	//密码错误登陆失败
 			}
 		} catch (SQLException e) {
-			System.out.println(new SQLException("30"));
+			e.printStackTrace();
 		} finally
 		{
 			ConnectionManager.releaseAll(resultSet, pStatement, conn);
@@ -84,7 +84,7 @@ public class UserDaoJdbcImpl implements UserDao
 		}	
 		if(user.getAcount().length()>20||user.getPassword().length()<6)return false;
 		Connection conn = null;
-		String sql="insert into userinfo values(?,?)";
+		String sql="insert into userinfo values(?,?,?,?)";
 		PreparedStatement pStatement = null;
 		try
 		{
@@ -92,6 +92,8 @@ public class UserDaoJdbcImpl implements UserDao
 			pStatement = conn.prepareStatement(sql);
 			pStatement.setString(1, user.getAcount());
 			pStatement.setString(2, user.getPassword());
+			pStatement.setString(3, user.getNickName());
+			pStatement.setInt(4, 0);
 			pStatement.executeUpdate();
 			return true;
 		} catch(SQLException e)
