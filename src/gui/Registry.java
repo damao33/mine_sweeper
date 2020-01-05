@@ -2,6 +2,9 @@ package gui;
 
 import javax.swing.*;
 
+import connection.UserDaoJdbcImpl;
+import user.User;
+
 import java.awt.*;
 import java.awt.event.*;
 
@@ -25,7 +28,7 @@ public Registry(){
 	con.add(labTitle);
 	con.add(Box.createHorizontalStrut(30000));
 	
-	labName=new JLabel("用户�?:   ");
+	labName=new JLabel("用户�?:   ");
 	txtName=new JTextField();
 	txtName.setColumns(20);
 	con.add(labName);
@@ -48,9 +51,9 @@ public Registry(){
 	
 	 
 	labSex=new JLabel("性别:");
-	mRadio=new JRadioButton("�?",true);
+	mRadio=new JRadioButton("�?",true);
 	mRadio.addActionListener(this);
-	fRadio=new JRadioButton("�?",false);
+	fRadio=new JRadioButton("�?",false);
 	fRadio.addActionListener(this);
 	sexBtnGroup=new ButtonGroup();
 	sexBtnGroup.add(mRadio);
@@ -67,7 +70,22 @@ public Registry(){
 	con.add(Box.createHorizontalStrut(30000));
 	
 	regBtn=new JButton("注册");
-	regBtn.addActionListener(this); 
+	regBtn.addActionListener(new ActionListener() {
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			String acount=txtName.getText();
+			String pwd=String.valueOf(txtPass.getPassword());
+			User user=new User(acount,pwd);
+			if(!UserDaoJdbcImpl.register(user))
+			{
+				System.out.println("注册失败");
+			}else
+			{
+				System.out.println("注册成功");
+			}
+		}
+	}); 
 	con.add(regBtn);
 	
 	resetBtn=new JButton("重置");

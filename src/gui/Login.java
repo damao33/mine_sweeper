@@ -1,5 +1,9 @@
 package gui;
 import javax.swing.*;
+
+import connection.UserDaoJdbcImpl;
+import user.User;
+
 import java.awt.*;
 import java.awt.event.*;
 
@@ -20,7 +24,7 @@ public Login(){
 	labTitle=new JLabel("<html><body><h1> 欢迎使用扫雷 \n <br> </h1> </body>  </html>");
 	
 	
-	labName=new JLabel("  用户�?:");
+	labName=new JLabel("  用户:  ");
 	txtName=new JTextField();
 	txtName.setColumns(20);
 	
@@ -29,7 +33,19 @@ public Login(){
 	txtPass.setColumns(20);
 	
 	login1=new JButton("登录");
-	login1.addActionListener(this);
+	login1.addActionListener(new ActionListener() {
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			String ac=txtName.getText();
+			String pwd=String.valueOf(txtPass.getPassword());
+			User user=new User(ac,pwd);
+			if(UserDaoJdbcImpl.login(user))
+			{
+				System.out.println("登陆成功");
+			}else System.out.println("登陆失败");
+		}
+	});
 	
 	register=new JButton("注册");
 	register.addActionListener(this);

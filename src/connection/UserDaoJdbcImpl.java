@@ -39,7 +39,7 @@ public class UserDaoJdbcImpl implements UserDao
 		return false;
 	}
 
-	public static boolean Login(User user) {
+	public static boolean login(User user) {
 		if(!UserDaoJdbcImpl.findUser(user))return false;	//不存在该用户
 		Connection conn = null;
 		String sql="select * from userinfo where acount = ?";
@@ -76,27 +76,30 @@ public class UserDaoJdbcImpl implements UserDao
 		return false;
 	}
 
-	public static boolean Regester(User user) {	
-		if(UserDaoJdbcImpl.findUser(user))return false;	//已存在该用户，无法注册
+	public static boolean register(User user) {	
+		if(UserDaoJdbcImpl.findUser(user))
+		{
+			System.out.println("用户已存在");
+			return false;	//已存在该用户，无法注册
+		}	
 		if(user.getAcount().length()>20||user.getPassword().length()<6)return false;
 		Connection conn = null;
 		String sql="insert into userinfo values(?,?)";
 		PreparedStatement pStatement = null;
-		ResultSet resultSet = null;
 		try
 		{
 			conn=ConnectionManager.getConnection();
 			pStatement = conn.prepareStatement(sql);
 			pStatement.setString(1, user.getAcount());
 			pStatement.setString(2, user.getPassword());
-			resultSet = pStatement.executeQuery();
+			pStatement.executeUpdate();
 			return true;
 		} catch(SQLException e)
 		{
 			e.printStackTrace();
 		} finally
 		{
-			ConnectionManager.releaseAll(resultSet, pStatement, conn);
+			ConnectionManager.releaseAll(null, pStatement, conn);
 		}
 		return false;
 	}

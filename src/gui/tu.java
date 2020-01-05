@@ -47,7 +47,7 @@ public class tu {
 				String ac=username.getText();
 				String pwd=String.valueOf(password.getPassword());
 				User user=new User(ac,pwd);
-				if(UserDaoJdbcImpl.Login(user))
+				if(UserDaoJdbcImpl.login(user))
 				{
 					System.out.println("登陆成功");
 				}else System.out.println("登陆失败");
