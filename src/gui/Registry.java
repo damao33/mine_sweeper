@@ -12,14 +12,25 @@ public class Registry implements ActionListener {
 
 	JFrame mainJFrame;
 	Container con;
-	JLabel labName,labPass,labRPass,labTitle,labEmpty1,labEmpty,labSex,labAge;
-	JTextField txtName,txtID,txtAge;
+	JLabel labName,labPass,labRPass,labTitle,labEmpty1,labEmpty;
+	JTextField txtName,txtID;
 	JPasswordField txtPass,txtRPass;
 	JButton resetBtn,regBtn,cancel;
-	JRadioButton mRadio,fRadio;
+//	JRadioButton mRadio,fRadio;
 	ButtonGroup sexBtnGroup;
 	
 public Registry(){
+	try {
+        for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+            if ("Nimbus".equals(info.getName())) {
+                javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                break;
+            }
+        }
+    }catch(Exception e) {
+    	System.out.println(e);
+    }
+	
 	mainJFrame=new JFrame("用户注册");
 	con=mainJFrame.getContentPane();
 	con.setLayout(new FlowLayout());
@@ -28,7 +39,7 @@ public Registry(){
 	con.add(labTitle);
 	con.add(Box.createHorizontalStrut(30000));
 	
-	labName=new JLabel("用户�?:   ");
+	labName=new JLabel("用户名:    ");
 	txtName=new JTextField();
 	txtName.setColumns(20);
 	con.add(labName);
@@ -50,23 +61,23 @@ public Registry(){
 	con.add(Box.createHorizontalStrut(30000));
 	
 	 
-	labSex=new JLabel("性别:");
-	mRadio=new JRadioButton("�?",true);
-	mRadio.addActionListener(this);
-	fRadio=new JRadioButton("�?",false);
-	fRadio.addActionListener(this);
+//	labSex=new JLabel("性别:");
+//	mRadio=new JRadioButton("男",true);
+//	mRadio.addActionListener(this);
+//	fRadio=new JRadioButton("女",false);
+//	fRadio.addActionListener(this);
 	sexBtnGroup=new ButtonGroup();
-	sexBtnGroup.add(mRadio);
-	sexBtnGroup.add(fRadio);
-	con.add(labSex);
-	con.add(mRadio);
-	con.add(fRadio);
+//	sexBtnGroup.add(mRadio);
+//	sexBtnGroup.add(fRadio);
+//	con.add(labSex);
+//	con.add(mRadio);
+//	con.add(fRadio);
 	
-	labAge=new JLabel("年龄:");
-	txtAge=new JTextField();
-	txtAge.setColumns(5);
-	con.add(labAge);
-	con.add(txtAge);
+//	labAge=new JLabel("年龄:");
+//	txtAge=new JTextField();
+//	txtAge.setColumns(5);
+//	con.add(labAge);
+//	con.add(txtAge);
 	con.add(Box.createHorizontalStrut(30000));
 	
 	regBtn=new JButton("注册");
@@ -108,8 +119,8 @@ public void actionPerformed(ActionEvent e){
 		txtName.setText(null);
 		txtPass.setText(null);
 		txtRPass.setText(null);
-		mRadio.setSelected(true);
-		txtAge.setText(null);
+//		mRadio.setSelected(true);
+//		txtAge.setText(null);
 		}
 	if(e.getSource()==cancel){
 		mainJFrame.setVisible(false);
