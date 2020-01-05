@@ -5,6 +5,12 @@
  */
 package gui;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import connection.ConnectionManager;
+import user.User;
+
 /**
  *
  * @author 12892
@@ -14,10 +20,16 @@ public class GameFrame extends javax.swing.JFrame {
     /**
      * Creates new form GameFrame
      */
-    public GameFrame() {
+	public GameFrame() {
+    	
+        initComponents();
+    }
+    public GameFrame(User user) {
+    	this.user = user;
         initComponents();
     }
 
+	
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -262,6 +274,14 @@ public class GameFrame extends javax.swing.JFrame {
 
         exit.setFont(new java.awt.Font("宋体", 0, 18)); // NOI18N
         exit.setText("退出");
+        exit.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ConnectionManager.releaseAll(null, null, GameFrame.this.getUser().getConn());
+				System.out.println(GameFrame.this.user.getNickName()+"退出成功");
+			}
+		});
         exit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 exitActionPerformed(evt);
@@ -382,7 +402,7 @@ public class GameFrame extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void runGame(User user) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -409,12 +429,16 @@ public class GameFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GameFrame().setVisible(true);
+                new GameFrame(user).setVisible(true);
             }
         });
     }
+    
+    public User getUser() {
+		return user;
+	}
 
-    // Variables declaration - do not modify                     
+	// Variables declaration - do not modify                     
     private javax.swing.JButton exit;
     private javax.swing.JTextField input;
     private javax.swing.JLabel jLabel1;
@@ -438,5 +462,6 @@ public class GameFrame extends javax.swing.JFrame {
     private javax.swing.JPanel prop4;
     private javax.swing.JButton ready;
     private javax.swing.JButton send;
+    private User user = null;
     // End of variables declaration                   
 }
