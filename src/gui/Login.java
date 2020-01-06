@@ -18,119 +18,112 @@ public class Login implements ActionListener{
 	JButton login1,register;
 	
 
-public Login(){
-	try {
-        for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-            if ("Nimbus".equals(info.getName())) {
-                javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                break;
-            }
-        }
-    }catch(Exception e) {
-    	System.out.println(e);
-    }
-	
-	mainJFrame=new JFrame("用户登录");
-	con=mainJFrame.getContentPane();
-	con.setLayout(new FlowLayout());
-	labTitle=new JLabel("<html><body><h1> 欢迎使用扫雷 \n <br> </h1> </body>  </html>");
-	
-	
-	labName=new JLabel("  用户名: ");
-	txtName=new JTextField();
-	txtName.setColumns(20);
-	
-	labPass=new JLabel("    密码:  ");
-	txtPass=new JPasswordField();
-	txtPass.setColumns(20);
-	
-	login1=new JButton("登录");
-    login1.addActionListener(new ActionListener() {
+	public Login(){
+		try {
+	        for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+	            if ("Nimbus".equals(info.getName())) {
+	                javax.swing.UIManager.setLookAndFeel(info.getClassName());
+	                break;
+	            }
+	        }
+	    }catch(Exception e) {
+	    	System.out.println(e);
+	    }
 		
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			String ac=txtName.getText();
-			String pwd=String.valueOf(txtPass.getPassword());
-			User user=new User(ac,pwd);
-			if(UserDaoJdbcImpl.login(user))
-			{
-				System.out.println("登陆成功");
-				new GameFrame(user).runGame();
-			}else System.out.println("登陆失败");
-		}
-	});
-
-	
-	
-	login1.addActionListener(new ActionListener() {
+		mainJFrame=new JFrame("用户登录");
+		con=mainJFrame.getContentPane();
+		con.setLayout(new FlowLayout());
+		labTitle=new JLabel("<html><body><h1> 欢迎使用扫雷 \n <br> </h1> </body>  </html>");
 		
-		@Override
 		
-		public void actionPerformed(ActionEvent e) {
-			String ac=txtName.getText();
-			String pwd=String.valueOf(txtPass.getPassword());
-			User user=new User(ac,pwd);
-			if(UserDaoJdbcImpl.login(user))
-			{
-				System.out.println("登陆成功");
-				new GameFrame(user).runGame();
-			}else System.out.println("登陆失败");
-		}
-	});
-	
-	register=new JButton("注册");
-	register.addActionListener(this);
-    register.addActionListener(new ActionListener() {
+		labName=new JLabel("  用户名: ");
+		txtName=new JTextField();
+		txtName.setColumns(20);
 		
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			Registry.run();
-		}
-	});
-
-	
-	
-//	cancel=new JButton("取消");
-//	cancel.addActionListener(this);
-	
-	
-	con.add(labTitle);
-	con.add(Box.createHorizontalStrut(30000));
-	
-	con.add(Box.createHorizontalStrut(30000));
-	
-	con.add(labName);
-	con.add(txtName);
-	con.add(Box.createHorizontalStrut(30000));
-	
-	con.add(labPass);
-	con.add(txtPass);
-	con.add(Box.createHorizontalStrut(30000));
-	
-	con.add(login1);
-	con.add(register);
-//	con.add(cancel);
-	
-	mainJFrame.setSize(350, 350);
-	mainJFrame.setVisible(true);
-	mainJFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-}
-public void actionPerformed(ActionEvent e){
-	if(e.getSource()==login1){
+		labPass=new JLabel("    密码:  ");
+		txtPass=new JPasswordField();
+		txtPass.setColumns(20);
 		
+		login1=new JButton("登录");
+	    login1.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String ac=txtName.getText();
+				String pwd=String.valueOf(txtPass.getPassword());
+				User user=new User(ac,pwd);
+				if(UserDaoJdbcImpl.login(user))
+				{
+					System.out.println("登陆成功");
+					new GameFrame(user);
+				}else System.out.println("登陆失败");
+			}
+		});
+	
+		
+		
+		login1.addActionListener(new ActionListener() {
+			
+			@Override
+			
+			public void actionPerformed(ActionEvent e) {
+				String ac=txtName.getText();
+				String pwd=String.valueOf(txtPass.getPassword());
+				User user=new User(ac,pwd);
+				if(UserDaoJdbcImpl.login(user))
+				{
+					System.out.println("登陆成功");
+					new GameFrame(user).runGame();
+				}else System.out.println("登陆失败");
+			}
+		});
+		
+		register=new JButton("注册");
+		register.addActionListener(this);
+	
+		
+		
+	//	cancel=new JButton("取消");
+	//	cancel.addActionListener(this);
+		
+		
+		con.add(labTitle);
+		con.add(Box.createHorizontalStrut(30000));
+		
+		con.add(Box.createHorizontalStrut(30000));
+		
+		con.add(labName);
+		con.add(txtName);
+		con.add(Box.createHorizontalStrut(30000));
+		
+		con.add(labPass);
+		con.add(txtPass);
+		con.add(Box.createHorizontalStrut(30000));
+		
+		con.add(login1);
+		con.add(register);
+	//	con.add(cancel);
+		
+		mainJFrame.setSize(350, 350);
+		mainJFrame.setVisible(true);
+		mainJFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
-	if(e.getSource()==register){
-		mainJFrame.setVisible(false);
-		Registry reg=new Registry();
-		reg.mainJFrame.setVisible(true);
+	public void actionPerformed(ActionEvent e){
+		if(e.getSource()==login1){
+			
+		}
+		if(e.getSource()==register){
+			mainJFrame.setVisible(false);
+			Registry reg=new Registry();
+			reg.mainJFrame.setVisible(true);
+		}
+	//	if(e.getSource()==cancel){
+	//		txtName.setText(null);
+	//		txtPass.setText(null);
+	//		
+	//	}
 	}
-//	if(e.getSource()==cancel){
-//		txtName.setText(null);
-//		txtPass.setText(null);
-//		
-//	}
-}
-public static void main(String[] args){
-	new Login();
-  }
+		public static void main(String[] args){
+			new Login();
+		}
 }
