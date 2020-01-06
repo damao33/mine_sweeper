@@ -81,4 +81,7 @@ public class Rule {
 		System.out.println(num3);
 	}
 
+	
 }
+
+
