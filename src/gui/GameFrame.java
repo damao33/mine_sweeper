@@ -20,13 +20,8 @@ public class GameFrame extends javax.swing.JFrame {
     /**
      * Creates new form GameFrame
      */
-	    public GameFrame() {
-	    	
-	        initComponents();
-	    }
 	    public GameFrame(User user) {
 	    	this.user = user;
-	        initComponents();
 	        initComponents();
 	    }
 	    public User getUser() {
