@@ -34,7 +34,8 @@ public class StaticTool {
 	public static void changeIcon(int width, int height) {
 		ImageIcon iconTemp;
 
-		Image temp = (iconBlank.getImage().getScaledInstance(width, height,iconBlank.getImage().SCALE_DEFAULT));
+		iconBlank.getImage();
+		Image temp = (iconBlank.getImage().getScaledInstance(width, height,Image.SCALE_DEFAULT));
 		iconTemp = new ImageIcon(temp);
 		iconBlank = iconTemp;
 

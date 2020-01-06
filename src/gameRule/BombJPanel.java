@@ -14,7 +14,7 @@ public class BombJPanel extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	MineButton[][] labels = new MineButton[StaticTool.allrow][StaticTool.allcol];
+	MineButton[][] buttons = new MineButton[StaticTool.allrow][StaticTool.allcol];
 	// private Listener listener;
 	private MainFrame mainFrame;
 
@@ -29,17 +29,17 @@ public class BombJPanel extends JPanel {
 
 		// listener = new Listener(labels, mainFrame);
 
-		for (int i = 0; i < labels.length; i++) {
-			for (int j = 0; j < labels[i].length; j++) {
-				labels[i][j] = new MineButton(i, j);
+		for (int i = 0; i < buttons.length; i++) {
+			for (int j = 0; j < buttons[i].length; j++) {
+				buttons[i][j] = new MineButton(i, j);
 				
-				labels[i][j].setPreferredSize(new Dimension(45, 45));
-				labels[i][j].setMargin(new Insets(0, 0, 0, 0));
-				labels[i][j].setBorder(BorderFactory.createLineBorder(Color.black, 1));
-				
-				labels[i][j].setIcon(StaticTool.iconBlank);
+				buttons[i][j].setPreferredSize(new Dimension(45, 45));
+				buttons[i][j].setMargin(new Insets(0, 0, 0, 0));
+				buttons[i][j].setBorder(BorderFactory.createLineBorder(Color.black, 1));
+				buttons[i][j].setFocusPainted(false);
+				buttons[i][j].setIcon(StaticTool.iconBlank);
 				// labels[i][j].addMouseListener(listener);
-				this.add(labels[i][j]);
+				this.add(buttons[i][j]);
 			}
 		}
 		Border borderLow = BorderFactory.createLoweredBevelBorder();

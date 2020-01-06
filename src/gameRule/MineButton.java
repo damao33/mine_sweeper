@@ -1,7 +1,6 @@
 package gameRule;
 
 import javax.swing.JButton;
-import javax.swing.JLabel;
 
 public class MineButton extends JButton {
 

@@ -73,8 +73,8 @@ public class Login implements ActionListener{
 				if(UserDaoJdbcImpl.login(user))
 				{
 					System.out.println("登陆成功");
-					//new GameFrame(user).runGame();
-					new RoomFrame().setVisible(true);
+					new GameFrame(user).runGame();
+					//new RoomFrame().setVisible(true);
 				}else System.out.println("登陆失败");
 			}
 		});
