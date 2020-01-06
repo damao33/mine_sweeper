@@ -80,13 +80,6 @@ public class Login implements ActionListener{
 		
 		register=new JButton("注册");
 		register.addActionListener(this);
-	    register.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				new Registry();
-			}
-		});
 	
 		
 		
