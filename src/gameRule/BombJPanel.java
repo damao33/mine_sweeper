@@ -15,7 +15,7 @@ public class BombJPanel extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 	MineButton[][] buttons = new MineButton[StaticTool.allrow][StaticTool.allcol];
-	// private Listener listener;
+	private Listener listener;
 	private MainFrame mainFrame;
 
 	public BombJPanel(MainFrame mainFrame) {
@@ -27,7 +27,7 @@ public class BombJPanel extends JPanel {
 
 	private void init() {
 
-		// listener = new Listener(labels, mainFrame);
+		listener = new Listener(buttons, mainFrame);
 
 		for (int i = 0; i < buttons.length; i++) {
 			for (int j = 0; j < buttons[i].length; j++) {
@@ -38,7 +38,7 @@ public class BombJPanel extends JPanel {
 				buttons[i][j].setBorder(BorderFactory.createLineBorder(Color.black, 1));
 				buttons[i][j].setFocusPainted(false);
 				buttons[i][j].setIcon(StaticTool.iconBlank);
-				// labels[i][j].addMouseListener(listener);
+				buttons[i][j].addMouseListener(listener);
 				this.add(buttons[i][j]);
 			}
 		}
