@@ -81,6 +81,39 @@ import java.awt.event.*;
 		con.add(Box.createHorizontalStrut(30000));
 		
 		regBtn=new JButton("注册");
+		
+		regBtn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+                try {
+                    
+                    String acount=txtName.getText();
+                    //注册时2次输入的密码相同时才把密码设置到user信息中
+                    String pwd1=String.valueOf(txtPass.getPassword());
+                    String pwd2=String.valueOf(txtRPass.getPassword());
+                    boolean isWrong=true;
+                    if(isWrong){
+                        if((pwd1.equals(pwd2))){
+                        	User user=new User(acount,pwd1);
+                            isWrong=false;
+                        }
+                        else
+                        {
+                            JOptionPane.showMessageDialog(null, "密码不一致,请再次输入密码");
+                        }
+                    }
+                }
+                catch(Exception ex)
+                {
+                	ex.printStackTrace();
+                	
+                };
+			}
+		});
+            
+                    
 		regBtn.addActionListener(new ActionListener() {
 			
 			@Override
@@ -128,5 +161,6 @@ import java.awt.event.*;
 			login.mainJFrame.setVisible(true);
 		}
 	}
+	
 }
 
