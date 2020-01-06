@@ -84,16 +84,7 @@ public Login(){
 		
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			String acount=txtName.getText();
-			String pwd=String.valueOf(txtPass.getPassword());
-			User user=new User(acount,pwd);
-			if(!UserDaoJdbcImpl.register(user))
-			{
-				System.out.println("注册失败");
-			}else
-			{
-				System.out.println("注册成功");
-			}
+			Registry.run();
 		}
 	});
 
