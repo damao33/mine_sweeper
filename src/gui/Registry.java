@@ -128,7 +128,7 @@ public void actionPerformed(ActionEvent e){
 		login.mainJFrame.setVisible(true);
 	}
 }
-public static void main(String[] args){
+public static void run(){
 	new Registry();
 }
 }
