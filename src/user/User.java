@@ -1,5 +1,6 @@
 package user;
 
+import java.net.*;
 import java.sql.*;
 import java.util.*;
 
@@ -12,6 +13,8 @@ public class User {
 	private int score = 0;
 	private Connection conn = null;
 	private boolean onlineState = false;
+	private Socket socket = null;
+	
 	public User(String acount, String password) {
 		this.acount = acount;
 		this.password = password;
@@ -24,8 +27,6 @@ public class User {
 		Random r = new Random();		
 		return nickName+r.nextInt(99999);
 	}
-	
-	
 	public String getAcount() {
 		return acount;
 	}
@@ -46,6 +47,15 @@ public class User {
 	}
 	public Connection getConn() {
 		return conn;
+	}
+	public void setConn(Connection conn) {
+		this.conn = conn;
+	}	
+	public Socket getSocket() {
+		return socket;
+	}
+	public void setSocket(Socket socket) {
+		this.socket = socket;
 	}
 	public boolean getOnlineState() {
 		return onlineState;
