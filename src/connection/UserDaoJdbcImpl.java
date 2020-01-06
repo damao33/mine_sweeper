@@ -47,19 +47,36 @@ public class UserDaoJdbcImpl implements UserDao
 		ResultSet resultSet = null;
 		try
 		{
-			conn = ConnectionManager.getConnection();
+			conn = user.getConn();
+			if(conn==null)
+			{
+				System.out.println("连接失败");
+				return false;
+			}
+			else if(user.getOnlineState())
+			{
+				System.out.println("用户已在线");
+				return false;
+			}
 			pStatement = conn.prepareStatement(sql);
 			pStatement.setString(1, user.getAcount());
 			resultSet = pStatement.executeQuery();
 			String pwd = null;
+			String nickName = null;
 			if(resultSet.next())
 			{
 				pwd	= resultSet.getString("password");
+				nickName = resultSet.getString("nickName");
+				if(nickName!=null)
+				{
+					user.setNickName(nickName);
+				}
 			}			
 			System.out.println("Acount:"+user.getAcount());
 			System.out.println("Pwd:"+pwd);
 			if(user.getPassword().equals(pwd))
 			{
+				user.setOnlineState(true);
 				return true;	//密码正确登陆成功
 			}
 			else
@@ -71,7 +88,7 @@ public class UserDaoJdbcImpl implements UserDao
 			e.printStackTrace();
 		} finally
 		{
-			ConnectionManager.releaseAll(resultSet, pStatement, conn);
+			ConnectionManager.releaseAll(resultSet, pStatement, null);//连接等退出游戏再关闭
 		}
 		return false;
 	}
@@ -92,7 +109,7 @@ public class UserDaoJdbcImpl implements UserDao
 			pStatement = conn.prepareStatement(sql);
 			pStatement.setString(1, user.getAcount());
 			pStatement.setString(2, user.getPassword());
-			pStatement.setString(3, user.getNickName());
+			pStatement.setString(3, user.randomNickName());
 			pStatement.setInt(4, 0);
 			pStatement.executeUpdate();
 			return true;

@@ -1,4 +1,5 @@
 package gui;
+
 import javax.swing.*;
 
 import connection.UserDaoJdbcImpl;
@@ -14,17 +15,28 @@ public class Login implements ActionListener{
 	JLabel labName,labPass,labTitle,labEmpty;
 	JTextField txtName;
 	JPasswordField txtPass;
-	JButton login1,register,cancel;
+	JButton login1,register;
 	
 
 public Login(){
+	try {
+        for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+            if ("Nimbus".equals(info.getName())) {
+                javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                break;
+            }
+        }
+    }catch(Exception e) {
+    	System.out.println(e);
+    }
+	
 	mainJFrame=new JFrame("用户登录");
 	con=mainJFrame.getContentPane();
 	con.setLayout(new FlowLayout());
 	labTitle=new JLabel("<html><body><h1> 欢迎使用扫雷 \n <br> </h1> </body>  </html>");
 	
 	
-	labName=new JLabel("  用户:  ");
+	labName=new JLabel("  用户名: ");
 	txtName=new JTextField();
 	txtName.setColumns(20);
 	
@@ -33,7 +45,7 @@ public Login(){
 	txtPass.setColumns(20);
 	
 	login1=new JButton("登录");
-	login1.addActionListener(new ActionListener() {
+    login1.addActionListener(new ActionListener() {
 		
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -43,15 +55,52 @@ public Login(){
 			if(UserDaoJdbcImpl.login(user))
 			{
 				System.out.println("登陆成功");
+				new GameFrame(user).runGame();
+			}else System.out.println("登陆失败");
+		}
+	});
+
+	
+	
+	login1.addActionListener(new ActionListener() {
+		
+		@Override
+		
+		public void actionPerformed(ActionEvent e) {
+			String ac=txtName.getText();
+			String pwd=String.valueOf(txtPass.getPassword());
+			User user=new User(ac,pwd);
+			if(UserDaoJdbcImpl.login(user))
+			{
+				System.out.println("登陆成功");
+				new GameFrame(user).runGame();
 			}else System.out.println("登陆失败");
 		}
 	});
 	
 	register=new JButton("注册");
 	register.addActionListener(this);
+    register.addActionListener(new ActionListener() {
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			String acount=txtName.getText();
+			String pwd=String.valueOf(txtPass.getPassword());
+			User user=new User(acount,pwd);
+			if(!UserDaoJdbcImpl.register(user))
+			{
+				System.out.println("注册失败");
+			}else
+			{
+				System.out.println("注册成功");
+			}
+		}
+	});
+
 	
-	cancel=new JButton("取消");
-	cancel.addActionListener(this);
+	
+//	cancel=new JButton("取消");
+//	cancel.addActionListener(this);
 	
 	
 	con.add(labTitle);
@@ -69,7 +118,7 @@ public Login(){
 	
 	con.add(login1);
 	con.add(register);
-	con.add(cancel);
+//	con.add(cancel);
 	
 	mainJFrame.setSize(350, 350);
 	mainJFrame.setVisible(true);
@@ -84,11 +133,11 @@ public void actionPerformed(ActionEvent e){
 		Registry reg=new Registry();
 		reg.mainJFrame.setVisible(true);
 	}
-	if(e.getSource()==cancel){
-		txtName.setText(null);
-		txtPass.setText(null);
-		
-	}
+//	if(e.getSource()==cancel){
+//		txtName.setText(null);
+//		txtPass.setText(null);
+//		
+//	}
 }
 public static void main(String[] args){
 	new Login();

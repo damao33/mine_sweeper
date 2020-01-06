@@ -1,23 +1,31 @@
 package user;
 
-import java.util.Random;
+import java.sql.*;
+import java.util.*;
+
+import connection.ConnectionManager;
 
 public class User {
 	private String acount;
 	private String password;
-	private String nickName;
+	private String nickName = null;
 	private int score = 0;
+	private Connection conn = null;
+	private boolean onlineState = false;
 	public User(String acount, String password) {
 		this.acount = acount;
 		this.password = password;
-		this.setNickName(randomNickName());
+		//if(this.nickName==null)this.setNickName(randomNickName());
+		this.conn = ConnectionManager.getConnection();
 	}
-	private static String randomNickName()
+	public static String randomNickName()
 	{
 		String nickName="player";
 		Random r = new Random();		
 		return nickName+r.nextInt(99999);
 	}
+	
+	
 	public String getAcount() {
 		return acount;
 	}
@@ -36,4 +44,14 @@ public class User {
 	public int getScore() {
 		return score;
 	}
+	public Connection getConn() {
+		return conn;
+	}
+	public boolean getOnlineState() {
+		return onlineState;
+	}
+	public void setOnlineState(boolean onlineState) {
+		this.onlineState = onlineState;
+	}
+	
 }
