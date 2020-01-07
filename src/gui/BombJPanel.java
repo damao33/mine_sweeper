@@ -1,4 +1,4 @@
-package gameRule;
+package gui;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -9,6 +9,9 @@ import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 
+import gameRule.Listener;
+import gameRule.MainFrame;
+import gameRule.MineButton;
 import tool.StaticTool;
 
 public class BombJPanel extends JPanel {
