@@ -1,6 +1,9 @@
 package connection;
 
 import user.User;
+
+import java.io.*;
+import java.net.*;
 import java.sql.*;
 public class UserDaoJdbcImpl implements UserDao
 {
@@ -74,12 +77,21 @@ public class UserDaoJdbcImpl implements UserDao
 			}			
 			System.out.println("Acount:"+user.getAcount());
 			System.out.println("Pwd:"+pwd);
+			Socket clientSocket = ConnectionManager.getSocket();
 			if(user.getPassword().equals(pwd))
 			{
-				if(user.connectServer()!=false)
+				if(clientSocket!=null)
 				{
-					user.setOnlineState(true);
-					return 1;	//密码正确登陆成功
+					if(sendUser(clientSocket,user)!=false)
+					{
+						user.setOnlineState(true);
+						return 1;	//密码正确登陆成功
+					}
+					else
+					{
+						System.out.println("写入user失败");
+						return -4;
+					}
 				}
 				else
 				{
@@ -129,5 +141,22 @@ public class UserDaoJdbcImpl implements UserDao
 			ConnectionManager.releaseAll(null, pStatement, conn);
 		}
 		return false;
+	}
+	private static boolean sendUser(Socket clientSocket,User user)
+	{
+		try
+		{
+			ObjectOutputStream oos = new ObjectOutputStream(clientSocket.getOutputStream());
+			oos.writeObject(user);
+			oos.flush();
+			System.out.println("user写入成功");
+			return true;
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			System.out.println("user写入失败");
+			return false;
+		}
 	}
 }

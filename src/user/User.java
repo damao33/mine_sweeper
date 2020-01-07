@@ -1,31 +1,26 @@
 package user;
 
+import java.io.*;
 import java.net.*;
 import java.sql.*;
 import java.util.*;
 
 import connection.ConnectionManager;
 
-public class User {
+public class User implements Serializable
+{
+	private static final long serialVersionUID = -4058332813000180067L;
 	private String acount;
 	private String password;
 	private String nickName = null;
 	private int score = 0;
-	private Connection conn = null;
+	private transient Connection conn = null;
 	private boolean onlineState = false;
-	private Socket socket = null;
-	
+
 	public User(String acount, String password) {
 		this.acount = acount;
 		this.password = password;
-		//if(this.nickName==null)this.setNickName(randomNickName());
 		this.conn = ConnectionManager.getConnection();
-	}
-	public boolean connectServer()
-	{
-		this.socket = ConnectionManager.getSocket();
-		if(this.socket!=null)return true;
-		else return false;
 	}
 	public static String randomNickName()
 	{
@@ -57,14 +52,10 @@ public class User {
 	public void setConn(Connection conn) {
 		this.conn = conn;
 	}	
-	public Socket getSocket() {
-		return socket;
-	}
 	public boolean getOnlineState() {
 		return onlineState;
 	}
 	public void setOnlineState(boolean onlineState) {
 		this.onlineState = onlineState;
-	}
-	
+	}	
 }
