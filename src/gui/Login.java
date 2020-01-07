@@ -3,6 +3,7 @@ package gui;
 import javax.swing.*;
 
 import connection.UserDaoJdbcImpl;
+import tool.StaticTool;
 import user.User;
 
 import java.awt.*;
@@ -31,6 +32,7 @@ public class Login implements ActionListener{
 	    }
 		
 		mainJFrame=new JFrame("用户登录");
+		mainJFrame.setIconImage(StaticTool.imageIcon.getImage());		
 		con=mainJFrame.getContentPane();
 		con.setLayout(new FlowLayout());
 		labTitle=new JLabel("<html><body><h1> 欢迎使用扫雷 \n <br> </h1> </body>  </html>");

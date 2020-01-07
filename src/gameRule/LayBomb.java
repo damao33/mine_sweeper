@@ -2,6 +2,8 @@ package gameRule;
 
 import java.util.Random;
 
+import tool.StaticTool;
+
 public class LayBomb {
 	public static void lay(MineButton[][] button, int row, int col) {
 

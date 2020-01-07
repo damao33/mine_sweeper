@@ -9,6 +9,8 @@ import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 
+import tool.StaticTool;
+
 public class BombJPanel extends JPanel {
 	/**
 	 * 
