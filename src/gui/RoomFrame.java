@@ -5,6 +5,12 @@
  */
 package gui;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import connection.ConnectionManager;
+import user.User;
+
 /**
  *
  * @author 12892
@@ -15,6 +21,10 @@ public class RoomFrame extends javax.swing.JFrame {
      * Creates new form RoomFrame
      */
     public RoomFrame() {
+        initComponents();
+    }
+    public RoomFrame(User user) {
+    	this.user = user;
         initComponents();
     }
 
@@ -324,11 +334,15 @@ public class RoomFrame extends javax.swing.JFrame {
 
         exit.setFont(new java.awt.Font("宋体", 0, 20)); // NOI18N
         exit.setText("退出");
-        exit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exitActionPerformed(evt);
-            }
-        });
+        exit.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ConnectionManager.releaseAll(null, null, RoomFrame.this.getUser().getConn());
+				System.out.println(RoomFrame.this.user.getNickName()+"退出成功");
+				RoomFrame.this.setVisible(false);
+			}
+		});
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -482,7 +496,10 @@ public class RoomFrame extends javax.swing.JFrame {
             }
         });
     }
-
+    public User getUser()
+    {
+    	return this.user;
+    }
     // Variables declaration - do not modify                     
     private javax.swing.JButton enter1;
     private javax.swing.JButton enter2;
@@ -517,5 +534,6 @@ public class RoomFrame extends javax.swing.JFrame {
     private javax.swing.JPanel maingame;
     private javax.swing.JPanel num;
     private javax.swing.JPanel playername;
+    private User user;
     // End of variables declaration                   
 }

@@ -5,6 +5,8 @@ import user.User;
 import java.io.*;
 import java.net.*;
 import java.sql.*;
+
+import msg.Msg;
 public class UserDaoJdbcImpl implements UserDao
 {
 	public static int  findUser(User user) {
@@ -147,8 +149,11 @@ public class UserDaoJdbcImpl implements UserDao
 		try
 		{
 			ObjectOutputStream oos = new ObjectOutputStream(clientSocket.getOutputStream());
+			oos.writeObject(new Msg("2"));
 			oos.writeObject(user);
+			oos.writeObject(new Msg("1"));
 			oos.flush();
+			
 			System.out.println("user写入成功");
 			return true;
 		}

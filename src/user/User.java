@@ -57,5 +57,10 @@ public class User implements Serializable
 	}
 	public void setOnlineState(boolean onlineState) {
 		this.onlineState = onlineState;
+	}
+	@Override
+	public String toString() {
+		return "User "+this.getNickName();
 	}	
+	
 }

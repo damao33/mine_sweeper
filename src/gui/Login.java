@@ -59,8 +59,8 @@ public class Login implements ActionListener{
 				{
 					System.out.println("登陆成功");
 					mainJFrame.setVisible(false);//登录成功登入界面消失
-					new GameFrame(user).runGame();					
-					//new RoomFrame().setVisible(true);
+					//new GameFrame(user).runGame();					
+					new RoomFrame().setVisible(true);
 				}else if(loginState==-3) {
 					JOptionPane.showMessageDialog(null, "密码错误");
 					txtPass.setText(null);//密码错误清空密码
