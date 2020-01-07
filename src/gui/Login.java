@@ -52,7 +52,7 @@ public class Login implements ActionListener{
 				String ac=txtName.getText();
 				String pwd=String.valueOf(txtPass.getPassword());
 				User user=new User(ac,pwd);
-				if(UserDaoJdbcImpl.login(user))
+				if(UserDaoJdbcImpl.login(user)==1)
 				{
 					System.out.println("登陆成功");
 					new GameFrame(user);
@@ -70,12 +70,25 @@ public class Login implements ActionListener{
 				String ac=txtName.getText();
 				String pwd=String.valueOf(txtPass.getPassword());
 				User user=new User(ac,pwd);
-				if(UserDaoJdbcImpl.login(user))
+				if(UserDaoJdbcImpl.login(user)==1)
 				{
 					System.out.println("登陆成功");
 					new GameFrame(user).runGame();
+					
 					//new RoomFrame().setVisible(true);
-				}else System.out.println("登陆失败");
+				}else {
+					if(UserDaoJdbcImpl.login(user)==-3) {
+						JOptionPane.showMessageDialog(null, "密码错误");
+						txtPass.setText(null);//密码错误清空密码
+						System.out.println("登陆失败");
+					}
+					else if(UserDaoJdbcImpl.login(user)==0){
+						JOptionPane.showMessageDialog(null, "不存在该账号");
+						txtName.setText(null);//清空用户名
+						txtPass.setText(null);//清空密码
+						System.out.println("登陆失败");
+					}
+				}
 			}
 		});
 		
