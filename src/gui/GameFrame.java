@@ -13,11 +13,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import connection.ConnectionManager;
+import tool.StaticTool;
 import user.User;
 
 public class GameFrame extends javax.swing.JFrame {
 
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
      * Creates new form GameFrame
      */
 	    public GameFrame(User user) {
@@ -475,6 +480,8 @@ public class GameFrame extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 //new GameFrame(user).setVisible(true);
+            	GameFrame.this.setIconImage(StaticTool.imageIcon.getImage());
+            	GameFrame.this.setTitle("多人扫雷对战");
             	GameFrame.this.setVisible(true);
             }
         });

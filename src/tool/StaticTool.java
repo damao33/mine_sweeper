@@ -1,4 +1,4 @@
-package gameRule;
+package tool;
 
 import java.awt.Image;
 
@@ -23,21 +23,23 @@ public class StaticTool {
 	public static ImageIcon askPressIcon = new ImageIcon("./image/ask1.jpg");
 	public static ImageIcon errorBombIcon = new ImageIcon("./image/error.jpg");
 	public static ImageIcon blackBombIcon = new ImageIcon("./image/mine.jpg");
+	public static ImageIcon imageIcon = new ImageIcon("./image/icon.jpg");
 
 	static {
+		int width = 40,height = 40;
 		for (int i = 0; i < num.length; i++) {
 			num[i] = new ImageIcon("./image/" + i + ".jpg");
-			num[i]=changeIcon(num[i], 40, 40);
+			num[i] = changeIcon(num[i], width, height);
 
 		}
-		iconBlank=changeIcon(iconBlank, 40, 40);
-		bloodIcon=changeIcon(bloodIcon, 40, 40);
-		icon0=changeIcon(icon0, 40, 40);
-		flagIcon=changeIcon(flagIcon, 40, 40);
-		askIcon=changeIcon(askIcon, 40, 40);
-		askPressIcon=changeIcon(askPressIcon, 40, 40);
-		errorBombIcon=changeIcon(errorBombIcon, 40, 40);
-		blackBombIcon=changeIcon(blackBombIcon, 40, 40);
+		iconBlank = changeIcon(iconBlank, width, height);
+		bloodIcon = changeIcon(bloodIcon, width, height);
+		icon0 = changeIcon(icon0, width, height);
+		flagIcon = changeIcon(flagIcon, width, height);
+		askIcon = changeIcon(askIcon, width, height);
+		askPressIcon = changeIcon(askPressIcon, width, height);
+		errorBombIcon = changeIcon(errorBombIcon, width, height);
+		blackBombIcon = changeIcon(blackBombIcon, width, height);
 
 	}
 
@@ -47,6 +49,5 @@ public class StaticTool {
 		icon = new ImageIcon(temp);
 		return icon;
 	}
-
 
 }
