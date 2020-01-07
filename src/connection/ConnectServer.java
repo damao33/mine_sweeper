@@ -54,18 +54,22 @@ class ConnectedUserHandler implements Runnable
 			ObjectInputStream ois = new ObjectInputStream(is);
 			Object o;
 			//while((o = ois.readObject())!=null)
-			while(is.available()!=0)
+			while(true)
 			{
-				o = ois.readObject();
-				if(o instanceof User)
+				while(is.available()!=0)
 				{
-					User u = (User)o;
-					System.out.println(u);
-				}else
-				{
-					System.out.println("其他信息");
+					o = ois.readObject();
+					if(o instanceof User)
+					{
+						User u = (User)o;
+						System.out.println(u);
+					}else
+					{
+						System.out.println("其他信息");
+					}
 				}
 			}
+			
 			//ObjectOutputStream oos = new ObjectOutputStream(this.imcoming.getOutputStream());
 		}
 		catch(Exception e)
