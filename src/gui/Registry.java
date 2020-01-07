@@ -101,6 +101,8 @@ import java.awt.event.*;
                         }
                         else
                         {
+                        	txtPass.setText(null);
+                        	txtRPass.setText(null);
                             JOptionPane.showMessageDialog(null, "密码不一致,请再次输入密码");
                         }
                     }
@@ -123,9 +125,17 @@ import java.awt.event.*;
 				User user=new User(acount,pwd);
 				if(!UserDaoJdbcImpl.register(user))
 				{
+					JOptionPane.showMessageDialog(null, "注册失败");
+					txtName.setText(null);
+					txtPass.setText(null);
+					txtRPass.setText(null);
 					System.out.println("注册失败");
 				}else
 				{
+					JOptionPane.showMessageDialog(null, "注册成功");
+					mainJFrame.setVisible(false);
+					Login login=new Login();
+					login.mainJFrame.setVisible(true);
 					System.out.println("注册成功");
 				}
 			}
