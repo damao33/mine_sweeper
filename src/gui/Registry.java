@@ -82,61 +82,88 @@ import java.awt.event.*;
 		
 		regBtn=new JButton("注册");
 		
-		regBtn.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-                try {
-                    
-                    String acount=txtName.getText();
-                    //注册时2次输入的密码相同时才把密码设置到user信息中
-                    String pwd1=String.valueOf(txtPass.getPassword());
-                    String pwd2=String.valueOf(txtRPass.getPassword());
-                    boolean isWrong=true;
-                    if(isWrong){
-                        if((pwd1.equals(pwd2))){
-                        	User user=new User(acount,pwd1);
-                            isWrong=false;
-                        }
-                        else
-                        {
-                        	txtPass.setText(null);
-                        	txtRPass.setText(null);
-                            JOptionPane.showMessageDialog(null, "密码不一致,请再次输入密码");
-                        }
-                    }
-                }
-                catch(Exception ex)
-                {
-                	ex.printStackTrace();
-                	
-                };
-			}
-		});
+//		regBtn.addActionListener(new ActionListener() {
+//
+//			@Override
+//			public void actionPerformed(ActionEvent e) {
+//				// TODO Auto-generated method stub
+//                try {
+//                    
+//                    String acount=txtName.getText();
+//                    //注册时2次输入的密码相同时才把密码设置到user信息中
+//                    String pwd1=String.valueOf(txtPass.getPassword());
+//                    String pwd2=String.valueOf(txtRPass.getPassword());
+//                    boolean isWrong=true;
+//                    if(isWrong){
+//                        if((pwd1.equals(pwd2))){
+//                        	User user=new User(acount,pwd1);
+//                            isWrong=false;
+//                        }
+//                        else
+//                        {
+//                        	txtPass.setText(null);
+//                        	txtRPass.setText(null);
+//                            JOptionPane.showMessageDialog(null, "密码不一致,请再次输入密码");
+//                        }
+//                    }
+//                }
+//                catch(Exception ex)
+//                {
+//                	ex.printStackTrace();
+//                	
+//                };
+//			}
+//		});
             
                     
 		regBtn.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+                
 				String acount=txtName.getText();
 				String pwd=String.valueOf(txtPass.getPassword());
-				User user=new User(acount,pwd);
+				
 				if(!UserDaoJdbcImpl.register(user))
 				{
-					JOptionPane.showMessageDialog(null, "注册失败");
+					JOptionPane.showMessageDialog(null, "已存在该用户，注册失败");
 					txtName.setText(null);
 					txtPass.setText(null);
 					txtRPass.setText(null);
 					System.out.println("注册失败");
 				}else
 				{
-					JOptionPane.showMessageDialog(null, "注册成功");
-					mainJFrame.setVisible(false);
-					Login login=new Login();
-					login.mainJFrame.setVisible(true);
-					System.out.println("注册成功");
+					// TODO Auto-generated method stub
+	                try {
+	                    
+	                    //String acount=txtName.getText();
+	                    //注册时2次输入的密码相同时才把密码设置到user信息中
+	                    String pwd1=String.valueOf(txtPass.getPassword());
+	                    String pwd2=String.valueOf(txtRPass.getPassword());
+	                    boolean isWrong=true;
+	                    if(isWrong){
+	                        if((pwd1.equals(pwd2))){
+	                        	User user=new User(acount,pwd1);
+	                            isWrong=false;
+	                            JOptionPane.showMessageDialog(null, "注册成功");
+	        					mainJFrame.setVisible(false);
+	        					Login login=new Login();
+	        					login.mainJFrame.setVisible(true);
+	        					System.out.println("注册成功");
+	                        }
+	                        else
+	                        {
+	                        	txtPass.setText(null);
+	                        	txtRPass.setText(null);
+	                            JOptionPane.showMessageDialog(null, "密码不一致,请再次输入密码");
+	                        }
+	                    }
+	                }
+	                catch(Exception ex)
+	                {
+	                	ex.printStackTrace();
+	                	
+	                };
 				}
 			}
 		}); 
