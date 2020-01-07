@@ -12,7 +12,7 @@ public class LoginMsg extends Msg
 
 	@Override
 	public String toString() {
-		return ((User)this.getMsg()).getNickName()+" has logined";
+		return this.getMsgType()+":"+((User)this.getMsg()).getNickName()+" has logined";
 	}
 	
 }

@@ -11,6 +11,6 @@ public class ExitMsg extends Msg
 	}
 	@Override
 	public String toString() {
-		return ((User)this.getMsg()).getNickName()+" has exited";
+		return this.getMsgType()+":"+((User)this.getMsg()).getNickName()+" has exited";
 	}
 }
