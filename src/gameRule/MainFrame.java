@@ -1,6 +1,7 @@
 package gameRule;
 
 import java.awt.Dimension;
+import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 import javax.swing.UIManager;
@@ -19,11 +20,20 @@ public class MainFrame extends JFrame {
 		init();
 
 		this.setTitle("扫雷");
-		//this.setSize(new Dimension(220, 300));
+		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
 		this.pack();
+
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		Dimension frameSize = this.getSize();
+		if (frameSize.height > screenSize.height)
+			frameSize.height = screenSize.height;
+		if (frameSize.width > screenSize.width)
+			frameSize.width = screenSize.width;
+		this.setLocation((screenSize.width - frameSize.width) / 2, (screenSize.height - frameSize.height) / 2);
+
 		this.setVisible(true);
 
 	}
