@@ -4,10 +4,7 @@ import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.*;
-
-import msg.ExitMsg;
-import msg.LoginMsg;
-import msg.Msg;
+import msg.*;
 import user.User;
 
 public class ConnectClient implements Runnable
@@ -17,48 +14,27 @@ public class ConnectClient implements Runnable
 	public Socket getClientSocket() {
 		return clientSocket;
 	}
-
 	public ConnectClient(Socket socket) {
 		super();
 		clientSocket = socket;
 	}
-	public boolean sendLogin(User user)
+	public boolean sendMsg(Msg msg)
 	{
 		try
 		{
 			ObjectOutputStream oos = new ObjectOutputStream(clientSocket.getOutputStream());
-			oos.writeObject(new LoginMsg(user));
-			oos.flush();
-			
-			System.out.println("login写入成功");
+			oos.writeObject(msg);
+			oos.flush();		
+			System.out.println(msg.getMsgType()+"写入成功");
 			return true;
 		}
 		catch(Exception e)
 		{
 			e.printStackTrace();
-			System.out.println("login写入失败");
-			return false;
-		}
-	}	
-	public boolean sendExit(User user)
-	{
-		try
-		{
-			ObjectOutputStream oos = new ObjectOutputStream(clientSocket.getOutputStream());
-			oos.writeObject(new ExitMsg(user));
-			oos.flush();
-			
-			System.out.println("exit写入成功");
-			return true;
-		}
-		catch(Exception e)
-		{
-			e.printStackTrace();
-			System.out.println("exit写入失败");
+			System.out.println(msg.getMsgType()+"写入失败");
 			return false;
 		}
 	}
-
 	@Override
 	public void run() {
 		try
@@ -81,7 +57,6 @@ public class ConnectClient implements Runnable
 		catch(Exception e)
 		{
 			e.printStackTrace();
-		}
-		
+		}		
 	}
 }
