@@ -44,23 +44,7 @@ public class Login implements ActionListener{
 		txtPass=new JPasswordField();
 		txtPass.setColumns(20);
 		
-		login1=new JButton("登录");
-	    login1.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String ac=txtName.getText();
-				String pwd=String.valueOf(txtPass.getPassword());
-				User user=new User(ac,pwd);
-				if(UserDaoJdbcImpl.login(user)==1)
-				{
-					System.out.println("登陆成功");
-					new GameFrame(user);
-				}else System.out.println("登陆失败");
-			}
-		});
-	
-		
+		login1=new JButton("登录");	
 		
 		login1.addActionListener(new ActionListener() {
 			
