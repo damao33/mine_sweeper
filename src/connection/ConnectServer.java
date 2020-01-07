@@ -28,7 +28,6 @@ public class ConnectServer {
 			e.printStackTrace();
 		}		
 	}
-	
 	public static void userLogin()
 	{
 		userOnline++;
@@ -48,17 +47,17 @@ public class ConnectServer {
 
 class ConnectedUserHandler implements Runnable
 {
-	private Socket imcoming = null;
+	private Socket serverSocket = null;
 	
 	public ConnectedUserHandler(Socket imcoming) {
 		super();
-		this.imcoming = imcoming;
+		this.serverSocket = imcoming;
 	}
 	@Override
 	public void run() {
 		try
 		{
-			InputStream is = this.imcoming.getInputStream();
+			InputStream is = this.serverSocket.getInputStream();
 			//while((o = ois.readObject())!=null)
 			while(true)
 			{
@@ -73,8 +72,6 @@ class ConnectedUserHandler implements Runnable
 					}
 				}
 			}
-			
-			//ObjectOutputStream oos = new ObjectOutputStream(this.imcoming.getOutputStream());
 		}
 		catch(Exception e)
 		{

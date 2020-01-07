@@ -21,11 +21,18 @@ public class RoomFrame extends javax.swing.JFrame {
     public RoomFrame() {
         initComponents();
     }
-    public RoomFrame(User user) {
+    public RoomFrame(User user,ConnectClient connectClient) {
     	this.user = user;
+    	this.connectClient = connectClient;
         initComponents();
     }
-
+    public User getUser()
+    {
+    	return this.user;
+    }  
+    public ConnectClient getConnectClient() {
+		return connectClient;
+	}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -186,7 +193,7 @@ public class RoomFrame extends javax.swing.JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				RoomFrame.this.setVisible(false);
-				new GameFrame(RoomFrame.this.user).runGame();
+				new GameFrame(RoomFrame.this.user,RoomFrame.this.connectClient).runGame();
 			}
 		});
 
@@ -346,7 +353,7 @@ public class RoomFrame extends javax.swing.JFrame {
 			public void actionPerformed(ActionEvent e) {
 				ConnectionManager.releaseAll(null, null, RoomFrame.this.getUser().getConn());
 				System.out.println(RoomFrame.this.user.getNickName()+"退出成功");
-				ConnectClient.sendExit(RoomFrame.this.user);
+				RoomFrame.this.connectClient.sendExit(RoomFrame.this.user);
 				RoomFrame.this.setVisible(false);
 			}
 		});
@@ -502,11 +509,8 @@ public class RoomFrame extends javax.swing.JFrame {
             }
         });
     }
-    public User getUser()
-    {
-    	return this.user;
-    }
-    // Variables declaration - do not modify                     
+
+	// Variables declaration - do not modify                     
     private javax.swing.JButton enter1;
     private javax.swing.JButton enter2;
     private javax.swing.JButton enter3;
@@ -541,5 +545,6 @@ public class RoomFrame extends javax.swing.JFrame {
     private javax.swing.JPanel num;
     private javax.swing.JPanel playername;
     private User user;
+    private ConnectClient connectClient = null;
     // End of variables declaration                   
 }

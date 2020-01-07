@@ -1,29 +1,28 @@
 package connection;
 
+import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.*;
 
 import msg.ExitMsg;
 import msg.LoginMsg;
+import msg.Msg;
 import user.User;
 
-public class ConnectClient {
-	private static Socket clientSocket;
+public class ConnectClient implements Runnable
+{
+	private Socket clientSocket;
 	
-	public static Socket getClientSocket() {
+	public Socket getClientSocket() {
 		return clientSocket;
-	}
-	
-	public static void setClientSocket(Socket clientSocket) {
-		ConnectClient.clientSocket = clientSocket;
 	}
 
 	public ConnectClient(Socket socket) {
 		super();
 		clientSocket = socket;
 	}
-	public static boolean sendLogin(User user)
+	public boolean sendLogin(User user)
 	{
 		try
 		{
@@ -41,7 +40,7 @@ public class ConnectClient {
 			return false;
 		}
 	}	
-	public static boolean sendExit(User user)
+	public boolean sendExit(User user)
 	{
 		try
 		{
@@ -58,5 +57,31 @@ public class ConnectClient {
 			System.out.println("exit写入失败");
 			return false;
 		}
+	}
+
+	@Override
+	public void run() {
+		try
+		{
+			InputStream clientIS = clientSocket.getInputStream();
+			while(true)
+			{
+				while(clientIS.available()!=0)
+				{
+					ObjectInputStream ois = new ObjectInputStream(clientIS);
+					Object o = ois.readObject();					
+					if(o instanceof Msg)
+					{
+						System.out.println("Recv message from server:");
+						System.out.println((Msg)o);
+					}
+				}
+			}
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
 	}
 }
