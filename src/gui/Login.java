@@ -16,8 +16,33 @@ public class Login implements ActionListener{
 	JTextField txtName;
 	JPasswordField txtPass;
 	JButton login1,register;
-	
-
+	private ActionListener loginListener = new ActionListener() {
+		
+		@Override
+		
+		public void actionPerformed(ActionEvent e) {
+			String ac=txtName.getText();
+			String pwd=String.valueOf(txtPass.getPassword());
+			User user=new User(ac,pwd);
+			int loginState = UserDaoJdbcImpl.login(user);
+			if(loginState==1)
+			{
+				System.out.println("登陆成功");
+				mainJFrame.setVisible(false);//登录成功登入界面消失
+				//new GameFrame(user).runGame();					
+				new RoomFrame().setVisible(true);
+			}else if(loginState==-3) {
+				JOptionPane.showMessageDialog(null, "密码错误");
+				txtPass.setText(null);//密码错误清空密码
+				System.out.println("登陆失败");
+			}else if(loginState==0){
+				JOptionPane.showMessageDialog(null, "不存在该账号");
+				txtName.setText(null);//清空用户名
+				txtPass.setText(null);//清空密码
+				System.out.println("登陆失败");
+			}
+		}
+	};
 	public Login(){
 		try {
 	        for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -46,33 +71,65 @@ public class Login implements ActionListener{
 		
 		login1=new JButton("登录");	
 		
-		login1.addActionListener(new ActionListener() {
-			
+		login1.addActionListener(this.loginListener);
+		txtPass.addKeyListener(new KeyListener() {
+			public void keyPressed(KeyEvent arg0) {
+		        int key = arg0.getKeyCode();
+		        if(key == '\n'){
+		        	String ac=txtName.getText();
+					String pwd=String.valueOf(txtPass.getPassword());
+					User user=new User(ac,pwd);
+					int loginState = UserDaoJdbcImpl.login(user);
+					if(loginState==1)
+					{
+						System.out.println("登陆成功");
+						mainJFrame.setVisible(false);//登录成功登入界面消失
+						//new GameFrame(user).runGame();					
+						new RoomFrame().setVisible(true);
+					}else if(loginState==-3) {
+						JOptionPane.showMessageDialog(null, "密码错误");
+						txtPass.setText(null);//密码错误清空密码
+						System.out.println("登陆失败");
+					}else if(loginState==0){
+						JOptionPane.showMessageDialog(null, "不存在该账号");
+						txtName.setText(null);//清空用户名
+						txtPass.setText(null);//清空密码
+						System.out.println("登陆失败");
+					}
+					
+		        }
+		    }
+
 			@Override
-			
-			public void actionPerformed(ActionEvent e) {
-				String ac=txtName.getText();
-				String pwd=String.valueOf(txtPass.getPassword());
-				User user=new User(ac,pwd);
-				int loginState = UserDaoJdbcImpl.login(user);
-				if(loginState==1)
-				{
-					System.out.println("登陆成功");
-					mainJFrame.setVisible(false);//登录成功登入界面消失
-					//new GameFrame(user).runGame();					
-					new RoomFrame().setVisible(true);
-				}else if(loginState==-3) {
-					JOptionPane.showMessageDialog(null, "密码错误");
-					txtPass.setText(null);//密码错误清空密码
-					System.out.println("登陆失败");
-				}else if(loginState==0){
-					JOptionPane.showMessageDialog(null, "不存在该账号");
-					txtName.setText(null);//清空用户名
-					txtPass.setText(null);//清空密码
-					System.out.println("登陆失败");
-				}
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
 			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
 		});
+//		KeyListener key_Listener = new KeyListener()
+//		{
+//			public void keyTyped(KeyEvent e) {}
+//			public void keyReleased(KeyEvent e){}
+//			public void keyPressed(KeyEvent e){
+//				if(e.getKeyChar() == KeyEvent.VK_ENTER )
+//				{
+//					
+//				}
+//			}
+//		};
+//		
+//		JTextField f1 = new JTextField(18);
+//		JPasswordField f2 = new JPasswordField(18);
+//		
+//		f1.addKeyListener(key_Listener);
+//		f2.addKeyListener(key_Listener);
 		
 		register=new JButton("注册");
 		register.addActionListener(this);
@@ -104,6 +161,7 @@ public class Login implements ActionListener{
 		mainJFrame.setVisible(true);
 		mainJFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
+	
 	public void actionPerformed(ActionEvent e){
 		if(e.getSource()==login1){
 			
