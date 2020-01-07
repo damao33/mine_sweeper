@@ -17,11 +17,10 @@ public class ConnectServer {
 			while(true)
 			{
 				Socket imcoming =serverSocket.accept();
-				userOnline++;
 				Runnable connectedUserHandler = new ConnectedUserHandler(imcoming);
 				Thread t = new Thread(connectedUserHandler);
 				t.start();
-				System.out.println("在线玩家："+userOnline);
+				userLogin();
 			}
 		}
 		catch(Exception e)
@@ -29,6 +28,18 @@ public class ConnectServer {
 			e.printStackTrace();
 		}		
 	}
+	
+	public static void userLogin()
+	{
+		userOnline++;
+		System.out.println("在线玩家："+userOnline);
+	}
+	public static void userExit()
+	{
+		userOnline--;
+		System.out.println("在线玩家："+userOnline);
+	}
+
 	public static void main(String[] args)
 	{
 		ConnectServer.runServer();
@@ -43,7 +54,6 @@ class ConnectedUserHandler implements Runnable
 		super();
 		this.imcoming = imcoming;
 	}
-
 	@Override
 	public void run() {
 		try
@@ -58,6 +68,7 @@ class ConnectedUserHandler implements Runnable
 					Object o = ois.readObject();					
 					if(o instanceof Msg)
 					{
+						if(o instanceof ExitMsg)ConnectServer.userExit();
 						System.out.println((Msg)o);
 					}
 				}
