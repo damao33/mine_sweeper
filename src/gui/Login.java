@@ -27,7 +27,7 @@ public class Login implements ActionListener {
 			System.out.println("登陆成功");
 			mainJFrame.setVisible(false);// 登录成功登入界面消失
 			// new GameFrame(user).runGame();
-			new RoomFrame().setVisible(true);
+			new RoomFrame(user,UserDaoJdbcImpl.getConnectClient()).setVisible(true);
 		} else if (loginState == -3) {
 			JOptionPane.showMessageDialog(null, "密码错误");
 			txtPass.setText(null);// 密码错误清空密码
@@ -80,10 +80,8 @@ public class Login implements ActionListener {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
+				// TODO Auto-generated method stub			
+			}			
 		} );
 
 		mainJFrame = new JFrame("用户登录");
