@@ -1,10 +1,8 @@
 package connection;
 
-import java.io.InputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.net.*;
-
+import msg.*;
 import user.User;
 
 public class ConnectServer {
@@ -59,13 +57,9 @@ class ConnectedUserHandler implements Runnable
 				while(is.available()!=0)
 				{
 					o = ois.readObject();
-					if(o instanceof User)
+					if(o instanceof Msg)
 					{
-						User u = (User)o;
-						System.out.println(u);
-					}else
-					{
-						System.out.println("其他信息");
+						System.out.println((Msg)o);
 					}
 				}
 			}
