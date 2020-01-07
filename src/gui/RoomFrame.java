@@ -5,10 +5,9 @@
  */
 package gui;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import connection.ConnectionManager;
+import java.awt.event.*;
+import connection.*;
+import tool.StaticTool;
 import user.User;
 
 /**
@@ -23,11 +22,18 @@ public class RoomFrame extends javax.swing.JFrame {
     public RoomFrame() {
         initComponents();
     }
-    public RoomFrame(User user) {
+    public RoomFrame(User user,ConnectClient connectClient) {
     	this.user = user;
+    	this.connectClient = connectClient;
         initComponents();
     }
-
+    public User getUser()
+    {
+    	return this.user;
+    }  
+    public ConnectClient getConnectClient() {
+		return connectClient;
+	}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -71,6 +77,9 @@ public class RoomFrame extends javax.swing.JFrame {
         exit = new javax.swing.JButton();
         jScrollBar1 = new javax.swing.JScrollBar();
 
+        
+        RoomFrame.this.setIconImage(StaticTool.imageIcon.getImage());
+        RoomFrame.this.setTitle("多人扫雷对战");
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         icon.setBackground(new java.awt.Color(204, 204, 204));
@@ -89,7 +98,7 @@ public class RoomFrame extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("宋体", 0, 20)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(204, 0, 0));
-        jLabel1.setText("挖金子");
+        jLabel1.setText("多人扫雷对战");
 
         jLabel2.setText("在线人数");
 
@@ -183,6 +192,14 @@ public class RoomFrame extends javax.swing.JFrame {
 
         enter1.setFont(new java.awt.Font("宋体", 0, 18)); // NOI18N
         enter1.setText("进入");
+        enter1.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				RoomFrame.this.setVisible(false);
+				new GameFrame(RoomFrame.this.user,RoomFrame.this.connectClient).runGame();
+			}
+		});
 
         jLabel8.setFont(new java.awt.Font("宋体", 0, 18)); // NOI18N
         jLabel8.setText("房间2");
@@ -340,7 +357,9 @@ public class RoomFrame extends javax.swing.JFrame {
 			public void actionPerformed(ActionEvent e) {
 				ConnectionManager.releaseAll(null, null, RoomFrame.this.getUser().getConn());
 				System.out.println(RoomFrame.this.user.getNickName()+"退出成功");
+				RoomFrame.this.connectClient.sendExit(RoomFrame.this.user);
 				RoomFrame.this.setVisible(false);
+				System.exit(0);
 			}
 		});
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -495,11 +514,8 @@ public class RoomFrame extends javax.swing.JFrame {
             }
         });
     }
-    public User getUser()
-    {
-    	return this.user;
-    }
-    // Variables declaration - do not modify                     
+
+	// Variables declaration - do not modify                     
     private javax.swing.JButton enter1;
     private javax.swing.JButton enter2;
     private javax.swing.JButton enter3;
@@ -534,5 +550,6 @@ public class RoomFrame extends javax.swing.JFrame {
     private javax.swing.JPanel num;
     private javax.swing.JPanel playername;
     private User user;
+    private ConnectClient connectClient = null;
     // End of variables declaration                   
 }

@@ -7,11 +7,6 @@ public class Msg implements Serializable
 	private String msgType = null;
 	private Object msg = null;
 
-	@Override
-	public String toString() {
-		return this.msgType+":"+this.msg.toString();
-	}
-
 	public String getMsgType() {
 		return msgType;
 	}

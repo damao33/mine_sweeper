@@ -1,10 +1,8 @@
 package connection;
 
-import java.io.InputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.net.*;
-
+import msg.*;
 import user.User;
 
 public class ConnectServer {
@@ -19,11 +17,10 @@ public class ConnectServer {
 			while(true)
 			{
 				Socket imcoming =serverSocket.accept();
-				userOnline++;
 				Runnable connectedUserHandler = new ConnectedUserHandler(imcoming);
 				Thread t = new Thread(connectedUserHandler);
 				t.start();
-				System.out.println("在线玩家："+userOnline);
+				userLogin();
 			}
 		}
 		catch(Exception e)
@@ -31,6 +28,18 @@ public class ConnectServer {
 			e.printStackTrace();
 		}		
 	}
+	
+	public static void userLogin()
+	{
+		userOnline++;
+		System.out.println("在线玩家："+userOnline);
+	}
+	public static void userExit()
+	{
+		userOnline--;
+		System.out.println("在线玩家："+userOnline);
+	}
+
 	public static void main(String[] args)
 	{
 		ConnectServer.runServer();
@@ -45,28 +54,27 @@ class ConnectedUserHandler implements Runnable
 		super();
 		this.imcoming = imcoming;
 	}
-
 	@Override
 	public void run() {
 		try
 		{
 			InputStream is = this.imcoming.getInputStream();
-			ObjectInputStream ois = new ObjectInputStream(is);
-			Object o;
+			OutputStream os = this.imcoming.getOutputStream();
 			//while((o = ois.readObject())!=null)
 			while(true)
 			{
 				while(is.available()!=0)
 				{
-					o = ois.readObject();
-					if(o instanceof User)
+					ObjectInputStream ois = new ObjectInputStream(is);
+					Object o = ois.readObject();					
+					if(o instanceof Msg)
 					{
-						User u = (User)o;
-						System.out.println(u);
-					}else
-					{
-						System.out.println("其他信息");
+						if(o instanceof ExitMsg)ConnectServer.userExit();
+						System.out.println((Msg)o);
 					}
+					ObjectOutputStream oos = new ObjectOutputStream(os);
+					oos.writeObject(o);
+					System.out.println("Msg has sent back to client");
 				}
 			}
 			

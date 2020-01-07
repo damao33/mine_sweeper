@@ -53,11 +53,38 @@ public class Login implements ActionListener {
 				if ("Nimbus".equals(info.getName())) {
 					javax.swing.UIManager.setLookAndFeel(info.getClassName());
 					break;
-				}
+	        }
 			}
-		} catch (Exception e) {
-			System.out.println(e);
-		}
+	    }catch(Exception e) {
+	    	System.out.println(e);
+	    }
+		
+		mainJFrame=new JFrame("用户登录");
+		mainJFrame.setIconImage(StaticTool.imageIcon.getImage());		
+		con=mainJFrame.getContentPane();
+		con.setLayout(new FlowLayout());
+		labTitle=new JLabel("<html><body><h1> 欢迎使用扫雷 \n <br> </h1> </body>  </html>");
+		
+		
+		labName=new JLabel("  用户名: ");
+		txtName=new JTextField();
+		txtName.setColumns(20);
+		
+		labPass=new JLabel("    密码:  ");
+		txtPass=new JPasswordField();
+		txtPass.setColumns(20);
+		
+		login1=new JButton("登录");	
+		
+		login1.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		} );
 
 		mainJFrame = new JFrame("用户登录");
 		mainJFrame.setIconImage(StaticTool.imageIcon.getImage());
