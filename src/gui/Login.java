@@ -10,7 +10,6 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class Login implements ActionListener {
-
 	JFrame mainJFrame;
 	Container con;
 	JLabel labName, labPass, labTitle, labEmpty;
