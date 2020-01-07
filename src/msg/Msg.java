@@ -16,16 +16,7 @@ public class Msg implements Serializable
 	}
 
 	public Object getMsg() {
-		/*if(this.msgType.equals("LoginMsg"))
-		{
-			return (LoginMsg)this.msg;
-		}else if(this.msgType.equals("ExitMsg"))
-		{
-			return (ExitMsg)this.msg;
-		}else if(this.msgType.equals("EnterGameMsg"))
-		{
-			return (EnterGameMsg)this.msg;
-		}else */return msg;
+		return msg;
 		
 	}
 

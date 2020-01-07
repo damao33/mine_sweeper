@@ -199,7 +199,8 @@ public class RoomFrame extends javax.swing.JFrame {
 			public void actionPerformed(ActionEvent e) {
 				RoomFrame.this.setVisible(false);
 				new GameFrame(RoomFrame.this.user,RoomFrame.this.connectClient).runGame();
-				RoomFrame.this.connectClient.sendMsg(new EnterGameMsg(RoomFrame.this.user));
+				Object[] enterMsg = new Object[] {user,1};
+				RoomFrame.this.connectClient.sendMsg(new EnterGameMsg(enterMsg));
 				RoomFrame.this.setVisible(false);
 			}
 		});
