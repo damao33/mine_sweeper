@@ -7,6 +7,7 @@ package gui;
 
 import java.awt.event.*;
 import connection.*;
+import tool.StaticTool;
 import user.User;
 
 /**
@@ -76,6 +77,9 @@ public class RoomFrame extends javax.swing.JFrame {
         exit = new javax.swing.JButton();
         jScrollBar1 = new javax.swing.JScrollBar();
 
+        
+        RoomFrame.this.setIconImage(StaticTool.imageIcon.getImage());
+        RoomFrame.this.setTitle("多人扫雷对战");
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         icon.setBackground(new java.awt.Color(204, 204, 204));
@@ -94,7 +98,7 @@ public class RoomFrame extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("宋体", 0, 20)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(204, 0, 0));
-        jLabel1.setText("挖金子");
+        jLabel1.setText("多人扫雷对战");
 
         jLabel2.setText("在线人数");
 
@@ -355,6 +359,7 @@ public class RoomFrame extends javax.swing.JFrame {
 				System.out.println(RoomFrame.this.user.getNickName()+"退出成功");
 				RoomFrame.this.connectClient.sendExit(RoomFrame.this.user);
 				RoomFrame.this.setVisible(false);
+				System.exit(0);
 			}
 		});
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

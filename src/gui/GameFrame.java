@@ -34,6 +34,8 @@ public class GameFrame extends javax.swing.JFrame {
     public ConnectClient getConnectClient() {
 			return connectClient;
 	}
+    
+    
 	/**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -43,6 +45,7 @@ public class GameFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
         maingame = new javax.swing.JPanel();
+    	bombJPanel = new BombJPanel(this);
         player = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         player1 = new javax.swing.JPanel();
@@ -289,6 +292,7 @@ public class GameFrame extends javax.swing.JFrame {
 				System.out.println(GameFrame.this.user.getNickName()+"退出成功");
 				GameFrame.this.connectClient.sendExit(GameFrame.this.user);
 				GameFrame.this.setVisible(false);
+				System.exit(0);
 			}
 		});
 
@@ -501,6 +505,8 @@ public class GameFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPanel maingame;
+    private BombJPanel bombJPanel;
+    //private BombJPanel bombJPanel = new BombJPanel(this);
     private javax.swing.JTextArea message;
     private javax.swing.JPanel player;
     private javax.swing.JPanel player1;
