@@ -283,16 +283,18 @@ public class GameFrame extends javax.swing.JFrame {
         );
 
         exit.setFont(new java.awt.Font("宋体", 0, 18)); // NOI18N
-        exit.setText("退出");
+        exit.setText("返回");
         exit.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				ConnectionManager.releaseAll(null, null, GameFrame.this.getUser().getConn());
-				System.out.println(GameFrame.this.user.getNickName()+"退出成功");
-				GameFrame.this.connectClient.sendExit(GameFrame.this.user);
+//				ConnectionManager.releaseAll(null, null, GameFrame.this.getUser().getConn());
+//				System.out.println(GameFrame.this.user.getNickName()+"退出成功");
+//				GameFrame.this.connectClient.sendExit(GameFrame.this.user);
+//				GameFrame.this.setVisible(false);
+//				System.exit(0);
 				GameFrame.this.setVisible(false);
-				System.exit(0);
+				new RoomFrame(user,UserDaoJdbcImpl.getConnectClient()).setVisible(true);
 			}
 		});
 
