@@ -343,7 +343,6 @@ public class RoomFrame extends javax.swing.JFrame {
 				RoomFrame.this.setVisible(false);
 			}
 		});
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
