@@ -184,6 +184,14 @@ public class RoomFrame extends javax.swing.JFrame {
 
         enter1.setFont(new java.awt.Font("宋体", 0, 18)); // NOI18N
         enter1.setText("进入");
+        enter1.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				RoomFrame.this.setVisible(false);
+				new GameFrame(RoomFrame.this.user).runGame();
+			}
+		});
 
         jLabel8.setFont(new java.awt.Font("宋体", 0, 18)); // NOI18N
         jLabel8.setText("房间2");
