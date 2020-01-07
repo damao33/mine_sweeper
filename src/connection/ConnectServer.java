@@ -28,6 +28,7 @@ public class ConnectServer {
 			e.printStackTrace();
 		}		
 	}
+	
 	public static void userLogin()
 	{
 		userOnline++;
@@ -47,17 +48,18 @@ public class ConnectServer {
 
 class ConnectedUserHandler implements Runnable
 {
-	private Socket serverSocket = null;
+	private Socket imcoming = null;
 	
 	public ConnectedUserHandler(Socket imcoming) {
 		super();
-		this.serverSocket = imcoming;
+		this.imcoming = imcoming;
 	}
 	@Override
 	public void run() {
 		try
 		{
-			InputStream is = this.serverSocket.getInputStream();
+			InputStream is = this.imcoming.getInputStream();
+			OutputStream os = this.imcoming.getOutputStream();
 			//while((o = ois.readObject())!=null)
 			while(true)
 			{
@@ -70,8 +72,13 @@ class ConnectedUserHandler implements Runnable
 						if(o instanceof ExitMsg)ConnectServer.userExit();
 						System.out.println((Msg)o);
 					}
+					ObjectOutputStream oos = new ObjectOutputStream(os);
+					oos.writeObject(o);
+					System.out.println("Msg has sent back to client");
 				}
 			}
+			
+			//ObjectOutputStream oos = new ObjectOutputStream(this.imcoming.getOutputStream());
 		}
 		catch(Exception e)
 		{
