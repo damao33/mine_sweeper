@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.border.Border;
 
 import gameRule.Listener;
-import gameRule.MainFrame;
+
 import gameRule.MineButton;
 import tool.StaticTool;
 
