@@ -4,12 +4,12 @@ import user.User;
 import java.sql.*;
 public class UserDaoJdbcImpl implements UserDao
 {
-	public static boolean findUser(User user) {
+	public static int  findUser(User user) {
 		Connection conn=ConnectionManager.getConnection();
 		if(conn==null)
 		{
 			System.out.println("conn==null");
-			return false;
+			return -1;
 		}
 		String sql="select * from userinfo where acount = ?";
 		PreparedStatement pStatement = null;
@@ -22,12 +22,12 @@ public class UserDaoJdbcImpl implements UserDao
 			if(!resultSet.next())
 			{
 				System.out.println("find 0");
-				return false;
+				return 0;
 			}
 			else
 			{
 				System.out.println("find 1");
-				return true;
+				return 1;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -36,11 +36,11 @@ public class UserDaoJdbcImpl implements UserDao
 		{
 			ConnectionManager.releaseAll(resultSet, pStatement, conn);
 		}
-		return false;
+		return -1;
 	}
 
-	public static boolean login(User user) {
-		if(!UserDaoJdbcImpl.findUser(user))return false;	//不存在该用户
+	public static int login(User user) {
+		if(UserDaoJdbcImpl.findUser(user)==0)return 0;	//不存在该用户
 		Connection conn = null;
 		String sql="select * from userinfo where acount = ?";
 		PreparedStatement pStatement = null;
@@ -51,12 +51,12 @@ public class UserDaoJdbcImpl implements UserDao
 			if(conn==null)
 			{
 				System.out.println("连接失败");
-				return false;
+				return -1;
 			}
 			else if(user.getOnlineState())
 			{
 				System.out.println("用户已在线");
-				return false;
+				return -2;
 			}
 			pStatement = conn.prepareStatement(sql);
 			pStatement.setString(1, user.getAcount());
@@ -77,12 +77,12 @@ public class UserDaoJdbcImpl implements UserDao
 			if(user.getPassword().equals(pwd))
 			{
 				user.setOnlineState(true);
-				return true;	//密码正确登陆成功
+				return 1;	//密码正确登陆成功
 			}
 			else
 			{
 				System.out.println("密码错误");
-				return false;	//密码错误登陆失败
+				return -3;	//密码错误登陆失败
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -90,11 +90,11 @@ public class UserDaoJdbcImpl implements UserDao
 		{
 			ConnectionManager.releaseAll(resultSet, pStatement, null);//连接等退出游戏再关闭
 		}
-		return false;
+		return -1;
 	}
 
 	public static boolean register(User user) {	
-		if(UserDaoJdbcImpl.findUser(user))
+		if(UserDaoJdbcImpl.findUser(user)==1)
 		{
 			System.out.println("用户已存在");
 			return false;	//已存在该用户，无法注册
