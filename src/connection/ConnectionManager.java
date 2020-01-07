@@ -1,5 +1,6 @@
 package connection;
 
+import java.net.Socket;
 import java.sql.*;
 
 public class ConnectionManager {
@@ -7,6 +8,8 @@ public class ConnectionManager {
 	private static final String driverName = "com.mysql.cj.jdbc.Driver";
 	private static final String userName = "root";// root
 	private static final String password = "123456";// 123456
+	private static final String ServerIP= "49.235.47.150";
+	private static final int port = 8189;
 	public static Connection getConnection()
 	{
 		Connection connection = null;
@@ -18,6 +21,21 @@ public class ConnectionManager {
 		}
 		System.out.println("连接服务器成功");
 		return connection;
+	}
+	public static Socket getSocket()
+	{
+		Socket socket = null;
+		try
+		{
+			socket = new Socket(ServerIP, port);
+			System.out.println("socket建立成功");
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			System.out.println("socket建立失败");
+		}
+		return socket;
 	}
 	private static void closeResultSet(ResultSet resultSet)
 	{

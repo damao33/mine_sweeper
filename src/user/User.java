@@ -21,6 +21,12 @@ public class User {
 		//if(this.nickName==null)this.setNickName(randomNickName());
 		this.conn = ConnectionManager.getConnection();
 	}
+	public boolean connectServer()
+	{
+		this.socket = ConnectionManager.getSocket();
+		if(this.socket!=null)return true;
+		else return false;
+	}
 	public static String randomNickName()
 	{
 		String nickName="player";
@@ -53,9 +59,6 @@ public class User {
 	}	
 	public Socket getSocket() {
 		return socket;
-	}
-	public void setSocket(Socket socket) {
-		this.socket = socket;
 	}
 	public boolean getOnlineState() {
 		return onlineState;

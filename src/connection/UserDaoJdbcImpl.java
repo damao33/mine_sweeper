@@ -76,8 +76,16 @@ public class UserDaoJdbcImpl implements UserDao
 			System.out.println("Pwd:"+pwd);
 			if(user.getPassword().equals(pwd))
 			{
-				user.setOnlineState(true);
-				return 1;	//密码正确登陆成功
+				if(user.connectServer()!=false)
+				{
+					user.setOnlineState(true);
+					return 1;	//密码正确登陆成功
+				}
+				else
+				{
+					System.out.println("与服务器连接socket失败");
+					return -3;
+				}	
 			}
 			else
 			{
