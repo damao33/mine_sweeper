@@ -285,6 +285,7 @@ public class GameFrame extends javax.swing.JFrame {
 			public void actionPerformed(ActionEvent e) {
 				ConnectionManager.releaseAll(null, null, GameFrame.this.getUser().getConn());
 				System.out.println(GameFrame.this.user.getNickName()+"退出成功");
+				GameFrame.this.setVisible(false);
 			}
 		});
 
