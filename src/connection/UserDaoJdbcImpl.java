@@ -149,9 +149,7 @@ public class UserDaoJdbcImpl implements UserDao
 		try
 		{
 			ObjectOutputStream oos = new ObjectOutputStream(clientSocket.getOutputStream());
-			oos.writeObject(new Msg("2"));
 			oos.writeObject(user);
-			oos.writeObject(new Msg("1"));
 			oos.flush();
 			
 			System.out.println("user写入成功");
