@@ -11,6 +11,7 @@ package gui;
  */
 import java.awt.event.*;
 import connection.*;
+import msg.*;
 import tool.StaticTool;
 import user.User;
 
@@ -288,15 +289,16 @@ public class GameFrame extends javax.swing.JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-//				ConnectionManager.releaseAll(null, null, GameFrame.this.getUser().getConn());
-//				System.out.println(GameFrame.this.user.getNickName()+"退出成功");
-//				GameFrame.this.connectClient.sendExit(GameFrame.this.user);
-//				GameFrame.this.setVisible(false);
-//				System.exit(0);
+				/*ConnectionManager.releaseAll(null, null, GameFrame.this.getUser().getConn());
+				System.out.println(GameFrame.this.user.getNickName()+"退出成功");
+				GameFrame.this.connectClient.sendMsg(new ExitMsg(GameFrame.this.user));
+				GameFrame.this.setVisible(false);
+				System.exit(0);*/
 				GameFrame.this.setVisible(false);
 				new RoomFrame(user,UserDaoJdbcImpl.getConnectClient()).setVisible(true);
 			}
 		});
+
 
         
 

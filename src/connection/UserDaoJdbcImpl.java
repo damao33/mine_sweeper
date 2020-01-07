@@ -81,11 +81,12 @@ public class UserDaoJdbcImpl implements UserDao
 			System.out.println("Acount:"+user.getAcount());
 			System.out.println("Pwd:"+pwd);
 			connectClient = new ConnectClient(ConnectionManager.getSocket());
+			
 			if(user.getPassword().equals(pwd))
 			{
 				if(connectClient.getClientSocket()!=null)
 				{
-					if(connectClient.sendLogin(user)!=false)
+					if(connectClient.sendMsg(new LoginMsg(user))!=false)
 					{
 						Thread clientThread = new Thread(connectClient);
 						clientThread.start();

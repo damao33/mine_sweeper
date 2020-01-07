@@ -7,6 +7,7 @@ package gui;
 
 import java.awt.event.*;
 import connection.*;
+import msg.*;
 import tool.StaticTool;
 import user.User;
 
@@ -198,6 +199,9 @@ public class RoomFrame extends javax.swing.JFrame {
 			public void actionPerformed(ActionEvent e) {
 				RoomFrame.this.setVisible(false);
 				new GameFrame(RoomFrame.this.user,RoomFrame.this.connectClient).runGame();
+				Object[] enterMsg = new Object[] {user,1};
+				RoomFrame.this.connectClient.sendMsg(new EnterGameMsg(enterMsg));
+				RoomFrame.this.setVisible(false);
 			}
 		});
 
@@ -357,7 +361,7 @@ public class RoomFrame extends javax.swing.JFrame {
 			public void actionPerformed(ActionEvent e) {
 				ConnectionManager.releaseAll(null, null, RoomFrame.this.getUser().getConn());
 				System.out.println(RoomFrame.this.user.getNickName()+"退出成功");
-				RoomFrame.this.connectClient.sendExit(RoomFrame.this.user);
+				RoomFrame.this.connectClient.sendMsg(new ExitMsg(RoomFrame.this.user));
 				RoomFrame.this.setVisible(false);
 				System.exit(0);
 			}

@@ -17,6 +17,7 @@ public class Msg implements Serializable
 
 	public Object getMsg() {
 		return msg;
+		
 	}
 
 	public void setMsg(Object msg) {
