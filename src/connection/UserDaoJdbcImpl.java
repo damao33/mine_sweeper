@@ -5,6 +5,8 @@ import user.User;
 import java.io.*;
 import java.net.*;
 import java.sql.*;
+import msg.*;
+
 public class UserDaoJdbcImpl implements UserDao
 {
 	public static int  findUser(User user) {
@@ -82,7 +84,7 @@ public class UserDaoJdbcImpl implements UserDao
 			{
 				if(clientSocket!=null)
 				{
-					if(sendUser(clientSocket,user)!=false)
+					if(sendLogin(clientSocket,user)!=false)
 					{
 						user.setOnlineState(true);
 						return 1;	//密码正确登陆成功
@@ -113,13 +115,13 @@ public class UserDaoJdbcImpl implements UserDao
 		return -1;
 	}
 
-	public static boolean register(User user) {	
+	public static int register(User user) {	
 		if(UserDaoJdbcImpl.findUser(user)==1)
 		{
 			System.out.println("用户已存在");
-			return false;	//已存在该用户，无法注册
+			return -1;	//已存在该用户，无法注册
 		}	
-		if(user.getAcount().length()>20||user.getPassword().length()<6)return false;
+		if(user.getAcount().length()>20||user.getPassword().length()<6)return 0;
 		Connection conn = null;
 		String sql="insert into userinfo values(?,?,?,?)";
 		PreparedStatement pStatement = null;
@@ -132,7 +134,7 @@ public class UserDaoJdbcImpl implements UserDao
 			pStatement.setString(3, user.randomNickName());
 			pStatement.setInt(4, 0);
 			pStatement.executeUpdate();
-			return true;
+			return 1;
 		} catch(SQLException e)
 		{
 			e.printStackTrace();
@@ -140,23 +142,41 @@ public class UserDaoJdbcImpl implements UserDao
 		{
 			ConnectionManager.releaseAll(null, pStatement, conn);
 		}
-		return false;
+		return -2;
 	}
-	private static boolean sendUser(Socket clientSocket,User user)
+	private static boolean sendLogin(Socket clientSocket,User user)
 	{
 		try
 		{
 			ObjectOutputStream oos = new ObjectOutputStream(clientSocket.getOutputStream());
-			oos.writeObject(user);
-			oos.writeObject(null);
+			oos.writeObject(new LoginMsg(user));
 			oos.flush();
-			System.out.println("user写入成功");
+			
+			System.out.println("login写入成功");
 			return true;
 		}
 		catch(Exception e)
 		{
 			e.printStackTrace();
-			System.out.println("user写入失败");
+			System.out.println("login写入失败");
+			return false;
+		}
+	}
+	private static boolean sendExit(Socket clientSocket,User user)
+	{
+		try
+		{
+			ObjectOutputStream oos = new ObjectOutputStream(clientSocket.getOutputStream());
+			oos.writeObject(new ExitMsg(user));
+			oos.flush();
+			
+			System.out.println("exit写入成功");
+			return true;
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			System.out.println("exit写入失败");
 			return false;
 		}
 	}
