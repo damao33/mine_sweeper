@@ -5,11 +5,8 @@
  */
 package gui;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import connection.ConnectionManager;
-import connection.UserDaoJdbcImpl;
+import java.awt.event.*;
+import connection.*;
 import user.User;
 
 /**
@@ -349,7 +346,7 @@ public class RoomFrame extends javax.swing.JFrame {
 			public void actionPerformed(ActionEvent e) {
 				ConnectionManager.releaseAll(null, null, RoomFrame.this.getUser().getConn());
 				System.out.println(RoomFrame.this.user.getNickName()+"退出成功");
-				UserDaoJdbcImpl.sendExit(RoomFrame.this.user);
+				ConnectClient.sendExit(RoomFrame.this.user);
 				RoomFrame.this.setVisible(false);
 			}
 		});

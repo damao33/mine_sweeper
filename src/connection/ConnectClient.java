@@ -4,26 +4,59 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.*;
 
+import msg.ExitMsg;
+import msg.LoginMsg;
 import user.User;
 
 public class ConnectClient {
-	private User user;
-	private Socket socket;
-	private ObjectOutputStream oos = null;
-	private ObjectInputStream ois = null;
-	public ConnectClient(User user) {
+	private static Socket clientSocket;
+	
+	public static Socket getClientSocket() {
+		return clientSocket;
+	}
+	
+	public static void setClientSocket(Socket clientSocket) {
+		ConnectClient.clientSocket = clientSocket;
+	}
+
+	public ConnectClient(Socket socket) {
 		super();
-		this.user = user;
+		clientSocket = socket;
+	}
+	public static boolean sendLogin(User user)
+	{
 		try
 		{
-			this.oos = new ObjectOutputStream(this.socket.getOutputStream());
-			this.ois = new ObjectInputStream(this.socket.getInputStream());
-		}catch(Exception e)
+			ObjectOutputStream oos = new ObjectOutputStream(clientSocket.getOutputStream());
+			oos.writeObject(new LoginMsg(user));
+			oos.flush();
+			
+			System.out.println("login写入成功");
+			return true;
+		}
+		catch(Exception e)
 		{
 			e.printStackTrace();
-			System.out.println("对象流初始化失败");
+			System.out.println("login写入失败");
+			return false;
+		}
+	}	
+	public static boolean sendExit(User user)
+	{
+		try
+		{
+			ObjectOutputStream oos = new ObjectOutputStream(clientSocket.getOutputStream());
+			oos.writeObject(new ExitMsg(user));
+			oos.flush();
+			
+			System.out.println("exit写入成功");
+			return true;
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			System.out.println("exit写入失败");
+			return false;
 		}
 	}
-	//public void senMsg(Ob)
-	//class 
 }

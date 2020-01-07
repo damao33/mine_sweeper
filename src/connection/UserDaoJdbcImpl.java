@@ -9,7 +9,6 @@ import msg.*;
 
 public class UserDaoJdbcImpl implements UserDao
 {
-	private static Socket clientSocket = null;
 	public static int  findUser(User user) {
 		Connection conn=ConnectionManager.getConnection();
 		if(conn==null)
@@ -80,12 +79,12 @@ public class UserDaoJdbcImpl implements UserDao
 			}			
 			System.out.println("Acount:"+user.getAcount());
 			System.out.println("Pwd:"+pwd);
-			clientSocket = ConnectionManager.getSocket();
+			ConnectClient.setClientSocket(ConnectionManager.getSocket()) ;
 			if(user.getPassword().equals(pwd))
 			{
-				if(clientSocket!=null)
+				if(ConnectClient.getClientSocket()!=null)
 				{
-					if(sendLogin(user)!=false)
+					if(ConnectClient.sendLogin(user)!=false)
 					{
 						user.setOnlineState(true);
 						return 1;	//密码正确登陆成功
@@ -145,40 +144,5 @@ public class UserDaoJdbcImpl implements UserDao
 		}
 		return -2;
 	}
-	public static boolean sendLogin(User user)
-	{
-		try
-		{
-			ObjectOutputStream oos = new ObjectOutputStream(clientSocket.getOutputStream());
-			oos.writeObject(new LoginMsg(user));
-			oos.flush();
-			
-			System.out.println("login写入成功");
-			return true;
-		}
-		catch(Exception e)
-		{
-			e.printStackTrace();
-			System.out.println("login写入失败");
-			return false;
-		}
-	}
-	public static boolean sendExit(User user)
-	{
-		try
-		{
-			ObjectOutputStream oos = new ObjectOutputStream(clientSocket.getOutputStream());
-			oos.writeObject(new ExitMsg(user));
-			oos.flush();
-			
-			System.out.println("exit写入成功");
-			return true;
-		}
-		catch(Exception e)
-		{
-			e.printStackTrace();
-			System.out.println("exit写入失败");
-			return false;
-		}
-	}
+
 }
