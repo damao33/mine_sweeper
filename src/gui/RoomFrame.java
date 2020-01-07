@@ -210,6 +210,17 @@ public class RoomFrame extends javax.swing.JFrame {
 
         enter2.setFont(new java.awt.Font("宋体", 0, 18)); // NOI18N
         enter2.setText("进入");
+        enter2.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				RoomFrame.this.setVisible(false);
+				new GameFrame(RoomFrame.this.user,RoomFrame.this.connectClient).runGame();
+				Object[] enterMsg = new Object[] {user,2};
+				RoomFrame.this.connectClient.sendMsg(new EnterGameMsg(enterMsg));
+				RoomFrame.this.setVisible(false);
+			}
+		});
 
         jPanel10.setBackground(new java.awt.Color(153, 153, 153));
 
@@ -242,6 +253,17 @@ public class RoomFrame extends javax.swing.JFrame {
 
         enter3.setFont(new java.awt.Font("宋体", 0, 18)); // NOI18N
         enter3.setText("进入");
+        enter3.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				RoomFrame.this.setVisible(false);
+				new GameFrame(RoomFrame.this.user,RoomFrame.this.connectClient).runGame();
+				Object[] enterMsg = new Object[] {user,3};
+				RoomFrame.this.connectClient.sendMsg(new EnterGameMsg(enterMsg));
+				RoomFrame.this.setVisible(false);
+			}
+		});
 
         jLabel10.setFont(new java.awt.Font("宋体", 0, 18)); // NOI18N
         jLabel10.setText("房间4");
@@ -261,7 +283,17 @@ public class RoomFrame extends javax.swing.JFrame {
 
         enter4.setFont(new java.awt.Font("宋体", 0, 18)); // NOI18N
         enter4.setText("进入");
-
+        enter4.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				RoomFrame.this.setVisible(false);
+				new GameFrame(RoomFrame.this.user,RoomFrame.this.connectClient).runGame();
+				Object[] enterMsg = new Object[] {user,4};
+				RoomFrame.this.connectClient.sendMsg(new EnterGameMsg(enterMsg));
+				RoomFrame.this.setVisible(false);
+			}
+		});
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
