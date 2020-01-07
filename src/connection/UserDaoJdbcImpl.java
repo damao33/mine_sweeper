@@ -9,6 +9,7 @@ import msg.*;
 
 public class UserDaoJdbcImpl implements UserDao
 {
+	private static Socket clientSocket = null;
 	public static int  findUser(User user) {
 		Connection conn=ConnectionManager.getConnection();
 		if(conn==null)
@@ -79,12 +80,12 @@ public class UserDaoJdbcImpl implements UserDao
 			}			
 			System.out.println("Acount:"+user.getAcount());
 			System.out.println("Pwd:"+pwd);
-			Socket clientSocket = ConnectionManager.getSocket();
+			clientSocket = ConnectionManager.getSocket();
 			if(user.getPassword().equals(pwd))
 			{
 				if(clientSocket!=null)
 				{
-					if(sendLogin(clientSocket,user)!=false)
+					if(sendLogin(user)!=false)
 					{
 						user.setOnlineState(true);
 						return 1;	//密码正确登陆成功
@@ -144,7 +145,7 @@ public class UserDaoJdbcImpl implements UserDao
 		}
 		return -2;
 	}
-	private static boolean sendLogin(Socket clientSocket,User user)
+	public static boolean sendLogin(User user)
 	{
 		try
 		{
@@ -162,7 +163,7 @@ public class UserDaoJdbcImpl implements UserDao
 			return false;
 		}
 	}
-	private static boolean sendExit(Socket clientSocket,User user)
+	public static boolean sendExit(User user)
 	{
 		try
 		{
