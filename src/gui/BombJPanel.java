@@ -21,9 +21,9 @@ public class BombJPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	MineButton[][] buttons = new MineButton[StaticTool.allrow][StaticTool.allcol];
 	private Listener listener;
-	private MainFrame mainFrame;
+	private GameFrame mainFrame;
 
-	public BombJPanel(MainFrame mainFrame) {
+	public BombJPanel(GameFrame mainFrame) {
 		this.mainFrame = mainFrame;
 		this.setLayout(new GridLayout(StaticTool.allrow, StaticTool.allcol));
 		init();
@@ -32,7 +32,7 @@ public class BombJPanel extends JPanel {
 
 	private void init() {
 
-		listener = new Listener(buttons, mainFrame);
+		//listener = new Listener(buttons, mainFrame);
 
 		for (int i = 0; i < buttons.length; i++) {
 			for (int j = 0; j < buttons[i].length; j++) {
