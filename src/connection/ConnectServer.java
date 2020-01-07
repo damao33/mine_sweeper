@@ -59,6 +59,7 @@ class ConnectedUserHandler implements Runnable
 		try
 		{
 			InputStream is = this.imcoming.getInputStream();
+			OutputStream os = this.imcoming.getOutputStream();
 			//while((o = ois.readObject())!=null)
 			while(true)
 			{
@@ -71,6 +72,9 @@ class ConnectedUserHandler implements Runnable
 						if(o instanceof ExitMsg)ConnectServer.userExit();
 						System.out.println((Msg)o);
 					}
+					ObjectOutputStream oos = new ObjectOutputStream(os);
+					oos.writeObject(o);
+					System.out.println("Msg has sent back to client");
 				}
 			}
 			
