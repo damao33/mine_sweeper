@@ -49,14 +49,13 @@ class ConnectedUserHandler implements Runnable
 		try
 		{
 			InputStream is = this.imcoming.getInputStream();
-			ObjectInputStream ois = new ObjectInputStream(is);
-			Object o;
 			//while((o = ois.readObject())!=null)
 			while(true)
 			{
 				while(is.available()!=0)
 				{
-					o = ois.readObject();
+					ObjectInputStream ois = new ObjectInputStream(is);
+					Object o = ois.readObject();					
 					if(o instanceof Msg)
 					{
 						System.out.println((Msg)o);
