@@ -113,13 +113,13 @@ public class UserDaoJdbcImpl implements UserDao
 		return -1;
 	}
 
-	public static boolean register(User user) {	
+	public static int register(User user) {	
 		if(UserDaoJdbcImpl.findUser(user)==1)
 		{
 			System.out.println("用户已存在");
-			return false;	//已存在该用户，无法注册
+			return -1;	//已存在该用户，无法注册
 		}	
-		if(user.getAcount().length()>20||user.getPassword().length()<6)return false;
+		if(user.getAcount().length()>20||user.getPassword().length()<6)return 0;
 		Connection conn = null;
 		String sql="insert into userinfo values(?,?,?,?)";
 		PreparedStatement pStatement = null;
@@ -132,7 +132,7 @@ public class UserDaoJdbcImpl implements UserDao
 			pStatement.setString(3, user.randomNickName());
 			pStatement.setInt(4, 0);
 			pStatement.executeUpdate();
-			return true;
+			return 1;
 		} catch(SQLException e)
 		{
 			e.printStackTrace();
@@ -140,7 +140,7 @@ public class UserDaoJdbcImpl implements UserDao
 		{
 			ConnectionManager.releaseAll(null, pStatement, conn);
 		}
-		return false;
+		return -2;
 	}
 	private static boolean sendUser(Socket clientSocket,User user)
 	{
