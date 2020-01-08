@@ -45,22 +45,26 @@ public class GameFrame extends javax.swing.JFrame {
 	
 	public static void setLoginMsg(UserLoginMsg loginMsg) {
 		GameFrame.loginMsg = loginMsg;
-		String Pname=GameFrame.loginMsg.getUser().getNickName();
-		getName.setText(Pname);
-		String Pcount=String.valueOf(GameFrame.loginMsg.getUser().getScore());
-		getcount.setText(Pcount);
+//		String Pname=GameFrame.loginMsg.getUser().getNickName();
+//		getName.setText(Pname);
+//		String Pcount=String.valueOf(GameFrame.loginMsg.getUser().getScore());
+//		getcount.setText(Pcount);
 	}
 
 	public void setBackMsg(UserBackToRoomMsg backMsg) {
 		this.backMsg = backMsg;
 		
 	}
-	public void setEnterMsg(UserEnterGameMsg enterMsg) {
-		GameFrame.enterMsg = enterMsg;
-	}
+//	public void setEnterMsg(UserEnterGameMsg enterMsg) {
+//		GameFrame.enterMsg = enterMsg;
+//	}
 
 	public static void setEnterMsg(UserEnterGameMsg enterMsg) {
 		GameFrame.enterMsg = enterMsg;
+		String Pname=GameFrame.enterMsg.getUser().getNickName();
+		getName.setText(Pname);
+		String Pcount=String.valueOf(GameFrame.enterMsg.getUser().getScore());
+		getcount.setText(Pcount);
 	}
 
 	public static void setMineButton(MineButton[][] o) {
