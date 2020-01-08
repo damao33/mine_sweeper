@@ -214,7 +214,7 @@ public class RoomFrame extends javax.swing.JFrame {
                 new infSetting(RoomFrame.this.user,RoomFrame.this.connectClient).runSet();
 				Object[] enterMsg = new Object[] {user,1};
 				RoomFrame.this.connectClient.sendMsg(new UserEnterGameMsg(enterMsg));
-                
+            
             }
         });
 
