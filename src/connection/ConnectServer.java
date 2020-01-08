@@ -28,9 +28,10 @@ public class ConnectServer {
 			while(true)
 			{
 				Socket imcoming =serverSocket.accept();
-				Runnable connectedUserHandler = new ConnectServer.ConnectedUserHandler(imcoming);
-				Thread t = new Thread(connectedUserHandler);
-				t.start();
+				ConnectedUserHandler connectedUserHandler = new ConnectedUserHandler(imcoming);
+				userSet.add(connectedUserHandler);
+				//Thread t = new Thread(connectedUserHandler);
+				connectedUserHandler.start();
 			}
 		}
 		catch(Exception e)
@@ -74,6 +75,8 @@ public class ConnectServer {
 		return room4Online;
 	}
 
+
+
 	public static Set<ConnectedUserHandler> getUserSet() {
 		return userSet;
 	}
@@ -83,7 +86,7 @@ public class ConnectServer {
 		new ConnectServer().runServer();
 	}
 	
-	class ConnectedUserHandler implements Runnable
+	class ConnectedUserHandler extends Thread
 	{
 		private Socket imcoming = null;
 		private User user = null;
@@ -97,7 +100,6 @@ public class ConnectServer {
 			try
 			{
 				InputStream is = this.imcoming.getInputStream();
-				OutputStream os = this.imcoming.getOutputStream();
 				//while((o = ois.readObject())!=null)
 				while(true)
 				{
@@ -122,6 +124,7 @@ public class ConnectServer {
 							}
 							else if(o instanceof ExitMsg) {
 								ConnectServer.userExit();
+								ConnectServer.userSet.remove(this);
 								User user = ((ExitMsg)o).getUser();
 								ConnectServer.userSet.remove(this);
 								Msg gameRoomMsg = this.makeMsg("GameRoomMsg", user);
@@ -173,8 +176,19 @@ public class ConnectServer {
 		{
 			for(ConnectedUserHandler now:ConnectServer.userSet)
 			{
-				this.sendMsg(msg);
-				System.out.println("sent to "+now.getUser().getNickName());
+				/*if(this.sendMsg(msg))*/
+				try
+				{
+					OutputStream os = now.imcoming.getOutputStream();
+					ObjectOutputStream oos = new ObjectOutputStream(os);
+					oos.writeObject(msg);
+					oos.flush();		
+					System.out.println("sent to "+now.getUser().getNickName());
+				}
+				catch(Exception e)
+				{
+					e.printStackTrace();
+				}				
 			}
 			System.out.println(msg.getMsgType()+":has sent to all");
 		}
