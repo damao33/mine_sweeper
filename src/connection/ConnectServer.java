@@ -53,7 +53,7 @@ public class ConnectServer {
 		return serverSocket;
 	}
 
-	public static int getUserOnline() {
+	public int getUserOnline() {
 		return userOnline;
 	}
 
@@ -104,12 +104,11 @@ public class ConnectServer {
 						{	
 							if(o instanceof LoginMsg)
 							{
-								ConnectServer.userLogin();
-								Object[] gameRoomMsg = new Object[] {ConnectServer.this.getUserOnline(),ConnectServer.this.getRoom1Online(),
-										ConnectServer.this.getRoom2Online(),ConnectServer.this.getRoom3Online(),ConnectServer.this.getRoom4Online()
-										,((LoginMsg)o).getUser()};
+								ConnectServer.userLogin();							
 								ObjectOutputStream oos = new ObjectOutputStream(os);
-								oos.writeObject(new GameRoomMsg(gameRoomMsg));
+								Msg gameRoomMsg = this.makeMsg("GameRoomMsg", ((LoginMsg)o).getUser());
+								System.out.println(gameRoomMsg);
+								oos.writeObject(gameRoomMsg);
 								oos.flush();
 								System.out.println("game room msg sent back");
 							}
@@ -129,6 +128,18 @@ public class ConnectServer {
 				e.printStackTrace();
 				System.out.println("run error");
 			}
+		}
+		public Msg makeMsg(String msgType,User user)
+		{
+			Msg msg = null;
+			if(msgType.equals("GameRoomMsg"))
+			{
+				Object[] gameRoomMsg = new Object[] {ConnectServer.this.getUserOnline(),ConnectServer.this.getRoom1Online(),
+						ConnectServer.this.getRoom2Online(),ConnectServer.this.getRoom3Online(),ConnectServer.this.getRoom4Online()
+						,user};
+				msg = new GameRoomMsg(gameRoomMsg);
+			}
+			return msg;
 		}
 		public boolean sendMsg(Msg msg)
 		{
