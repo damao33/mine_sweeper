@@ -3,26 +3,27 @@ package connection;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.OutputStream;
 import java.net.*;
 import msg.*;
 import user.User;
 
 public class ConnectClient implements Runnable
 {
-	private Socket clientSocket;
-	
+	private Socket clientSocket = null;
 	public Socket getClientSocket() {
 		return clientSocket;
 	}
 	public ConnectClient(Socket socket) {
 		super();
-		clientSocket = socket;
+		this.clientSocket = socket;
 	}
 	public boolean sendMsg(Msg msg)
 	{
 		try
-		{
-			ObjectOutputStream oos = new ObjectOutputStream(clientSocket.getOutputStream());
+		{	
+			OutputStream os = this.clientSocket.getOutputStream();
+			ObjectOutputStream oos = new ObjectOutputStream(os);
 			oos.writeObject(msg);
 			oos.flush();		
 			System.out.println(msg.getMsgType()+"写入成功");
