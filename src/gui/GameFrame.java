@@ -42,6 +42,10 @@ public class GameFrame extends javax.swing.JFrame {
 		return connectClient;
 	}
 	
+	public static void setLoginMsg(UserLoginMsg loginMsg) {
+		loginMsg = loginMsg;
+	}
+
 	public void setBackMsg(UserBackToRoomMsg backMsg) {
 		this.backMsg = backMsg;
 	}
@@ -517,6 +521,7 @@ public class GameFrame extends javax.swing.JFrame {
 	private javax.swing.JPanel time;
 	private User user = null;
 	private ConnectClient connectClient = null;
+	private static UserLoginMsg loginMsg = null;
 	private UserBackToRoomMsg backMsg = null;
 	// End of variables declaration
 }

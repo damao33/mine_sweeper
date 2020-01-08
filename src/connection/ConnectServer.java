@@ -133,10 +133,6 @@ public class ConnectServer {
 								User user = ((UserLoginMsg)o).getUser();
 								this.user = user;
 								ConnectServer.userSet.add(this);
-								for(ConnectedUserHandler now:ConnectServer.userSet)
-								{
-									System.out.println(now.getUser().getNickName());
-								}
 								Msg gameRoomMsg = this.makeMsg("GameRoomMsg", user);
 								this.sendToAll(gameRoomMsg);
 							}
