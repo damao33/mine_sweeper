@@ -50,13 +50,24 @@ public class ConnectServer {
 		userOnline--;
 		System.out.println("在线玩家："+userOnline);
 	}
-	public static synchronized void userEnterGame(UserEnterGameMsg msg)
+	public static synchronized void userRoom(Msg msg)
 	{
-		int room = msg.getGameRoom();
-		if(room==1)room1Online++;
-		else if(room==2)room2Online++;
-		else if(room==3)room3Online++;
-		else if(room==4)room4Online++;
+		int room = 0;
+		if(msg instanceof UserEnterGameMsg)
+		{
+			room = ((UserEnterGameMsg)msg).getGameRoom();
+			if(room==1)room1Online++;
+			else if(room==2)room2Online++;
+			else if(room==3)room3Online++;
+			else if(room==4)room4Online++;
+		}else if(msg instanceof UserBackToRoomMsg)
+		{
+			room = ((UserEnterGameMsg)msg).getGameRoom();
+			if(room==1)room1Online--;
+			else if(room==2)room2Online--;
+			else if(room==3)room3Online--;
+			else if(room==4)room4Online--;
+		}
 	}
 	public static ServerSocket getServerSocket() {
 		return serverSocket;
@@ -136,9 +147,9 @@ public class ConnectServer {
 								ConnectServer.userSet.remove(this);
 								Msg gameRoomMsg = this.makeMsg("GameRoomMsg", user);
 								this.sendToAll(gameRoomMsg);
-							}else if(o instanceof UserEnterGameMsg)
+							}else if(o instanceof UserEnterGameMsg||o instanceof UserBackToRoomMsg)
 							{
-								ConnectServer.userEnterGame((UserEnterGameMsg)o);
+								ConnectServer.userRoom((Msg)o);
 								Msg gameRoomMsg = this.makeMsg("GameRoomMsg", user);
 								this.sendToAll(gameRoomMsg);
 							}else if(o instanceof UserBackToRoomMsg)

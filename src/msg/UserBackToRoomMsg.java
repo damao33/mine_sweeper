@@ -12,8 +12,16 @@ public class UserBackToRoomMsg extends Msg
 	public User getUser()
 	{
 		User user = null;
-		if(this.getMsg() instanceof User)user = (User)this.getMsg();
+		Object[] msg = (Object[])this.getMsg();
+		if(msg[0] instanceof User)user = (User)msg[0];
 		return user;
+	}
+	public Integer getRoom()
+	{
+		Integer room = 0;
+		Object[] msg = (Object[])this.getMsg();
+		if(msg[1] instanceof Integer)room = (Integer)msg[1];
+		return room;
 	}
 	@Override
 	public String toString() {
