@@ -79,7 +79,7 @@ public class GameFrame extends javax.swing.JFrame {
 		jLabel7 = new javax.swing.JLabel();
 		time = new javax.swing.JPanel();
 
-		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
 		maingame.setBackground(new java.awt.Color(204, 204, 204));
 
