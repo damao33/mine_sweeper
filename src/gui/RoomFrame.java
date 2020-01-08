@@ -175,6 +175,12 @@ public class RoomFrame extends javax.swing.JFrame {
         infSet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 infSetActionPerformed(evt);
+                RoomFrame.this.setVisible(true);
+				//new GameFrame(RoomFrame.this.user,RoomFrame.this.connectClient).runGame();
+                new infSetting(RoomFrame.this.user,RoomFrame.this.connectClient).runSet();
+				Object[] enterMsg = new Object[] {user,1};
+				RoomFrame.this.connectClient.sendMsg(new EnterGameMsg(enterMsg));
+                
             }
         });
 

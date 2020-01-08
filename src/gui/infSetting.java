@@ -5,18 +5,33 @@
  */
 package gui;
 
+import connection.ConnectClient;
+import user.User;
+
 /**
  *
  * @author 12892
  */
 public class infSetting extends javax.swing.JFrame {
+	
+	private static final long serialVersionUID = 1L;
 
-    /**
+	/**
      * Creates new form infSetting
      */
-    public infSetting() {
+    public infSetting(User user, ConnectClient connectClient) {
+    	this.user = user;
+		this.connectClient = connectClient;
         initComponents();
     }
+    
+    public User getUser() {
+		return user;
+	}
+
+	public ConnectClient getConnectClient() {
+		return connectClient;
+	}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -311,7 +326,7 @@ public class infSetting extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public void runSet() {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -338,7 +353,7 @@ public class infSetting extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new infSetting().setVisible(true);
+                infSetting.this.setVisible(true);
             }
         });
     }
@@ -369,5 +384,7 @@ public class infSetting extends javax.swing.JFrame {
     private javax.swing.JRadioButton male;
     private javax.swing.JTextField name;
     private javax.swing.JButton save;
+    private User user = null;
+	private ConnectClient connectClient = null;
     // End of variables declaration                   
 }
