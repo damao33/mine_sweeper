@@ -87,7 +87,7 @@ public class Login implements ActionListener {
 		mainJFrame.setIconImage(StaticTool.imageIcon.getImage());
 		int width = Toolkit.getDefaultToolkit().getScreenSize().width;
 		int height = Toolkit.getDefaultToolkit().getScreenSize().height;
-		mainJFrame.setLocation(width / 2 - 200, height / 2 - 350);
+		mainJFrame.setLocation(width / 2 - 200, height / 2 - 300);
 		
 		con = mainJFrame.getContentPane();
 		con.setLayout(new FlowLayout());
