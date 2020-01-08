@@ -13,7 +13,7 @@ import tool.StaticTool;
 
 public class ServerMineButton extends Msg
 {
-	public ServerMineButton (Msg msg)
+	public ServerMineButton (Object msg)
 	{
 		this.setMsg(msg);
 		this.setMsgType("ServerMineButton");
@@ -37,6 +37,12 @@ public class ServerMineButton extends Msg
 		}
 		LayBomb.lay(buttons,new Random().nextInt(20)+1, new Random().nextInt(20)+1);
 		return buttons;
+	}
+	public MineButton[][] getButton()
+	{
+		MineButton[][] button = null;
+		button = (MineButton[][])this.getMsg();
+		return button;
 	}
 
 }

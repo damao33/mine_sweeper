@@ -2,6 +2,8 @@ package connection;
 
 import java.io.*;
 import java.net.*;
+
+import gameRule.MineButton;
 import gui.*;
 import msg.*;
 import user.User;
@@ -55,6 +57,10 @@ public class ConnectClient implements Runnable
 						}else if(o instanceof UserLoginMsg)
 						{
 							GameFrame.setLoginMsg((UserLoginMsg)o);
+						}else if(o instanceof ServerMineButton)
+						{
+							MineButton[][] botton = ((ServerMineButton)o).getButton();
+							GameFrame.setMineButton(botton);
 						}
 					}
 				}

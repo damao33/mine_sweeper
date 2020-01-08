@@ -14,6 +14,7 @@ import java.awt.BorderLayout;
  */
 import java.awt.event.*;
 import connection.*;
+import gameRule.*;
 import msg.*;
 import tool.StaticTool;
 import user.User;
@@ -49,6 +50,11 @@ public class GameFrame extends javax.swing.JFrame {
 	public void setBackMsg(UserBackToRoomMsg backMsg) {
 		this.backMsg = backMsg;
 		
+	}
+	
+
+	public static void setMineButton(MineButton[][] o) {
+		GameFrame.mineButton = o;
 	}
 
 	/**
@@ -526,5 +532,6 @@ public class GameFrame extends javax.swing.JFrame {
 	private ConnectClient connectClient = null;
 	private static UserLoginMsg loginMsg = null;
 	private UserBackToRoomMsg backMsg = null;
+	private static MineButton[][] mineButton = null;
 	// End of variables declaration
 }
