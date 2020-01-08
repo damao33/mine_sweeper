@@ -6,6 +6,7 @@
 package gui;
 
 import connection.ConnectClient;
+import tool.StaticTool;
 import user.User;
 
 /**
@@ -353,6 +354,8 @@ public class infSetting extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+            	infSetting.this.setIconImage(StaticTool.imageIcon.getImage());
+            	infSetting.this.setTitle("信息设置");
                 infSetting.this.setVisible(true);
             }
         });
