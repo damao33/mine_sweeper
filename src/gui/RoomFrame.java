@@ -10,6 +10,7 @@ import java.awt.event.*;
 import connection.*;
 import gui.*;
 import msg.*;
+import tool.StaticTool;
 import user.User;
 
 /**
@@ -87,6 +88,9 @@ public class RoomFrame extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         maingame = new javax.swing.JPanel();
         exit = new javax.swing.JButton();
+        
+        RoomFrame.this.setIconImage(StaticTool.imageIcon.getImage());
+        RoomFrame.this.setTitle("多人扫雷对战");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 

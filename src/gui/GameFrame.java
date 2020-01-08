@@ -255,16 +255,19 @@ public class GameFrame extends javax.swing.JFrame {
 				.addGap(0, 48, Short.MAX_VALUE));
 
 		exit.setFont(new java.awt.Font("宋体", 0, 18)); // NOI18N
-		exit.setText("退出");
-		exit.addActionListener(new ActionListener() {
-
+		exit.setText("返回");
+        exit.addActionListener(new ActionListener() {
+			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				ConnectionManager.releaseAll(null, null, GameFrame.this.getUser().getConn());
-				System.out.println(GameFrame.this.user.getNickName() + "退出成功");
+				/*ConnectionManager.releaseAll(null, null, GameFrame.this.getUser().getConn());
+				System.out.println(GameFrame.this.user.getNickName()+"退出成功");
 				GameFrame.this.connectClient.sendMsg(new ExitMsg(GameFrame.this.user));
 				GameFrame.this.setVisible(false);
-				System.exit(0);
+				System.exit(0);*/
+				GameFrame.this.setVisible(false);
+				GameFrame.this.connectClient.sendMsg(new BackRoomMsg(GameFrame.this.user));
+				new RoomFrame(user,UserDaoJdbcImpl.getConnectClient()).setVisible(true);				
 			}
 		});
 
