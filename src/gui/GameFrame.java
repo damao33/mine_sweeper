@@ -60,7 +60,10 @@ public class GameFrame extends javax.swing.JFrame {
 	// <editor-fold defaultstate="collapsed" desc="Generated Code">
 	private void initComponents() {
 		maingame = new javax.swing.JPanel();
-		bombJPanel = new BombJPanel(this);
+		bombJPanel0 = new BombJPanel(this);
+		bombJPanel1 = new BombJPanel(this);
+		bombJPanel2 = new BombJPanel(this);
+		bombJPanel3 = new BombJPanel(this);
 		player = new javax.swing.JPanel();
 		jLabel1 = new javax.swing.JLabel();
 		player1 = new javax.swing.JPanel();
@@ -94,7 +97,7 @@ public class GameFrame extends javax.swing.JFrame {
 
 		javax.swing.GroupLayout maingameLayout = new javax.swing.GroupLayout(maingame);
 		maingame.setLayout(new BorderLayout());
-		maingame.add(bombJPanel);
+		maingame.add(bombJPanel0);
 		maingameLayout.setHorizontalGroup(maingameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 				.addGap(0, 0, Short.MAX_VALUE));
 		maingameLayout.setVerticalGroup(maingameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -121,6 +124,7 @@ public class GameFrame extends javax.swing.JFrame {
 
 		javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
 		jPanel3.setLayout(jPanel3Layout);
+		
 		jPanel3Layout.setHorizontalGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 				.addGap(0, 140, Short.MAX_VALUE));
 		jPanel3Layout.setVerticalGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -520,7 +524,10 @@ public class GameFrame extends javax.swing.JFrame {
 	private javax.swing.JButton ready;
 	private javax.swing.JButton send;
 	private javax.swing.JPanel time;
-	private BombJPanel bombJPanel;
+	private BombJPanel bombJPanel0;
+	private BombJPanel bombJPanel1;
+	private BombJPanel bombJPanel2;
+	private BombJPanel bombJPanel3;
 	private User user = null;
 	private ConnectClient connectClient = null;
 	private static UserLoginMsg loginMsg = null;
