@@ -25,8 +25,8 @@ public class Login implements ActionListener {
 		if (loginState == 1) {
 			System.out.println("登陆成功");
 			mainJFrame.setVisible(false);// 登录成功登入界面消失
-		    new GameFrame(user, null).runGame();
-			//new RoomFrame(user,UserDaoJdbcImpl.getConnectClient()).setVisible(true);
+		    //new GameFrame(user, null).runGame();
+			new RoomFrame(user,UserDaoJdbcImpl.getConnectClient()).setVisible(true);
 		} else if (loginState == -3) {
 			JOptionPane.showMessageDialog(null, "密码错误");
 			txtPass.setText(null);// 密码错误清空密码

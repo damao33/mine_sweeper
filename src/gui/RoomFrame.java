@@ -81,7 +81,7 @@ public class RoomFrame extends javax.swing.JFrame {
         
         RoomFrame.this.setIconImage(StaticTool.imageIcon.getImage());
         RoomFrame.this.setTitle("多人扫雷对战");
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
         icon.setBackground(new java.awt.Color(204, 204, 204));
         icon.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));

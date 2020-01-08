@@ -295,7 +295,7 @@ public class GameFrame extends javax.swing.JFrame {
 				GameFrame.this.setVisible(false);
 				System.exit(0);*/
 				GameFrame.this.setVisible(false);
-				GameFrame.this.connectClient.sendMsg(new LoginMsg(GameFrame.this.user));
+				//SGameFrame.this.connectClient.sendMsg(new LoginMsg(GameFrame.this.user));
 				new RoomFrame(user,UserDaoJdbcImpl.getConnectClient()).setVisible(true);				
 			}
 		});
