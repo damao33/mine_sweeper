@@ -14,7 +14,7 @@ public class EnterGameMsg extends Msg
 		}
 		return user;
 	}
-	private Integer getGameRoom()
+	private int getGameRoom()
 	{
 		Integer gameRoom = 0;
 		Object[] msg = (Object[])this.getMsg();

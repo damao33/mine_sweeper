@@ -9,6 +9,10 @@ public class ConnectServer {
 	private static ServerSocket serverSocket = null;
 	private static final int port = 8189;
 	private static int userOnline = 0;
+	private static int room1Online = 0;
+	private static int room2Online = 0;
+	private static int room3Online = 0;
+	private static int room4Online = 0;
 	public static void runServer()
 	{
 		try
