@@ -50,7 +50,14 @@ public class ConnectServer {
 		userOnline--;
 		System.out.println("在线玩家："+userOnline);
 	}
-	
+	public static synchronized void userEnterGame(UserEnterGameMsg msg)
+	{
+		int room = msg.getGameRoom();
+		if(room==1)room1Online++;
+		else if(room==2)room2Online++;
+		else if(room==3)room3Online++;
+		else if(room==4)room4Online++;
+	}
 	public static ServerSocket getServerSocket() {
 		return serverSocket;
 	}
@@ -109,10 +116,10 @@ public class ConnectServer {
 						Object o = ois.readObject();					
 						if(o instanceof Msg)
 						{	
-							if(o instanceof LoginMsg)
+							if(o instanceof UserLoginMsg)
 							{
 								ConnectServer.userLogin();	
-								User user = ((LoginMsg)o).getUser();
+								User user = ((UserLoginMsg)o).getUser();
 								this.user = user;
 								ConnectServer.userSet.add(this);
 								for(ConnectedUserHandler now:ConnectServer.userSet)
@@ -122,13 +129,21 @@ public class ConnectServer {
 								Msg gameRoomMsg = this.makeMsg("GameRoomMsg", user);
 								this.sendToAll(gameRoomMsg);
 							}
-							else if(o instanceof ExitMsg) {
+							else if(o instanceof UserExitMsg) {
 								ConnectServer.userExit();
 								ConnectServer.userSet.remove(this);
-								User user = ((ExitMsg)o).getUser();
+								User user = ((UserExitMsg)o).getUser();
 								ConnectServer.userSet.remove(this);
 								Msg gameRoomMsg = this.makeMsg("GameRoomMsg", user);
 								this.sendToAll(gameRoomMsg);
+							}else if(o instanceof UserEnterGameMsg)
+							{
+								ConnectServer.userEnterGame((UserEnterGameMsg)o);
+								Msg gameRoomMsg = this.makeMsg("GameRoomMsg", user);
+								this.sendToAll(gameRoomMsg);
+							}else if(o instanceof UserBackToRoomMsg)
+							{
+								
 							}
 							System.out.println((Msg)o);
 							System.out.println(((Msg)o).getMsgType()+" has sent back to client");
@@ -150,7 +165,7 @@ public class ConnectServer {
 				Object[] gameRoomMsg = new Object[] {ConnectServer.this.getUserOnline(),ConnectServer.this.getRoom1Online(),
 						ConnectServer.this.getRoom2Online(),ConnectServer.this.getRoom3Online(),ConnectServer.this.getRoom4Online()
 						,user};
-				msg = new GameRoomMsg(gameRoomMsg);
+				msg = new ServerGameRoomMsg(gameRoomMsg);
 			}
 			return msg;
 		}

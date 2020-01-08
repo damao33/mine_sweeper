@@ -2,9 +2,9 @@ package msg;
 
 import user.User;
 
-public class ExitMsg extends Msg
+public class UserExitMsg extends Msg
 {
-	public ExitMsg(Object msg)
+	public UserExitMsg(Object msg)
 	{
 		this.setMsg(msg);
 		this.setMsgType("ExitMsg");

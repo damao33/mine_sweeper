@@ -2,9 +2,9 @@ package msg;
 
 import user.User;
 
-public class ChatMsg extends Msg
+public class UserChatMsg extends Msg
 {
-	public ChatMsg(Object msg)
+	public UserChatMsg(Object msg)
 	{
 		this.setMsg(msg);
 		this.setMsgType("ChatMsg");

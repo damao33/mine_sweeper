@@ -2,9 +2,9 @@ package msg;
 
 import user.User;
 
-public class EnterGameMsg extends Msg
+public class UserEnterGameMsg extends Msg
 {
-	private User getUser()
+	public User getUser()
 	{
 		User user = null;
 		Object[] msg = (Object[])this.getMsg();
@@ -14,7 +14,7 @@ public class EnterGameMsg extends Msg
 		}
 		return user;
 	}
-	private int getGameRoom()
+	public int getGameRoom()
 	{
 		Integer gameRoom = 0;
 		Object[] msg = (Object[])this.getMsg();
@@ -24,7 +24,7 @@ public class EnterGameMsg extends Msg
 		}
 		return gameRoom;
 	}
-	public EnterGameMsg(Object msg)
+	public UserEnterGameMsg(Object msg)
 	{
 		this.setMsg(msg);
 		this.setMsgType("EnterGameMsg");
