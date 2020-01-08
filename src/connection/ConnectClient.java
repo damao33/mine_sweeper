@@ -5,6 +5,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.net.*;
+
+import gui.RoomFrame;
 import msg.*;
 import user.User;
 
@@ -51,6 +53,10 @@ public class ConnectClient implements Runnable
 					{
 						System.out.println("Recv message from server:");
 						System.out.println((Msg)o);
+						if(o instanceof GameRoomMsg)
+						{
+							RoomFrame.setRoomMsg((GameRoomMsg)o);
+						}
 					}
 				}
 			}
