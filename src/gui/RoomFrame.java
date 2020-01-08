@@ -219,9 +219,11 @@ public class RoomFrame extends javax.swing.JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				RoomFrame.this.setVisible(false);
-				new GameFrame(RoomFrame.this.user,RoomFrame.this.connectClient).runGame();
-				Object[] enterMsg = new Object[] {user,1};
-				RoomFrame.this.connectClient.sendMsg(new UserEnterGameMsg(enterMsg));
+				Object[] room1Msg = new Object[] {user,1};
+				GameFrame gameFrame = new GameFrame(RoomFrame.this.user,RoomFrame.this.connectClient);
+				gameFrame.setBackMsg(new UserBackToRoomMsg(room1Msg));	
+				gameFrame.runGame();
+				RoomFrame.this.connectClient.sendMsg(new UserEnterGameMsg(room1Msg));
 				RoomFrame.this.setVisible(false);
 			}
 		});
@@ -236,9 +238,11 @@ public class RoomFrame extends javax.swing.JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				RoomFrame.this.setVisible(false);
-				new GameFrame(RoomFrame.this.user,RoomFrame.this.connectClient).runGame();
-				Object[] enterMsg = new Object[] {user,2};
-				RoomFrame.this.connectClient.sendMsg(new UserEnterGameMsg(enterMsg));
+				Object[] room2Msg = new Object[] {user,2};
+				GameFrame gameFrame = new GameFrame(RoomFrame.this.user,RoomFrame.this.connectClient);
+				gameFrame.setBackMsg(new UserBackToRoomMsg(room2Msg));	
+				gameFrame.runGame();
+				RoomFrame.this.connectClient.sendMsg(new UserEnterGameMsg(room2Msg));
 				RoomFrame.this.setVisible(false);
 			}
 		});
@@ -289,9 +293,11 @@ public class RoomFrame extends javax.swing.JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				RoomFrame.this.setVisible(false);
-				new GameFrame(RoomFrame.this.user,RoomFrame.this.connectClient).runGame();
-				Object[] enterMsg = new Object[] {user,3};
-				RoomFrame.this.connectClient.sendMsg(new UserEnterGameMsg(enterMsg));
+				Object[] room3Msg = new Object[] {user,3};
+				GameFrame gameFrame = new GameFrame(RoomFrame.this.user,RoomFrame.this.connectClient);
+				gameFrame.setBackMsg(new UserBackToRoomMsg(room3Msg));	
+				gameFrame.runGame();
+				RoomFrame.this.connectClient.sendMsg(new UserEnterGameMsg(room3Msg));
 				RoomFrame.this.setVisible(false);
 			}
 		});
@@ -324,9 +330,11 @@ public class RoomFrame extends javax.swing.JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				RoomFrame.this.setVisible(false);
-				new GameFrame(RoomFrame.this.user,RoomFrame.this.connectClient).runGame();
-				Object[] enterMsg = new Object[] {user,4};
-				RoomFrame.this.connectClient.sendMsg(new UserEnterGameMsg(enterMsg));
+				Object[] room4Msg = new Object[] {user,4};
+				GameFrame gameFrame = new GameFrame(RoomFrame.this.user,RoomFrame.this.connectClient);
+				gameFrame.setBackMsg(new UserBackToRoomMsg(room4Msg));	
+				gameFrame.runGame();
+				RoomFrame.this.connectClient.sendMsg(new UserEnterGameMsg(room4Msg));
 				RoomFrame.this.setVisible(false);
 			}
 		});

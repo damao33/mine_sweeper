@@ -25,7 +25,7 @@ public class UserBackToRoomMsg extends Msg
 	}
 	@Override
 	public String toString() {
-		return this.getMsgType()+":"+((User)this.getMsg()).getNickName()+" back to room";
+		return this.getMsgType()+":"+this.getUser().getNickName()+" has exited game room "+this.getRoom();
 	}
 	
 }
