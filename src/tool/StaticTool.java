@@ -26,7 +26,7 @@ public class StaticTool {
 	public static ImageIcon imageIcon = new ImageIcon("./image/icon.jpg");
 
 	static {
-		int width = 30,height = 30;
+		int width = 35,height = 35;
 		for (int i = 0; i < num.length; i++) {
 			num[i] = new ImageIcon("./image/" + i + ".jpg");
 			num[i] = changeIcon(num[i], width, height);
