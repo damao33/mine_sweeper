@@ -13,7 +13,6 @@ public class ConnectServer {
 	private static int room2Online = 0;
 	private static int room3Online = 0;
 	private static int room4Online = 0;
-	private Socket socket = null;
 	
 	public ConnectServer() {
 		super();
