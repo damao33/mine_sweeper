@@ -225,7 +225,10 @@ public class GameFrame extends javax.swing.JFrame {
         send.setText("发送");
         send.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sendActionPerformed(evt);
+                String chat = input.getText();
+                Object[] msg = new Object[] {GameFrame.this.getUser(),chat};
+                ChatMsg chatMsg = new ChatMsg(msg);
+                GameFrame.this.connectClient.sendMsg(chatMsg);
             }
         });
 
