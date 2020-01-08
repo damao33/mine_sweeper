@@ -15,7 +15,7 @@ public class User implements Serializable
 	private String nickName = null;
 	private int score = 0;
 	private transient Connection conn = null;
-	private boolean onlineState = false;
+	private int onlineState = 0;
 
 	public User(String acount, String password) {
 		this.acount = acount;
@@ -52,10 +52,11 @@ public class User implements Serializable
 	public void setConn(Connection conn) {
 		this.conn = conn;
 	}	
-	public boolean getOnlineState() {
+	
+	public int getOnlineState() {
 		return onlineState;
 	}
-	public void setOnlineState(boolean onlineState) {
+	public void setOnlineState(int onlineState) {
 		this.onlineState = onlineState;
 	}
 	@Override

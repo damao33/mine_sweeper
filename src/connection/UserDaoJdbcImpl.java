@@ -48,7 +48,7 @@ public class UserDaoJdbcImpl implements UserDao
 	public static int login(User user) {
 		if(UserDaoJdbcImpl.findUser(user)==0)return 0;	//不存在该用户
 		Connection conn = null;
-		String sql="select * from userinfo where acount = ?";
+		String loginsql="select * from userinfo where acount = ?";
 		PreparedStatement pStatement = null;
 		ResultSet resultSet = null;
 		try
@@ -59,14 +59,14 @@ public class UserDaoJdbcImpl implements UserDao
 				System.out.println("连接失败");
 				return -1;
 			}
-			else if(user.getOnlineState())
+			else if(user.getOnlineState()==1)
 			{
 				System.out.println("用户已在线");
 				return -2;
 			}
-			pStatement = conn.prepareStatement(sql);
-			pStatement.setString(1, user.getAcount());
-			resultSet = pStatement.executeQuery();
+			pStatement = conn.prepareStatement(loginsql);
+			pStatement.setString(1, user.getAcount());	
+			resultSet = pStatement.executeQuery();	
 			String pwd = null;
 			String nickName = null;
 			if(resultSet.next())
@@ -90,7 +90,12 @@ public class UserDaoJdbcImpl implements UserDao
 					{
 						Thread clientThread = new Thread(connectClient);
 						clientThread.start();
-						user.setOnlineState(true);
+						user.setOnlineState(1);
+						String onlinesql = "update userinfo set onlineState = ? where acount = ?";
+						pStatement = conn.prepareStatement(onlinesql);
+						pStatement.setInt(1, 1);
+						pStatement.setString(2, user.getAcount());
+						pStatement.executeUpdate();	
 						return 1;	//密码正确登陆成功
 					}
 					else
@@ -127,7 +132,7 @@ public class UserDaoJdbcImpl implements UserDao
 		}	
 		if(user.getAcount().length()>20||user.getPassword().length()<6)return 0;
 		Connection conn = null;
-		String sql="insert into userinfo values(?,?,?,?)";
+		String sql="insert into userinfo values(?,?,?,?,?)";
 		PreparedStatement pStatement = null;
 		try
 		{
@@ -137,6 +142,7 @@ public class UserDaoJdbcImpl implements UserDao
 			pStatement.setString(2, user.getPassword());
 			pStatement.setString(3, user.randomNickName());
 			pStatement.setInt(4, 0);
+			pStatement.setInt(5, 0);
 			pStatement.executeUpdate();
 			return 1;
 		} catch(SQLException e)
@@ -147,10 +153,35 @@ public class UserDaoJdbcImpl implements UserDao
 			ConnectionManager.releaseAll(null, pStatement, conn);
 		}
 		return -2;
+	}	
+	public static boolean exit(User user)
+	{
+		if(UserDaoJdbcImpl.findUser(user)==0)
+		{
+			System.out.println("用户不存在");
+			return false;
+		}
+		Connection conn = null;
+		String exitsql = "update userinfo set onlineState = ? where acount = ?";
+		PreparedStatement pStatement = null;
+		try
+		{
+			conn=ConnectionManager.getConnection();	
+			pStatement = conn.prepareStatement(exitsql);
+			pStatement.setInt(1, 0);
+			pStatement.setString(2, user.getAcount());
+			pStatement.executeUpdate();	
+			return true;
+		} catch(SQLException e)
+		{
+			e.printStackTrace();
+		} finally
+		{
+			ConnectionManager.releaseAll(null, pStatement, conn);
+		}
+		return false;
 	}
-
 	public static ConnectClient getConnectClient() {
 		return connectClient;
-	}
-	
+	}	
 }

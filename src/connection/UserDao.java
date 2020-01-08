@@ -12,4 +12,8 @@ public interface UserDao {
 	public static boolean register(User user) {
 		return false;
 	}
+	public static boolean exit(User user)
+	{
+		return false;
+	}
 }
