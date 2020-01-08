@@ -98,7 +98,7 @@ public class RoomFrame extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("宋体", 0, 20)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(204, 0, 0));
-        jLabel1.setText("挖金子");
+        jLabel1.setText("多人扫雷对战");
 
         jLabel2.setText("在线人数");
 
