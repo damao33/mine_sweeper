@@ -2,6 +2,8 @@ package connection;
 
 import java.io.*;
 import java.net.*;
+import java.util.*;
+
 import msg.*;
 import user.User;
 
@@ -13,7 +15,7 @@ public class ConnectServer {
 	private static int room2Online = 0;
 	private static int room3Online = 0;
 	private static int room4Online = 0;
-	
+	private static Set<ConnectedUserHandler> userSet = new HashSet<>();
 	public ConnectServer() {
 		super();
 	}
@@ -72,6 +74,10 @@ public class ConnectServer {
 		return room4Online;
 	}
 
+	public static Set<ConnectedUserHandler> getUserSet() {
+		return userSet;
+	}
+
 	public static void main(String[] args)
 	{
 		new ConnectServer().runServer();
@@ -80,7 +86,7 @@ public class ConnectServer {
 	class ConnectedUserHandler implements Runnable
 	{
 		private Socket imcoming = null;
-		
+		private User user = null;
 		
 		public ConnectedUserHandler(Socket imcoming) {
 			super();
@@ -103,26 +109,29 @@ public class ConnectServer {
 						{	
 							if(o instanceof LoginMsg)
 							{
-								ConnectServer.userLogin();							
-								//ObjectOutputStream oos = new ObjectOutputStream(os);
-								Msg gameRoomMsg = this.makeMsg("GameRoomMsg", ((LoginMsg)o).getUser());
-								this.sendMsg(gameRoomMsg);
-								//oos.writeObject(gameRoomMsg);
-								//oos.flush();
-								System.out.println("game room msg sent back");
+								ConnectServer.userLogin();	
+								User user = ((LoginMsg)o).getUser();
+								this.user = user;
+								ConnectServer.userSet.add(this);
+								for(ConnectedUserHandler now:ConnectServer.userSet)
+								{
+									System.out.println(now.getUser().getNickName());
+								}
+								Msg gameRoomMsg = this.makeMsg("GameRoomMsg", user);
+								this.sendToAll(gameRoomMsg);
 							}
 							else if(o instanceof ExitMsg) {
 								ConnectServer.userExit();
-								Msg gameRoomMsg = this.makeMsg("GameRoomMsg", ((ExitMsg)o).getUser());
-								this.sendMsg(gameRoomMsg);
+								User user = ((ExitMsg)o).getUser();
+								ConnectServer.userSet.remove(this);
+								Msg gameRoomMsg = this.makeMsg("GameRoomMsg", user);
+								this.sendToAll(gameRoomMsg);
 							}
 							System.out.println((Msg)o);
 							System.out.println(((Msg)o).getMsgType()+" has sent back to client");
 						}					
 					}
 				}
-				
-				//ObjectOutputStream oos = new ObjectOutputStream(this.imcoming.getOutputStream());
 			}
 			catch(Exception e)
 			{
@@ -142,7 +151,7 @@ public class ConnectServer {
 			}
 			return msg;
 		}
-		public boolean sendMsg(Msg msg)
+		private boolean sendMsg(Msg msg)
 		{
 			try
 			{	
@@ -160,6 +169,50 @@ public class ConnectServer {
 				return false;
 			}
 		}
+		public void sendToAll(Msg msg)
+		{
+			for(ConnectedUserHandler now:ConnectServer.userSet)
+			{
+				this.sendMsg(msg);
+				System.out.println("sent to "+now.getUser().getNickName());
+			}
+			System.out.println(msg.getMsgType()+":has sent to all");
+		}
+		
+		public User getUser() {
+			return user;
+		}
+		@Override
+		public int hashCode() {
+			final int prime = 31;
+			int result = 1;
+			result = prime * result + getEnclosingInstance().hashCode();
+			result = prime * result + ((imcoming == null) ? 0 : imcoming.hashCode());
+			return result;
+		}
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			ConnectedUserHandler other = (ConnectedUserHandler) obj;
+			if (!getEnclosingInstance().equals(other.getEnclosingInstance()))
+				return false;
+			if (imcoming == null) {
+				if (other.imcoming != null)
+					return false;
+			} else if (!imcoming.equals(other.imcoming))
+			{
+				return false;
+			}else if(this.user != other.user)return false;
+				
+			return true;
+		}
+		private ConnectServer getEnclosingInstance() {
+			return ConnectServer.this;
+		}
 	}
 }
-
