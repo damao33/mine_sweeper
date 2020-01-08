@@ -61,6 +61,10 @@ public class GameFrame extends javax.swing.JFrame {
 	public static MineButton[][] getMineButton() {
 		return mineButton;
 	}
+	
+	public static void setChatMsg(ChatMsg chatMsg) {
+		GameFrame.chatMsg = chatMsg;
+	}
 
 	/**
 	 * This method is called from within the constructor to initialize the form.
@@ -547,5 +551,6 @@ public class GameFrame extends javax.swing.JFrame {
 	private static UserLoginMsg loginMsg = null;
 	private UserBackToRoomMsg backMsg = null;
 	private static MineButton[][] mineButton = null;
+	private static ChatMsg chatMsg = null;
 	// End of variables declaration
 }
