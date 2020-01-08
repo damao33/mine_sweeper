@@ -8,12 +8,15 @@ package gui;
 
 
 import java.awt.BorderLayout;
+import java.util.List;
 import java.awt.Toolkit;
 /**
  *
  * @author 12892
  */
 import java.awt.event.*;
+import java.util.ArrayList;
+
 import connection.*;
 import gameRule.*;
 import msg.*;
@@ -77,6 +80,13 @@ public class GameFrame extends javax.swing.JFrame {
 	
 	public static void setChatMsg(ChatMsg chatMsg) {
 		GameFrame.chatMsg = chatMsg;
+		String Message=GameFrame.chatMsg.toString();
+		msgList.add(Message);
+		for(String now:msgList)
+		{
+			message.setText(Message+"\n");
+		}
+		
 	}
 
 	/**
@@ -321,6 +331,7 @@ public class GameFrame extends javax.swing.JFrame {
 
 		message.setColumns(20);
 		message.setRows(5);
+		message.setText("12345");
 		jScrollPane2.setViewportView(message);
 
 		input.addActionListener(new java.awt.event.ActionListener() {
@@ -625,7 +636,7 @@ public class GameFrame extends javax.swing.JFrame {
 	private javax.swing.JPanel jPanel3;
 	private javax.swing.JScrollPane jScrollPane2;
 	private javax.swing.JPanel maingame;
-	private javax.swing.JTextArea message;
+	private static javax.swing.JTextArea message;
 	private javax.swing.JPanel player;
 	private javax.swing.JPanel player1;
 	private javax.swing.JPanel player2;
@@ -652,5 +663,6 @@ public class GameFrame extends javax.swing.JFrame {
 	private static MineButton[][] mineButton = null;
 	private static UserEnterGameMsg enterMsg = null;
 	private static ChatMsg chatMsg = null;
+	private static List<String> msgList = new ArrayList<>();
 	// End of variables declaration
 }
