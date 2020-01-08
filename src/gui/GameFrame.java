@@ -19,7 +19,6 @@ import tool.StaticTool;
 import user.User;
 
 public class GameFrame extends javax.swing.JFrame {
-
 	/**
 	 * 
 	 */
@@ -43,7 +42,7 @@ public class GameFrame extends javax.swing.JFrame {
 	}
 	
 	public static void setLoginMsg(UserLoginMsg loginMsg) {
-		loginMsg = loginMsg;
+		GameFrame.loginMsg = loginMsg;
 	}
 
 	public void setBackMsg(UserBackToRoomMsg backMsg) {
