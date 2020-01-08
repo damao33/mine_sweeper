@@ -159,7 +159,7 @@ public class ConnectServer {
 								this.sendToAll(chatMsg);
 							}else if(o instanceof ChatMsg)
 							{
-								
+								this.sendToAll((ChatMsg)o);
 							}
 							System.out.println((Msg)o);
 							System.out.println(((Msg)o).getMsgType()+" has sent back to client");
