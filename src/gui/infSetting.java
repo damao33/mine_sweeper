@@ -6,6 +6,7 @@
 package gui;
 
 import connection.ConnectClient;
+import connection.UserDaoJdbcImpl;
 import tool.StaticTool;
 import user.User;
 
@@ -182,6 +183,7 @@ public class infSetting extends javax.swing.JFrame {
         cancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cancelActionPerformed(evt);
+                infSetting.this.setVisible(false);
             }
         });
 
