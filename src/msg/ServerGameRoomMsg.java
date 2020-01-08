@@ -2,9 +2,9 @@ package msg;
 
 import user.User;
 
-public class GameRoomMsg extends Msg
+public class ServerGameRoomMsg extends Msg
 {	
-	public GameRoomMsg(Object msg)
+	public ServerGameRoomMsg(Object msg)
 	{
 		this.setMsg(msg);
 		this.setMsgType("GameRoomMsg");

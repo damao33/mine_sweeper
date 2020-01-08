@@ -39,7 +39,7 @@ public class RoomFrame extends javax.swing.JFrame {
     public ConnectClient getConnectClient() {
 			return connectClient;
 	}    
-    public static void setRoomMsg(GameRoomMsg roomMsg) {
+    public static void setRoomMsg(ServerGameRoomMsg roomMsg) {
 		RoomFrame.roomMsg = roomMsg;
 	}
 
@@ -221,7 +221,7 @@ public class RoomFrame extends javax.swing.JFrame {
 				RoomFrame.this.setVisible(false);
 				new GameFrame(RoomFrame.this.user,RoomFrame.this.connectClient).runGame();
 				Object[] enterMsg = new Object[] {user,1};
-				RoomFrame.this.connectClient.sendMsg(new EnterGameMsg(enterMsg));
+				RoomFrame.this.connectClient.sendMsg(new UserEnterGameMsg(enterMsg));
 				RoomFrame.this.setVisible(false);
 			}
 		});
@@ -238,7 +238,7 @@ public class RoomFrame extends javax.swing.JFrame {
 				RoomFrame.this.setVisible(false);
 				new GameFrame(RoomFrame.this.user,RoomFrame.this.connectClient).runGame();
 				Object[] enterMsg = new Object[] {user,2};
-				RoomFrame.this.connectClient.sendMsg(new EnterGameMsg(enterMsg));
+				RoomFrame.this.connectClient.sendMsg(new UserEnterGameMsg(enterMsg));
 				RoomFrame.this.setVisible(false);
 			}
 		});
@@ -291,7 +291,7 @@ public class RoomFrame extends javax.swing.JFrame {
 				RoomFrame.this.setVisible(false);
 				new GameFrame(RoomFrame.this.user,RoomFrame.this.connectClient).runGame();
 				Object[] enterMsg = new Object[] {user,3};
-				RoomFrame.this.connectClient.sendMsg(new EnterGameMsg(enterMsg));
+				RoomFrame.this.connectClient.sendMsg(new UserEnterGameMsg(enterMsg));
 				RoomFrame.this.setVisible(false);
 			}
 		});
@@ -326,7 +326,7 @@ public class RoomFrame extends javax.swing.JFrame {
 				RoomFrame.this.setVisible(false);
 				new GameFrame(RoomFrame.this.user,RoomFrame.this.connectClient).runGame();
 				Object[] enterMsg = new Object[] {user,4};
-				RoomFrame.this.connectClient.sendMsg(new EnterGameMsg(enterMsg));
+				RoomFrame.this.connectClient.sendMsg(new UserEnterGameMsg(enterMsg));
 				RoomFrame.this.setVisible(false);
 			}
 		});
@@ -428,7 +428,7 @@ public class RoomFrame extends javax.swing.JFrame {
 			public void actionPerformed(ActionEvent e) {
 				ConnectionManager.releaseAll(null, null, RoomFrame.this.getUser().getConn());
 				System.out.println(RoomFrame.this.user.getNickName()+"退出成功");
-				RoomFrame.this.connectClient.sendMsg(new ExitMsg(RoomFrame.this.user));
+				RoomFrame.this.connectClient.sendMsg(new UserExitMsg(RoomFrame.this.user));
 				UserDaoJdbcImpl.exit(user);
 				RoomFrame.this.setVisible(false);
 				System.exit(0);
@@ -628,6 +628,6 @@ public class RoomFrame extends javax.swing.JFrame {
     private javax.swing.JPanel winrate;
     private User user = null;
     private ConnectClient connectClient = null;
-    private static GameRoomMsg roomMsg = null;
+    private static ServerGameRoomMsg roomMsg = null;
     // End of variables declaration                   
 }

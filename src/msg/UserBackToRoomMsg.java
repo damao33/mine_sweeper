@@ -2,12 +2,12 @@ package msg;
 
 import user.User;
 
-public class LoginMsg extends Msg
+public class UserBackToRoomMsg extends Msg
 {
-	public LoginMsg(Object msg)
+	public UserBackToRoomMsg(Object msg)
 	{
 		this.setMsg(msg);
-		this.setMsgType("LoginMsg");
+		this.setMsgType("BackRoomMsg");
 	}
 	public User getUser()
 	{
@@ -17,7 +17,7 @@ public class LoginMsg extends Msg
 	}
 	@Override
 	public String toString() {
-		return this.getMsgType()+":"+((User)this.getMsg()).getNickName()+" has logined";
+		return this.getMsgType()+":"+((User)this.getMsg()).getNickName()+" back to room";
 	}
 	
 }
