@@ -14,7 +14,6 @@ public class StaticTool {
 	public static boolean isStart = false;
 
 	public static ImageIcon[] num = new ImageIcon[10];
-
 	public static ImageIcon iconBlank = new ImageIcon("./image/blank.jpg");
 	public static ImageIcon bloodIcon = new ImageIcon("./image/blood.jpg");
 	public static ImageIcon icon0 = new ImageIcon("./image/0.jpg");
@@ -26,11 +25,11 @@ public class StaticTool {
 	public static ImageIcon imageIcon = new ImageIcon("./image/icon.jpg");
 
 	static {
-		int width = 35,height = 35;
+		int width, height;
+		width = height = 35;
 		for (int i = 0; i < num.length; i++) {
 			num[i] = new ImageIcon("./image/" + i + ".jpg");
 			num[i] = changeIcon(num[i], width, height);
-
 		}
 		iconBlank = changeIcon(iconBlank, width, height);
 		bloodIcon = changeIcon(bloodIcon, width, height);
