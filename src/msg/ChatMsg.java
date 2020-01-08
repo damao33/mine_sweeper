@@ -25,6 +25,7 @@ public class ChatMsg extends Msg
 	}
 	@Override
 	public String toString() {
-		return this.getChat();
+		if(this.getSender()==null)return this.getChat();
+		else return this.getSender().getNickName()+":"+this.getChat();
 	}
 }
