@@ -6,6 +6,7 @@
 package gui;
 
 
+import java.awt.Toolkit;
 import java.awt.event.*;
 import connection.*;
 import gui.*;
@@ -106,6 +107,9 @@ public class RoomFrame extends javax.swing.JFrame {
         
         RoomFrame.this.setIconImage(StaticTool.imageIcon.getImage());
         RoomFrame.this.setTitle("多人扫雷对战");
+        int width = Toolkit.getDefaultToolkit().getScreenSize().width;
+		int height = Toolkit.getDefaultToolkit().getScreenSize().height;
+		RoomFrame.this.setLocation(width / 2 - 500, height / 2 - 350);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
