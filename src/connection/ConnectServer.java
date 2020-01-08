@@ -38,12 +38,12 @@ public class ConnectServer {
 		}		
 	}
 	
-	public static void userLogin()
+	public static synchronized void userLogin()
 	{
 		userOnline++;
 		System.out.println("在线玩家："+userOnline);
 	}
-	public static void userExit()
+	public static synchronized void userExit()
 	{
 		userOnline--;
 		System.out.println("在线玩家："+userOnline);
@@ -105,19 +105,21 @@ public class ConnectServer {
 							if(o instanceof LoginMsg)
 							{
 								ConnectServer.userLogin();							
-								ObjectOutputStream oos = new ObjectOutputStream(os);
+								//ObjectOutputStream oos = new ObjectOutputStream(os);
 								Msg gameRoomMsg = this.makeMsg("GameRoomMsg", ((LoginMsg)o).getUser());
-								System.out.println(gameRoomMsg);
-								oos.writeObject(gameRoomMsg);
-								oos.flush();
+								this.sendMsg(gameRoomMsg);
+								//oos.writeObject(gameRoomMsg);
+								//oos.flush();
 								System.out.println("game room msg sent back");
 							}
-							if(o instanceof ExitMsg)ConnectServer.userExit();
+							else if(o instanceof ExitMsg) {
+								ConnectServer.userExit();
+								Msg gameRoomMsg = this.makeMsg("GameRoomMsg", ((ExitMsg)o).getUser());
+								this.sendMsg(gameRoomMsg);
+							}
 							System.out.println((Msg)o);
 							System.out.println(((Msg)o).getMsgType()+" has sent back to client");
-						}
-						
-						
+						}					
 					}
 				}
 				
