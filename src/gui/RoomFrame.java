@@ -46,11 +46,13 @@ public class RoomFrame extends javax.swing.JFrame {
 		String Unum2=String.valueOf(RoomFrame.roomMsg.getRoomOnline(2))+"/4";
 		String Unum3=String.valueOf(RoomFrame.roomMsg.getRoomOnline(3))+"/4";
 		String Unum4=String.valueOf(RoomFrame.roomMsg.getRoomOnline(4))+"/4";
+		String Nickname=RoomFrame.roomMsg.getUser().getNickName();
         getNum.setText(num2);
         Rnum1.setText(Unum1);
         Rnum2.setText(Unum2);
         Rnum3.setText(Unum3);
         Rnum4.setText(Unum4);
+        getName.setText(Nickname);
         
 	}
 
@@ -129,8 +131,8 @@ public class RoomFrame extends javax.swing.JFrame {
 
         num.setBackground(new java.awt.Color(153, 153, 153));
         
-//        num2=String.valueOf(this.roomMsg.getOnline());
-//        getNum.setText(num2);
+
+        getNum.setText("0");
 
         javax.swing.GroupLayout numLayout = new javax.swing.GroupLayout(num);
         num.setLayout(numLayout);
@@ -155,18 +157,18 @@ public class RoomFrame extends javax.swing.JFrame {
         javax.swing.GroupLayout playernameLayout = new javax.swing.GroupLayout(playername);
         playername.setLayout(playernameLayout);
         playernameLayout.setHorizontalGroup(
-                playernameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, playernameLayout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(getName, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(6, 6, 6))
-            );
-            playernameLayout.setVerticalGroup(
-                playernameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, playernameLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(getName))
-            );
+            playernameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, playernameLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(getName, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        playernameLayout.setVerticalGroup(
+            playernameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, playernameLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(getName))
+        );
 
         jLabel3.setText("分数");
 
@@ -224,7 +226,7 @@ public class RoomFrame extends javax.swing.JFrame {
 
         room1.setBackground(new java.awt.Color(153, 153, 153));
 
-        Rnum1.setText("测试1");
+        Rnum1.setText("0/4");
 
         javax.swing.GroupLayout room1Layout = new javax.swing.GroupLayout(room1);
         room1.setLayout(room1Layout);
@@ -277,7 +279,7 @@ public class RoomFrame extends javax.swing.JFrame {
 
         room2.setBackground(new java.awt.Color(153, 153, 153));
 
-        Rnum2.setText("测试2");
+        Rnum2.setText("0/4");
 
         javax.swing.GroupLayout room2Layout = new javax.swing.GroupLayout(room2);
         room2.setLayout(room2Layout);
@@ -298,7 +300,7 @@ public class RoomFrame extends javax.swing.JFrame {
 
         room3.setBackground(new java.awt.Color(153, 153, 153));
 
-        Rnum3.setText("测试3");
+        Rnum3.setText("0/4");
 
         javax.swing.GroupLayout room3Layout = new javax.swing.GroupLayout(room3);
         room3.setLayout(room3Layout);
@@ -335,7 +337,7 @@ public class RoomFrame extends javax.swing.JFrame {
 
         room4.setBackground(new java.awt.Color(153, 153, 153));
 
-        Rnum4.setText("测试4");
+        Rnum4.setText("0/4");
 
         javax.swing.GroupLayout room4Layout = new javax.swing.GroupLayout(room4);
         room4.setLayout(room4Layout);
@@ -632,7 +634,7 @@ public class RoomFrame extends javax.swing.JFrame {
     private javax.swing.JButton enter3;
     private javax.swing.JButton enter4;
     private javax.swing.JButton exit;
-    private javax.swing.JLabel getName;
+    private static javax.swing.JLabel getName;
     private static javax.swing.JLabel getNum;
     private javax.swing.JPanel grade;
     private javax.swing.JButton helper;
