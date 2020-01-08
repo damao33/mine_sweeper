@@ -44,5 +44,9 @@ public class ServerMineButton extends Msg
 		button = (MineButton[][])this.getMsg();
 		return button;
 	}
+	public String toString()
+	{
+		return this.getMsgType();
+	}
 
 }
