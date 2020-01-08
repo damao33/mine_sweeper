@@ -6,9 +6,9 @@ import javax.swing.ImageIcon;
 
 public class StaticTool {
 
-	public static int allcount = 10;
-	public static int allcol = 9;
-	public static int allrow = 9;
+	public static int allcount = 60;
+	public static int allcol = 20;
+	public static int allrow = 20;
 	public static int bombCount = allcount;
 
 	public static boolean isStart = false;
@@ -26,7 +26,7 @@ public class StaticTool {
 	public static ImageIcon imageIcon = new ImageIcon("./image/icon.jpg");
 
 	static {
-		int width = 40,height = 40;
+		int width = 30,height = 30;
 		for (int i = 0; i < num.length; i++) {
 			num[i] = new ImageIcon("./image/" + i + ".jpg");
 			num[i] = changeIcon(num[i], width, height);

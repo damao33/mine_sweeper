@@ -1,5 +1,7 @@
 package gui;
 
+
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -23,8 +25,8 @@ public class BombJPanel extends JPanel {
 	private Listener listener;
 	private GameFrame gameFrame;
 
-	public BombJPanel(GameFrame gameFrame2) {
-		this.gameFrame = gameFrame2;
+	public BombJPanel(GameFrame gameFrame) {
+		this.gameFrame = gameFrame;
 		this.setLayout(new GridLayout(StaticTool.allrow, StaticTool.allcol));
 		init();
 
@@ -32,23 +34,22 @@ public class BombJPanel extends JPanel {
 
 	private void init() {
 
-		//listener = new Listener(buttons, mainFrame);
+		listener = new Listener(buttons, gameFrame);
 
-		/*for (int i = 0; i < buttons.length; i++) {
+		for (int i = 0; i < buttons.length; i++) {
 			for (int j = 0; j < buttons[i].length; j++) {
 				buttons[i][j] = new MineButton(i, j);
 				
-				//buttons[i][j].setPreferredSize(new Dimension(45, 45));
-				//buttons[i][j].setMargin(new Insets(0, 0, 0, 0));
-				//buttons[i][j].setBorder(BorderFactory.createLineBorder(Color.black, 1));
-				//buttons[i][j].setFocusPainted(false);
+				buttons[i][j].setPreferredSize(new Dimension(0,35));
+				buttons[i][j].setMargin(new Insets(0, 0, 0, 0));
+				buttons[i][j].setBorder(BorderFactory.createLineBorder(Color.black, 1));
+				buttons[i][j].setFocusPainted(false);
 				buttons[i][j].setIcon(StaticTool.iconBlank);
-				//buttons[i][j].addMouseListener(listener);
+				buttons[i][j].addMouseListener(listener);
 				this.add(buttons[i][j]);
 			}
-		}*/
-		this.add(new MineButton(1, 1));
-		this.gameFrame.setVisible(true);
+		}
+		
 		Border borderLow = BorderFactory.createLoweredBevelBorder();
 
 		Border borderEmpty = BorderFactory.createEmptyBorder(5, 5, 5, 5);
