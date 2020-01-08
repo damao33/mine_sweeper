@@ -49,9 +49,9 @@ public class ConnectClient implements Runnable
 					{
 						System.out.println("Recv message from server:");
 						System.out.println((Msg)o);
-						if(o instanceof ServerGameRoomMsg)
+						if(o instanceof GameRoomMsg)
 						{
-							RoomFrame.setRoomMsg((ServerGameRoomMsg)o);
+							RoomFrame.setRoomMsg((GameRoomMsg)o);
 						}else if(o instanceof UserLoginMsg)
 						{
 							GameFrame.setLoginMsg((UserLoginMsg)o);

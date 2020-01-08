@@ -39,7 +39,7 @@ public class RoomFrame extends javax.swing.JFrame {
     public ConnectClient getConnectClient() {
 			return connectClient;
 	}    
-    public static void setRoomMsg(ServerGameRoomMsg roomMsg) {
+    public static void setRoomMsg(GameRoomMsg roomMsg) {
 		RoomFrame.roomMsg = roomMsg;
 	}
 
@@ -637,6 +637,6 @@ public class RoomFrame extends javax.swing.JFrame {
     private javax.swing.JPanel winrate;
     private User user = null;
     private ConnectClient connectClient = null;
-    private static ServerGameRoomMsg roomMsg = null;
+    private static GameRoomMsg roomMsg = null;
     // End of variables declaration                   
 }

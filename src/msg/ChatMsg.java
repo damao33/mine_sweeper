@@ -2,14 +2,14 @@ package msg;
 
 import user.User;
 
-public class UserChatMsg extends Msg
+public class ChatMsg extends Msg
 {
-	public UserChatMsg(Object msg)
+	public ChatMsg(Object msg)
 	{
 		this.setMsg(msg);
 		this.setMsgType("ChatMsg");
 	}
-	public User getUser()
+	public User getSender()
 	{
 		User user = null;
 		Object[] msg =(Object[])this.getMsg();
