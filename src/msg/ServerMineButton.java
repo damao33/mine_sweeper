@@ -18,7 +18,7 @@ public class ServerMineButton extends Msg
 		this.setMsg(msg);
 		this.setMsgType("ServerMineButton");
 	}
-	private MineButton[][] initMineButton()
+	private MineButton[][] getMineButton()
 	{
 		MineButton[][] buttons = new MineButton[StaticTool.allrow][StaticTool.allcol];
 		Listener listener = new Listener(buttons);
@@ -38,4 +38,5 @@ public class ServerMineButton extends Msg
 		LayBomb.lay(buttons,new Random().nextInt(20)+1, new Random().nextInt(20)+1);
 		return buttons;
 	}
+
 }
