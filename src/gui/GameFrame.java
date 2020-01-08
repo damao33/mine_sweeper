@@ -48,6 +48,7 @@ public class GameFrame extends javax.swing.JFrame {
 
 	public void setBackMsg(UserBackToRoomMsg backMsg) {
 		this.backMsg = backMsg;
+		
 	}
 
 	/**

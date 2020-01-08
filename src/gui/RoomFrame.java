@@ -41,6 +41,17 @@ public class RoomFrame extends javax.swing.JFrame {
 	}    
     public static void setRoomMsg(GameRoomMsg roomMsg) {
 		RoomFrame.roomMsg = roomMsg;
+		String num2=String.valueOf(RoomFrame.roomMsg.getOnline());
+		String Unum1=String.valueOf(RoomFrame.roomMsg.getRoomOnline(1))+"/4";
+		String Unum2=String.valueOf(RoomFrame.roomMsg.getRoomOnline(2))+"/4";
+		String Unum3=String.valueOf(RoomFrame.roomMsg.getRoomOnline(3))+"/4";
+		String Unum4=String.valueOf(RoomFrame.roomMsg.getRoomOnline(4))+"/4";
+        getNum.setText(num2);
+        Rnum1.setText(Unum1);
+        Rnum2.setText(Unum2);
+        Rnum3.setText(Unum3);
+        Rnum4.setText(Unum4);
+        
 	}
 
 	/**
@@ -58,7 +69,9 @@ public class RoomFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         num = new javax.swing.JPanel();
+        getNum = new javax.swing.JLabel();
         playername = new javax.swing.JPanel();
+        getName = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         grade = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -68,19 +81,19 @@ public class RoomFrame extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         room1 = new javax.swing.JPanel();
-        jLabelroom1 = new javax.swing.JLabel();
+        Rnum1 = new javax.swing.JLabel();
         enter1 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         enter2 = new javax.swing.JButton();
         room2 = new javax.swing.JPanel();
-        jLabelroom2 = new javax.swing.JLabel();
+        Rnum2 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         room3 = new javax.swing.JPanel();
-        jLabelroom3 = new javax.swing.JLabel();
+        Rnum3 = new javax.swing.JLabel();
         enter3 = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         room4 = new javax.swing.JPanel();
-        jLabelroom4 = new javax.swing.JLabel();
+        Rnum4 = new javax.swing.JLabel();
         enter4 = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
         helper = new javax.swing.JButton();
@@ -115,30 +128,45 @@ public class RoomFrame extends javax.swing.JFrame {
         jLabel2.setText("在线人数");
 
         num.setBackground(new java.awt.Color(153, 153, 153));
+        
+//        num2=String.valueOf(this.roomMsg.getOnline());
+//        getNum.setText(num2);
 
         javax.swing.GroupLayout numLayout = new javax.swing.GroupLayout(num);
         num.setLayout(numLayout);
         numLayout.setHorizontalGroup(
-            numLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 29, Short.MAX_VALUE)
-        );
-        numLayout.setVerticalGroup(
-            numLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+                numLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, numLayout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(getNum)
+                    .addContainerGap())
+            );
+            numLayout.setVerticalGroup(
+                numLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, numLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(getNum))
+            );
 
         playername.setBackground(new java.awt.Color(153, 153, 153));
+        
+        getName.setText("用户名");
 
         javax.swing.GroupLayout playernameLayout = new javax.swing.GroupLayout(playername);
         playername.setLayout(playernameLayout);
         playernameLayout.setHorizontalGroup(
-            playernameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 70, Short.MAX_VALUE)
-        );
-        playernameLayout.setVerticalGroup(
-            playernameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 25, Short.MAX_VALUE)
-        );
+                playernameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, playernameLayout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(getName, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(6, 6, 6))
+            );
+            playernameLayout.setVerticalGroup(
+                playernameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, playernameLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(getName))
+            );
 
         jLabel3.setText("分数");
 
@@ -196,7 +224,7 @@ public class RoomFrame extends javax.swing.JFrame {
 
         room1.setBackground(new java.awt.Color(153, 153, 153));
 
-        jLabelroom1.setText("测试1");
+        Rnum1.setText("测试1");
 
         javax.swing.GroupLayout room1Layout = new javax.swing.GroupLayout(room1);
         room1.setLayout(room1Layout);
@@ -204,12 +232,12 @@ public class RoomFrame extends javax.swing.JFrame {
             room1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(room1Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addComponent(jLabelroom1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Rnum1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(26, 26, 26))
         );
         room1Layout.setVerticalGroup(
             room1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabelroom1, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+            .addComponent(Rnum1, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
         );
 
         enter1.setFont(new java.awt.Font("宋体", 0, 18)); // NOI18N
@@ -249,7 +277,7 @@ public class RoomFrame extends javax.swing.JFrame {
 
         room2.setBackground(new java.awt.Color(153, 153, 153));
 
-        jLabelroom2.setText("测试2");
+        Rnum2.setText("测试2");
 
         javax.swing.GroupLayout room2Layout = new javax.swing.GroupLayout(room2);
         room2.setLayout(room2Layout);
@@ -257,12 +285,12 @@ public class RoomFrame extends javax.swing.JFrame {
             room2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(room2Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addComponent(jLabelroom2)
+                .addComponent(Rnum2)
                 .addContainerGap(26, Short.MAX_VALUE))
         );
         room2Layout.setVerticalGroup(
             room2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabelroom2, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+            .addComponent(Rnum2, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
         );
 
         jLabel9.setFont(new java.awt.Font("宋体", 0, 18)); // NOI18N
@@ -270,7 +298,7 @@ public class RoomFrame extends javax.swing.JFrame {
 
         room3.setBackground(new java.awt.Color(153, 153, 153));
 
-        jLabelroom3.setText("测试3");
+        Rnum3.setText("测试3");
 
         javax.swing.GroupLayout room3Layout = new javax.swing.GroupLayout(room3);
         room3.setLayout(room3Layout);
@@ -278,12 +306,12 @@ public class RoomFrame extends javax.swing.JFrame {
             room3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(room3Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(jLabelroom3)
+                .addComponent(Rnum3)
                 .addContainerGap(27, Short.MAX_VALUE))
         );
         room3Layout.setVerticalGroup(
             room3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabelroom3, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+            .addComponent(Rnum3, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
         );
 
         enter3.setFont(new java.awt.Font("宋体", 0, 18)); // NOI18N
@@ -307,7 +335,7 @@ public class RoomFrame extends javax.swing.JFrame {
 
         room4.setBackground(new java.awt.Color(153, 153, 153));
 
-        jLabelroom4.setText("测试4");
+        Rnum4.setText("测试4");
 
         javax.swing.GroupLayout room4Layout = new javax.swing.GroupLayout(room4);
         room4.setLayout(room4Layout);
@@ -315,12 +343,12 @@ public class RoomFrame extends javax.swing.JFrame {
             room4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(room4Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addComponent(jLabelroom4)
+                .addComponent(Rnum4)
                 .addContainerGap(26, Short.MAX_VALUE))
         );
         room4Layout.setVerticalGroup(
             room4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabelroom4, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+            .addComponent(Rnum4, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
         );
 
         enter4.setFont(new java.awt.Font("宋体", 0, 18)); // NOI18N
@@ -604,16 +632,18 @@ public class RoomFrame extends javax.swing.JFrame {
     private javax.swing.JButton enter3;
     private javax.swing.JButton enter4;
     private javax.swing.JButton exit;
+    private javax.swing.JLabel getName;
+    private static javax.swing.JLabel getNum;
     private javax.swing.JPanel grade;
     private javax.swing.JButton helper;
     private javax.swing.JPanel icon;
     private javax.swing.JButton infSet;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabelroom1;
-    private javax.swing.JLabel jLabelroom2;
-    private javax.swing.JLabel jLabelroom3;
-    private javax.swing.JLabel jLabelroom4;
+    private static javax.swing.JLabel Rnum1;
+    private static javax.swing.JLabel Rnum2;
+    private static javax.swing.JLabel Rnum3;
+    private static javax.swing.JLabel Rnum4;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -638,5 +668,6 @@ public class RoomFrame extends javax.swing.JFrame {
     private User user = null;
     private ConnectClient connectClient = null;
     private static GameRoomMsg roomMsg = null;
+    //private static String num2=null;
     // End of variables declaration                   
 }
