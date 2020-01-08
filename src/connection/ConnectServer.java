@@ -55,14 +55,14 @@ public class ConnectServer {
 		int room = 0;
 		if(msg instanceof UserEnterGameMsg)
 		{
-			room = ((UserEnterGameMsg)msg).getGameRoom();
+			room = ((UserEnterGameMsg)msg).getRoom();
 			if(room==1)room1Online++;
 			else if(room==2)room2Online++;
 			else if(room==3)room3Online++;
 			else if(room==4)room4Online++;
 		}else if(msg instanceof UserBackToRoomMsg)
 		{
-			room = ((UserEnterGameMsg)msg).getGameRoom();
+			room = ((UserBackToRoomMsg)msg).getRoom();
 			if(room==1)room1Online--;
 			else if(room==2)room2Online--;
 			else if(room==3)room3Online--;
@@ -152,10 +152,10 @@ public class ConnectServer {
 								ConnectServer.userRoom((Msg)o);
 								Msg gameRoomMsg = this.makeMsg("GameRoomMsg", user);
 								this.sendToAll(gameRoomMsg);
-							}else if(o instanceof UserBackToRoomMsg)
+							}/*else if(o instanceof UserBackToRoomMsg)
 							{
 								
-							}
+							}*/
 							System.out.println((Msg)o);
 							System.out.println(((Msg)o).getMsgType()+" has sent back to client");
 						}					
