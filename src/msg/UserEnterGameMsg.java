@@ -14,15 +14,15 @@ public class UserEnterGameMsg extends Msg
 		}
 		return user;
 	}
-	public int getGameRoom()
+	public int getRoom()
 	{
-		Integer gameRoom = 0;
+		Integer Room = 0;
 		Object[] msg = (Object[])this.getMsg();
 		if(msg[1] instanceof Integer)
 		{
-			gameRoom = (Integer) msg[1];
+			Room = (Integer) msg[1];
 		}
-		return gameRoom;
+		return Room;
 	}
 	public UserEnterGameMsg(Object msg)
 	{
@@ -31,6 +31,6 @@ public class UserEnterGameMsg extends Msg
 	}
 	@Override
 	public String toString() {
-		return this.getMsgType()+":"+this.getUser().getNickName()+" has entered game room "+this.getGameRoom();
+		return this.getMsgType()+":"+this.getUser().getNickName()+" has entered game room "+this.getRoom();
 	}
 }
