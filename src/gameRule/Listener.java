@@ -11,7 +11,7 @@ public class Listener implements MouseListener {
 	MineButton[][] mineButton;
 	private boolean isDoublePress = false;
 
-	public Listener(MineButton[][] buttons, GameFrame mianFrame) {
+	public Listener(MineButton[][] buttons) {
 		super();
 		this.mineButton = buttons;
 

@@ -497,8 +497,6 @@ public class GameFrame extends javax.swing.JFrame {
 	private javax.swing.JPanel jPanel3;
 	private javax.swing.JScrollPane jScrollPane2;
 	private javax.swing.JPanel maingame;
-	private BombJPanel bombJPanel;
-	// private BombJPanel bombJPanel = new BombJPanel(this);
 	private javax.swing.JTextArea message;
 	private javax.swing.JPanel player;
 	private javax.swing.JPanel player1;
@@ -511,6 +509,7 @@ public class GameFrame extends javax.swing.JFrame {
 	private javax.swing.JButton ready;
 	private javax.swing.JButton send;
 	private javax.swing.JPanel time;
+	private BombJPanel bombJPanel;
 	private User user = null;
 	private ConnectClient connectClient = null;
 	// End of variables declaration
