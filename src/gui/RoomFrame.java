@@ -394,6 +394,7 @@ public class RoomFrame extends javax.swing.JFrame {
 				ConnectionManager.releaseAll(null, null, RoomFrame.this.getUser().getConn());
 				System.out.println(RoomFrame.this.user.getNickName()+"退出成功");
 				RoomFrame.this.connectClient.sendMsg(new ExitMsg(RoomFrame.this.user));
+				UserDaoJdbcImpl.exit(user);
 				RoomFrame.this.setVisible(false);
 				System.exit(0);
 			}
