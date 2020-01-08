@@ -8,6 +8,7 @@ package gui;
 
 
 import java.awt.BorderLayout;
+import java.awt.Toolkit;
 /**
  *
  * @author 12892
@@ -502,6 +503,9 @@ public class GameFrame extends javax.swing.JFrame {
 				GameFrame.this.setIconImage(StaticTool.imageIcon.getImage());
 				GameFrame.this.setTitle("多人扫雷对战");
 				GameFrame.this.setVisible(true);
+				int width = Toolkit.getDefaultToolkit().getScreenSize().width;
+				int height = Toolkit.getDefaultToolkit().getScreenSize().height;
+				GameFrame.this.setLocation(width / 2 - 600, height / 2 - 520);
 			}
 		});
 	}

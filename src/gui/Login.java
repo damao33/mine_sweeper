@@ -25,8 +25,8 @@ public class Login implements ActionListener {
 		if (loginState == 1) {
 			System.out.println("登陆成功");
 			mainJFrame.setVisible(false);// 登录成功登入界面消失
-		    //new GameFrame(user, null).runGame();
-			new RoomFrame(user,UserDaoJdbcImpl.getConnectClient()).setVisible(true);
+			// new GameFrame(user, null).runGame();
+			new RoomFrame(user, UserDaoJdbcImpl.getConnectClient()).setVisible(true);
 		} else if (loginState == -3) {
 			JOptionPane.showMessageDialog(null, "密码错误");
 			txtPass.setText(null);// 密码错误清空密码
@@ -52,39 +52,43 @@ public class Login implements ActionListener {
 				if ("Nimbus".equals(info.getName())) {
 					javax.swing.UIManager.setLookAndFeel(info.getClassName());
 					break;
-	        }
+				}
 			}
-	    }catch(Exception e) {
-	    	System.out.println(e);
-	    }
-		
-		mainJFrame=new JFrame("用户登录");
-		mainJFrame.setIconImage(StaticTool.imageIcon.getImage());		
-		con=mainJFrame.getContentPane();
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+
+
+		mainJFrame = new JFrame("用户登录");
+		mainJFrame.setIconImage(StaticTool.imageIcon.getImage());
+		con = mainJFrame.getContentPane();
 		con.setLayout(new FlowLayout());
-		labTitle=new JLabel("<html><body><h1> 欢迎使用扫雷 \n <br> </h1> </body>  </html>");
-		
-		
-		labName=new JLabel("  用户名: ");
-		txtName=new JTextField();
+		labTitle = new JLabel("<html><body><h1> 欢迎使用扫雷 \n <br> </h1> </body>  </html>");
+
+		labName = new JLabel("  用户名: ");
+		txtName = new JTextField();
 		txtName.setColumns(20);
-		
-		labPass=new JLabel("    密码:  ");
-		txtPass=new JPasswordField();
+
+		labPass = new JLabel("    密码:  ");
+		txtPass = new JPasswordField();
 		txtPass.setColumns(20);
-		
-		login1=new JButton("登录");	
-		
+
+		login1 = new JButton("登录");
+
 		login1.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub			
-			}			
-		} );
+				// TODO Auto-generated method stub
+			}
+		});
 
 		mainJFrame = new JFrame("用户登录");
 		mainJFrame.setIconImage(StaticTool.imageIcon.getImage());
+		int width = Toolkit.getDefaultToolkit().getScreenSize().width;
+		int height = Toolkit.getDefaultToolkit().getScreenSize().height;
+		mainJFrame.setLocation(width / 2 - 200, height / 2 - 350);
+		
 		con = mainJFrame.getContentPane();
 		con.setLayout(new FlowLayout());
 		labTitle = new JLabel("<html><body><h1> 欢迎使用扫雷 \n <br> </h1> </body>  </html>");
