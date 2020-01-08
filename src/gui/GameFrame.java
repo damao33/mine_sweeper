@@ -55,7 +55,9 @@ public class GameFrame extends javax.swing.JFrame {
 		this.backMsg = backMsg;
 		
 	}
-	
+	public void setEnterMsg(UserEnterGameMsg enterMsg) {
+		GameFrame.enterMsg = enterMsg;
+	}
 
 	public static void setEnterMsg(UserEnterGameMsg enterMsg) {
 		GameFrame.enterMsg = enterMsg;

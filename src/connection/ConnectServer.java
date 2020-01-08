@@ -157,6 +157,7 @@ public class ConnectServer {
 								ChatMsg chatMsg = ConnectServer.userRoom((Msg)o);
 								Msg gameRoomMsg = this.makeMsg("GameRoomMsg", user);
 								this.sendToAll(gameRoomMsg);
+								//this.send
 								this.sendToAll(chatMsg);
 								if(o instanceof UserEnterGameMsg)
 								{
