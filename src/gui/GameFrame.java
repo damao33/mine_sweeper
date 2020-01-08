@@ -295,12 +295,10 @@ public class GameFrame extends javax.swing.JFrame {
 				GameFrame.this.setVisible(false);
 				System.exit(0);*/
 				GameFrame.this.setVisible(false);
-				new RoomFrame(user,UserDaoJdbcImpl.getConnectClient()).setVisible(true);
+				GameFrame.this.connectClient.sendMsg(new LoginMsg(GameFrame.this.user));
+				new RoomFrame(user,UserDaoJdbcImpl.getConnectClient()).setVisible(true);				
 			}
 		});
-
-
-        
 
         ready.setFont(new java.awt.Font("宋体", 0, 18)); // NOI18N
         ready.setText("准备");
