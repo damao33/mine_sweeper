@@ -25,6 +25,6 @@ public class ChatMsg extends Msg
 	}
 	@Override
 	public String toString() {
-		return this.getMsgType()+":"+((User)this.getMsg()).getNickName()+" has exited";
+		return this.getChat();
 	}
 }
