@@ -4,6 +4,7 @@ import java.io.*;
 import java.net.*;
 import java.util.*;
 
+import gameRule.*;
 import msg.*;
 import user.User;
 
@@ -157,6 +158,11 @@ public class ConnectServer {
 								Msg gameRoomMsg = this.makeMsg("GameRoomMsg", user);
 								this.sendToAll(gameRoomMsg);
 								this.sendToAll(chatMsg);
+								if(o instanceof UserEnterGameMsg)
+								{
+									MineButton[][] mineButton = ServerMineButton.getMineButton();
+									this.sendMsg(new ServerMineButton(mineButton));
+								}
 							}else if(o instanceof ChatMsg)
 							{
 								this.sendToAll((ChatMsg)o);
