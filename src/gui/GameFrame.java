@@ -57,6 +57,10 @@ public class GameFrame extends javax.swing.JFrame {
 	}
 	
 
+	public static void setEnterMsg(UserEnterGameMsg enterMsg) {
+		GameFrame.enterMsg = enterMsg;
+	}
+
 	public static void setMineButton(MineButton[][] o) {
 		GameFrame.mineButton = o;
 	}
@@ -640,6 +644,7 @@ public class GameFrame extends javax.swing.JFrame {
 	private static UserLoginMsg loginMsg = null;
 	private UserBackToRoomMsg backMsg = null;
 	private static MineButton[][] mineButton = null;
+	private static UserEnterGameMsg enterMsg = null;
 	private static ChatMsg chatMsg = null;
 	// End of variables declaration
 }
