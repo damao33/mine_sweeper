@@ -92,7 +92,7 @@ public class ConnectServer {
 			try
 			{
 				InputStream is = this.imcoming.getInputStream();
-				
+				OutputStream os = this.imcoming.getOutputStream();
 				//while((o = ois.readObject())!=null)
 				while(true)
 				{
@@ -108,8 +108,10 @@ public class ConnectServer {
 								Object[] gameRoomMsg = new Object[] {ConnectServer.this.getUserOnline(),ConnectServer.this.getRoom1Online(),
 										ConnectServer.this.getRoom2Online(),ConnectServer.this.getRoom3Online(),ConnectServer.this.getRoom4Online()
 										,((LoginMsg)o).getUser()};
-								
-								
+								ObjectOutputStream oos = new ObjectOutputStream(os);
+								oos.writeObject(new GameRoomMsg(gameRoomMsg));
+								oos.flush();
+								System.out.println("game room msg sent back");
 							}
 							if(o instanceof ExitMsg)ConnectServer.userExit();
 							System.out.println((Msg)o);
