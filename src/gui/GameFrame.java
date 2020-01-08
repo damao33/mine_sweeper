@@ -8,11 +8,16 @@ package gui;
 
 
 import java.awt.BorderLayout;
+import java.util.List;
+import java.awt.Toolkit;
+
 /**
  *
  * @author 12892
  */
 import java.awt.event.*;
+import java.util.ArrayList;
+
 import connection.*;
 import gameRule.*;
 import msg.*;
@@ -44,14 +49,27 @@ public class GameFrame extends javax.swing.JFrame {
 	
 	public static void setLoginMsg(UserLoginMsg loginMsg) {
 		GameFrame.loginMsg = loginMsg;
-		
+//		String Pname=GameFrame.loginMsg.getUser().getNickName();
+//		getName.setText(Pname);
+//		String Pcount=String.valueOf(GameFrame.loginMsg.getUser().getScore());
+//		getcount.setText(Pcount);
 	}
 
 	public void setBackMsg(UserBackToRoomMsg backMsg) {
 		this.backMsg = backMsg;
 		
 	}
-	
+//	public void setEnterMsg(UserEnterGameMsg enterMsg) {
+//		GameFrame.enterMsg = enterMsg;
+//	}
+
+	public static void setEnterMsg(UserEnterGameMsg enterMsg) {
+		GameFrame.enterMsg = enterMsg;
+		String Pname=GameFrame.enterMsg.getUser().getNickName();
+		getName.setText(Pname);
+		String Pcount=String.valueOf(GameFrame.enterMsg.getUser().getScore());
+		getcount.setText(Pcount);
+	}
 
 	public static void setMineButton(MineButton[][] o) {
 		GameFrame.mineButton = o;
@@ -59,6 +77,12 @@ public class GameFrame extends javax.swing.JFrame {
 	
 	public static MineButton[][] getMineButton() {
 		return mineButton;
+	}
+	
+	public static void setChatMsg(ChatMsg chatMsg) {
+		GameFrame.chatMsg = chatMsg;
+		String Message=GameFrame.chatMsg.toString();
+		message.append(Message+"\n");
 	}
 
 	/**
@@ -75,6 +99,12 @@ public class GameFrame extends javax.swing.JFrame {
 		bombJPanel2 = new BombJPanel(this);
 		bombJPanel3 = new BombJPanel(this);
 		player = new javax.swing.JPanel();
+		playername = new javax.swing.JLabel();
+		Name = new javax.swing.JPanel();
+	    getName = new javax.swing.JLabel();
+		playercount = new javax.swing.JLabel();
+		Count = new javax.swing.JPanel();
+        getcount = new javax.swing.JLabel();
 		jLabel1 = new javax.swing.JLabel();
 		player1 = new javax.swing.JPanel();
 		jLabel2 = new javax.swing.JLabel();
@@ -115,15 +145,88 @@ public class GameFrame extends javax.swing.JFrame {
 
 		jLabel1.setFont(new java.awt.Font("宋体", 0, 20)); // NOI18N
 		jLabel1.setText("个人信息");
+		
+		playername.setFont(new java.awt.Font("宋体", 0, 18)); // NOI18N
+	    playername.setText("昵称：");
+	    
+	    playercount.setFont(new java.awt.Font("宋体", 0, 18)); // NOI18N
+        playercount.setText("积分：");
 
-		javax.swing.GroupLayout playerLayout = new javax.swing.GroupLayout(player);
-		player.setLayout(playerLayout);
-		playerLayout.setHorizontalGroup(playerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addGroup(playerLayout.createSequentialGroup().addComponent(jLabel1).addGap(0, 0, Short.MAX_VALUE)));
-		playerLayout.setVerticalGroup(playerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addGroup(playerLayout.createSequentialGroup().addComponent(jLabel1,
-						javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-						.addGap(0, 81, Short.MAX_VALUE)));
+        Count.setBackground(new java.awt.Color(153, 153, 153));
+        
+        //getName.setText("用户名");
+
+        javax.swing.GroupLayout NameLayout = new javax.swing.GroupLayout(Name);
+        Name.setLayout(NameLayout);
+        NameLayout.setHorizontalGroup(
+            NameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, NameLayout.createSequentialGroup()
+                .addContainerGap(25, Short.MAX_VALUE)
+                .addComponent(getName, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        NameLayout.setVerticalGroup(
+            NameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(getName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+        );
+
+        getcount.setText("100");
+
+        javax.swing.GroupLayout CountLayout = new javax.swing.GroupLayout(Count);
+        Count.setLayout(CountLayout);
+        CountLayout.setHorizontalGroup(
+            CountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CountLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(getcount, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(34, Short.MAX_VALUE))
+        );
+        CountLayout.setVerticalGroup(
+            CountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(getcount, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout playerLayout = new javax.swing.GroupLayout(player);
+        player.setLayout(playerLayout);
+        playerLayout.setHorizontalGroup(
+            playerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(playerLayout.createSequentialGroup()
+                .addGroup(playerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addGroup(playerLayout.createSequentialGroup()
+                        .addGroup(playerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(playerLayout.createSequentialGroup()
+                                .addGap(36, 36, 36)
+                                .addComponent(playercount))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, playerLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(playername)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(playerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(Name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Count, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        playerLayout.setVerticalGroup(
+                playerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(playerLayout.createSequentialGroup()
+                    .addGroup(playerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(playerLayout.createSequentialGroup()
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(playername)
+                            .addGap(17, 17, 17))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, playerLayout.createSequentialGroup()
+                            .addComponent(Name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                    .addGroup(playerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(playerLayout.createSequentialGroup()
+                            .addComponent(playercount)
+                            .addGap(0, 0, Short.MAX_VALUE))
+                        .addGroup(playerLayout.createSequentialGroup()
+                            .addComponent(Count, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addContainerGap())))
+            );
 
 		player1.setBackground(new java.awt.Color(153, 153, 153));
 
@@ -224,6 +327,7 @@ public class GameFrame extends javax.swing.JFrame {
 
 		message.setColumns(20);
 		message.setRows(5);
+		//message.setText("12345");
 		jScrollPane2.setViewportView(message);
 
 		input.addActionListener(new java.awt.event.ActionListener() {
@@ -290,6 +394,7 @@ public class GameFrame extends javax.swing.JFrame {
 				GameFrame.this.connectClient.sendMsg(new ExitMsg(GameFrame.this.user));
 				GameFrame.this.setVisible(false);
 				System.exit(0);*/
+				StaticTool.isStart = false;
 				GameFrame.this.setVisible(false);
 				GameFrame.this.connectClient.sendMsg(GameFrame.this.backMsg);
 				new RoomFrame(user,UserDaoJdbcImpl.getConnectClient()).setVisible(true);				
@@ -508,6 +613,8 @@ public class GameFrame extends javax.swing.JFrame {
 
 	// Variables declaration - do not modify
 	private javax.swing.JPanel count1;
+	private javax.swing.JPanel Name;
+	private javax.swing.JPanel Count;
 	private javax.swing.JButton exit;
 	private javax.swing.JTextField input;
 	private javax.swing.JLabel jLabel1;
@@ -522,11 +629,15 @@ public class GameFrame extends javax.swing.JFrame {
 	private javax.swing.JPanel jPanel3;
 	private javax.swing.JScrollPane jScrollPane2;
 	private javax.swing.JPanel maingame;
-	private javax.swing.JTextArea message;
+	private static javax.swing.JTextArea message;
 	private javax.swing.JPanel player;
 	private javax.swing.JPanel player1;
 	private javax.swing.JPanel player2;
 	private javax.swing.JPanel player3;
+	private javax.swing.JLabel playercount;
+    private javax.swing.JLabel playername;
+    private static javax.swing.JLabel getName;
+    private static javax.swing.JLabel getcount;
 	private javax.swing.JPanel prop1;
 	private javax.swing.JPanel prop2;
 	private javax.swing.JPanel prop3;
@@ -543,5 +654,8 @@ public class GameFrame extends javax.swing.JFrame {
 	private static UserLoginMsg loginMsg = null;
 	private UserBackToRoomMsg backMsg = null;
 	private static MineButton[][] mineButton = null;
+	private static UserEnterGameMsg enterMsg = null;
+	private static ChatMsg chatMsg = null;
+	//private static List<String> msgList = new ArrayList<>();
 	// End of variables declaration
 }

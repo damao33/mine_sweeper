@@ -48,13 +48,14 @@ public class RoomFrame extends javax.swing.JFrame {
 		String Unum3=String.valueOf(RoomFrame.roomMsg.getRoomOnline(3))+"/4";
 		String Unum4=String.valueOf(RoomFrame.roomMsg.getRoomOnline(4))+"/4";
 		String Nickname=RoomFrame.roomMsg.getUser().getNickName();
+		String Score=String.valueOf(RoomFrame.roomMsg.getUser().getScore());
         getNum.setText(num2);
         Rnum1.setText(Unum1);
         Rnum2.setText(Unum2);
         Rnum3.setText(Unum3);
         Rnum4.setText(Unum4);
         getName.setText(Nickname);
-        
+        getScore.setText(Score);
 	}
 
 	/**
@@ -77,6 +78,7 @@ public class RoomFrame extends javax.swing.JFrame {
         getName = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         grade = new javax.swing.JPanel();
+        getScore = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         winrate = new javax.swing.JPanel();
         infSet = new javax.swing.JButton();
@@ -174,20 +176,23 @@ public class RoomFrame extends javax.swing.JFrame {
                 .addComponent(getName))
         );
 
-        jLabel3.setText("分数");
+        jLabel3.setText("积分");
 
         grade.setBackground(new java.awt.Color(153, 153, 153));
+        
+        getScore.setText("100");
 
         javax.swing.GroupLayout gradeLayout = new javax.swing.GroupLayout(grade);
-        grade.setLayout(gradeLayout);
         gradeLayout.setHorizontalGroup(
-            gradeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-        );
-        gradeLayout.setVerticalGroup(
-            gradeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+                gradeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(getScore, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
+            );
+            gradeLayout.setVerticalGroup(
+                gradeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, gradeLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(getScore))
+            );
 
         jLabel4.setText("胜");
 
@@ -256,6 +261,7 @@ public class RoomFrame extends javax.swing.JFrame {
 				Object[] room1Msg = new Object[] {user,1};
 				GameFrame gameFrame = new GameFrame(RoomFrame.this.user,RoomFrame.this.connectClient);
 				gameFrame.setBackMsg(new UserBackToRoomMsg(room1Msg));	
+				gameFrame.setEnterMsg(new UserEnterGameMsg(room1Msg));
 				gameFrame.runGame();
 				RoomFrame.this.connectClient.sendMsg(new UserEnterGameMsg(room1Msg));
 				RoomFrame.this.setVisible(false);
@@ -640,7 +646,9 @@ public class RoomFrame extends javax.swing.JFrame {
     private javax.swing.JButton exit;
     private static javax.swing.JLabel getName;
     private static javax.swing.JLabel getNum;
+    private static javax.swing.JLabel getScore;
     private javax.swing.JPanel grade;
+    
     private javax.swing.JButton helper;
     private javax.swing.JPanel icon;
     private javax.swing.JButton infSet;
