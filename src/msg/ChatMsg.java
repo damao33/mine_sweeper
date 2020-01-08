@@ -9,7 +9,7 @@ public class ChatMsg extends Msg
 		this.setMsg(msg);
 		this.setMsgType("ChatMsg");
 	}
-	public User getUser()
+	public User getSender()
 	{
 		User user = null;
 		Object[] msg =(Object[])this.getMsg();
@@ -25,6 +25,7 @@ public class ChatMsg extends Msg
 	}
 	@Override
 	public String toString() {
-		return this.getMsgType()+":"+((User)this.getMsg()).getNickName()+" has exited";
+		if(this.getSender()==null)return this.getChat();
+		else return this.getSender().getNickName()+":"+this.getChat();
 	}
 }

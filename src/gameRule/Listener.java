@@ -14,7 +14,6 @@ public class Listener implements MouseListener {
 	public Listener(MineButton[][] buttons) {
 		super();
 		this.mineButton = buttons;
-
 	}
 
 	@Override

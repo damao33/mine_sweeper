@@ -2,9 +2,9 @@ package msg;
 
 import user.User;
 
-public class EnterGameMsg extends Msg
+public class UserEnterGameMsg extends Msg
 {
-	private User getUser()
+	public User getUser()
 	{
 		User user = null;
 		Object[] msg = (Object[])this.getMsg();
@@ -14,23 +14,23 @@ public class EnterGameMsg extends Msg
 		}
 		return user;
 	}
-	private int getGameRoom()
+	public int getRoom()
 	{
-		Integer gameRoom = 0;
+		Integer Room = 0;
 		Object[] msg = (Object[])this.getMsg();
 		if(msg[1] instanceof Integer)
 		{
-			gameRoom = (Integer) msg[1];
+			Room = (Integer) msg[1];
 		}
-		return gameRoom;
+		return Room;
 	}
-	public EnterGameMsg(Object msg)
+	public UserEnterGameMsg(Object msg)
 	{
 		this.setMsg(msg);
 		this.setMsgType("EnterGameMsg");
 	}
 	@Override
 	public String toString() {
-		return this.getMsgType()+":"+this.getUser().getNickName()+" has entered game room "+this.getGameRoom();
+		return this.getMsgType()+":"+this.getUser().getNickName()+" has entered game room "+this.getRoom();
 	}
 }

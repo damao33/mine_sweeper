@@ -86,7 +86,7 @@ public class UserDaoJdbcImpl implements UserDao
 			{
 				if(connectClient.getClientSocket()!=null)
 				{
-					if(connectClient.sendMsg(new LoginMsg(user))!=false)
+					if(connectClient.sendMsg(new UserLoginMsg(user))!=false)
 					{
 						Thread clientThread = new Thread(connectClient);
 						clientThread.start();

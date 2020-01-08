@@ -2,12 +2,12 @@ package msg;
 
 import user.User;
 
-public class LoginMsg extends Msg
+public class UserExitMsg extends Msg
 {
-	public LoginMsg(Object msg)
+	public UserExitMsg(Object msg)
 	{
 		this.setMsg(msg);
-		this.setMsgType("LoginMsg");
+		this.setMsgType("ExitMsg");
 	}
 	public User getUser()
 	{
@@ -17,7 +17,6 @@ public class LoginMsg extends Msg
 	}
 	@Override
 	public String toString() {
-		return this.getMsgType()+":"+((User)this.getMsg()).getNickName()+" has logined";
+		return this.getMsgType()+":"+((User)this.getMsg()).getNickName()+" has exited";
 	}
-	
 }

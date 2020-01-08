@@ -5,18 +5,35 @@
  */
 package gui;
 
+import connection.ConnectClient;
+import connection.UserDaoJdbcImpl;
+import tool.StaticTool;
+import user.User;
+
 /**
  *
  * @author 12892
  */
 public class infSetting extends javax.swing.JFrame {
+	
+	private static final long serialVersionUID = 1L;
 
-    /**
+	/**
      * Creates new form infSetting
      */
-    public infSetting() {
+    public infSetting(User user, ConnectClient connectClient) {
+    	this.user = user;
+		this.connectClient = connectClient;
         initComponents();
     }
+    
+    public User getUser() {
+		return user;
+	}
+
+	public ConnectClient getConnectClient() {
+		return connectClient;
+	}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -61,7 +78,7 @@ public class infSetting extends javax.swing.JFrame {
             }
         });
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(102, 153, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -166,6 +183,7 @@ public class infSetting extends javax.swing.JFrame {
         cancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cancelActionPerformed(evt);
+                infSetting.this.setVisible(false);
             }
         });
 
@@ -311,7 +329,7 @@ public class infSetting extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public void runSet() {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -338,7 +356,9 @@ public class infSetting extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new infSetting().setVisible(true);
+            	infSetting.this.setIconImage(StaticTool.imageIcon.getImage());
+            	infSetting.this.setTitle("信息设置");
+                infSetting.this.setVisible(true);
             }
         });
     }
@@ -369,5 +389,7 @@ public class infSetting extends javax.swing.JFrame {
     private javax.swing.JRadioButton male;
     private javax.swing.JTextField name;
     private javax.swing.JButton save;
+    private User user = null;
+	private ConnectClient connectClient = null;
     // End of variables declaration                   
 }

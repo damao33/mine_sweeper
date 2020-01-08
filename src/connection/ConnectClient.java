@@ -1,12 +1,8 @@
 package connection;
 
-import java.io.InputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.*;
-
-import gui.RoomFrame;
+import gui.*;
 import msg.*;
 import user.User;
 
@@ -56,6 +52,9 @@ public class ConnectClient implements Runnable
 						if(o instanceof GameRoomMsg)
 						{
 							RoomFrame.setRoomMsg((GameRoomMsg)o);
+						}else if(o instanceof UserLoginMsg)
+						{
+							GameFrame.setLoginMsg((UserLoginMsg)o);
 						}
 					}
 				}

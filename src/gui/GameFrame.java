@@ -19,7 +19,6 @@ import tool.StaticTool;
 import user.User;
 
 public class GameFrame extends javax.swing.JFrame {
-
 	/**
 	 * 
 	 */
@@ -37,9 +36,19 @@ public class GameFrame extends javax.swing.JFrame {
 	public User getUser() {
 		return user;
 	}
-
+	
 	public ConnectClient getConnectClient() {
 		return connectClient;
+	}
+	
+	public static void setLoginMsg(UserLoginMsg loginMsg) {
+		GameFrame.loginMsg = loginMsg;
+		
+	}
+
+	public void setBackMsg(UserBackToRoomMsg backMsg) {
+		this.backMsg = backMsg;
+		
 	}
 
 	/**
@@ -79,7 +88,7 @@ public class GameFrame extends javax.swing.JFrame {
 		jLabel7 = new javax.swing.JLabel();
 		time = new javax.swing.JPanel();
 
-		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
 		maingame.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -212,7 +221,9 @@ public class GameFrame extends javax.swing.JFrame {
 		send.setText("发送");
 		send.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				sendActionPerformed(evt);
+				String sendmsg = input.getText();
+				Object[] send = new Object[] {GameFrame.this.user,sendmsg};
+				GameFrame.this.connectClient.sendMsg(new ChatMsg(send));
 			}
 		});
 
@@ -266,7 +277,7 @@ public class GameFrame extends javax.swing.JFrame {
 				GameFrame.this.setVisible(false);
 				System.exit(0);*/
 				GameFrame.this.setVisible(false);
-				GameFrame.this.connectClient.sendMsg(new BackRoomMsg(GameFrame.this.user));
+				GameFrame.this.connectClient.sendMsg(GameFrame.this.backMsg);
 				new RoomFrame(user,UserDaoJdbcImpl.getConnectClient()).setVisible(true);				
 			}
 		});
@@ -512,5 +523,7 @@ public class GameFrame extends javax.swing.JFrame {
 	private BombJPanel bombJPanel;
 	private User user = null;
 	private ConnectClient connectClient = null;
+	private static UserLoginMsg loginMsg = null;
+	private UserBackToRoomMsg backMsg = null;
 	// End of variables declaration
 }
