@@ -61,6 +61,9 @@ public class ConnectClient implements Runnable
 						{
 							MineButton[][] botton = ((ServerMineButton)o).getButton();
 							GameFrame.setMineButton(botton);
+						}else if(o instanceof ChatMsg)
+						{
+							GameFrame.setChatMsg((ChatMsg)o);
 						}
 					}
 				}

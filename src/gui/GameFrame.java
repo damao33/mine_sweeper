@@ -60,6 +60,14 @@ public class GameFrame extends javax.swing.JFrame {
 	public static void setMineButton(MineButton[][] o) {
 		GameFrame.mineButton = o;
 	}
+	
+	public static MineButton[][] getMineButton() {
+		return mineButton;
+	}
+	
+	public static void setChatMsg(ChatMsg chatMsg) {
+		GameFrame.chatMsg = chatMsg;
+	}
 
 	/**
 	 * This method is called from within the constructor to initialize the form.
@@ -70,7 +78,10 @@ public class GameFrame extends javax.swing.JFrame {
 	// <editor-fold defaultstate="collapsed" desc="Generated Code">
 	private void initComponents() {
 		maingame = new javax.swing.JPanel();
-		bombJPanel = new BombJPanel(this);
+		bombJPanel0 = new BombJPanel(this);
+		bombJPanel1 = new BombJPanel(this);
+		bombJPanel2 = new BombJPanel(this);
+		bombJPanel3 = new BombJPanel(this);
 		player = new javax.swing.JPanel();
 		playername = new javax.swing.JLabel();
 		Name = new javax.swing.JPanel();
@@ -110,7 +121,7 @@ public class GameFrame extends javax.swing.JFrame {
 
 		javax.swing.GroupLayout maingameLayout = new javax.swing.GroupLayout(maingame);
 		maingame.setLayout(new BorderLayout());
-		maingame.add(bombJPanel);
+		maingame.add(bombJPanel0);
 		maingameLayout.setHorizontalGroup(maingameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 				.addGap(0, 0, Short.MAX_VALUE));
 		maingameLayout.setVerticalGroup(maingameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -210,6 +221,7 @@ public class GameFrame extends javax.swing.JFrame {
 
 		javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
 		jPanel3.setLayout(jPanel3Layout);
+		
 		jPanel3Layout.setHorizontalGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 				.addGap(0, 140, Short.MAX_VALUE));
 		jPanel3Layout.setVerticalGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -365,6 +377,7 @@ public class GameFrame extends javax.swing.JFrame {
 				GameFrame.this.connectClient.sendMsg(new ExitMsg(GameFrame.this.user));
 				GameFrame.this.setVisible(false);
 				System.exit(0);*/
+				StaticTool.isStart = false;
 				GameFrame.this.setVisible(false);
 				GameFrame.this.connectClient.sendMsg(GameFrame.this.backMsg);
 				new RoomFrame(user,UserDaoJdbcImpl.getConnectClient()).setVisible(true);				
@@ -602,8 +615,6 @@ public class GameFrame extends javax.swing.JFrame {
 	private javax.swing.JPanel jPanel3;
 	private javax.swing.JScrollPane jScrollPane2;
 	private javax.swing.JPanel maingame;
-	private BombJPanel bombJPanel;
-	// private BombJPanel bombJPanel = new BombJPanel(this);
 	private javax.swing.JTextArea message;
 	private javax.swing.JPanel player;
 	private javax.swing.JPanel player1;
@@ -620,10 +631,15 @@ public class GameFrame extends javax.swing.JFrame {
 	private javax.swing.JButton ready;
 	private javax.swing.JButton send;
 	private javax.swing.JPanel time;
+	private BombJPanel bombJPanel0;
+	private BombJPanel bombJPanel1;
+	private BombJPanel bombJPanel2;
+	private BombJPanel bombJPanel3;
 	private User user = null;
 	private ConnectClient connectClient = null;
 	private static UserLoginMsg loginMsg = null;
 	private UserBackToRoomMsg backMsg = null;
 	private static MineButton[][] mineButton = null;
+	private static ChatMsg chatMsg = null;
 	// End of variables declaration
 }
