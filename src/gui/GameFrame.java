@@ -81,12 +81,7 @@ public class GameFrame extends javax.swing.JFrame {
 	public static void setChatMsg(ChatMsg chatMsg) {
 		GameFrame.chatMsg = chatMsg;
 		String Message=GameFrame.chatMsg.toString();
-		msgList.add(Message);
-		for(String now:msgList)
-		{
-			message.setText(Message+"\n");
-		}
-		
+		message.append(Message+"\n");
 	}
 
 	/**
@@ -331,7 +326,7 @@ public class GameFrame extends javax.swing.JFrame {
 
 		message.setColumns(20);
 		message.setRows(5);
-		message.setText("12345");
+		//message.setText("12345");
 		jScrollPane2.setViewportView(message);
 
 		input.addActionListener(new java.awt.event.ActionListener() {
@@ -663,6 +658,6 @@ public class GameFrame extends javax.swing.JFrame {
 	private static MineButton[][] mineButton = null;
 	private static UserEnterGameMsg enterMsg = null;
 	private static ChatMsg chatMsg = null;
-	private static List<String> msgList = new ArrayList<>();
+	//private static List<String> msgList = new ArrayList<>();
 	// End of variables declaration
 }
