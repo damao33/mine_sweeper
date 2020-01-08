@@ -256,6 +256,7 @@ public class RoomFrame extends javax.swing.JFrame {
 				Object[] room1Msg = new Object[] {user,1};
 				GameFrame gameFrame = new GameFrame(RoomFrame.this.user,RoomFrame.this.connectClient);
 				gameFrame.setBackMsg(new UserBackToRoomMsg(room1Msg));	
+				gameFrame.setEnterMsg(new UserEnterGameMsg(room1Msg));
 				gameFrame.runGame();
 				RoomFrame.this.connectClient.sendMsg(new UserEnterGameMsg(room1Msg));
 				RoomFrame.this.setVisible(false);
