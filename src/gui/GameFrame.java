@@ -65,6 +65,7 @@ public class GameFrame extends javax.swing.JFrame {
 	public static void setEnterMsg(UserEnterGameMsg enterMsg) {
 		GameFrame.enterMsg = enterMsg;
 		GameFrame.userSet.add(enterMsg.getUser());
+		System.out.println("目前房间里用户：");
 		for(User now:GameFrame.userSet)
 		{
 			System.out.println(now);
