@@ -260,6 +260,7 @@ public class RoomFrame extends javax.swing.JFrame {
 				GameFrame gameFrame = new GameFrame(RoomFrame.this.user,RoomFrame.this.connectClient);
 				gameFrame.setBackMsg(new UserBackToRoomMsg(room1Msg));	
 				gameFrame.setEnterMsg(new UserEnterGameMsg(room1Msg));
+				GameFrame.setIsRoom(1);
 				gameFrame.runGame();
 				RoomFrame.this.connectClient.sendMsg(new UserEnterGameMsg(room1Msg));
 				RoomFrame.this.setVisible(false);
@@ -680,6 +681,7 @@ public class RoomFrame extends javax.swing.JFrame {
     private User user = null;
     private ConnectClient connectClient = null;
     private static GameRoomMsg roomMsg = null;
+    
     //private static String num2=null;
     // End of variables declaration                   
 }
