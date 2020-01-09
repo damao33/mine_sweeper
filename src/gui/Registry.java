@@ -28,35 +28,35 @@ public class Registry implements ActionListener {
 			String pwd2 = String.valueOf(txtRPass.getPassword());
 			boolean isWrong = true;
 			if (isWrong) {
-				if ((pwd1.equals(pwd2))) {
+				if ((pwd1.equals(pwd2))) {//如果密码和确认密码相同
 					User user = new User(acount, pwd1);
 					isWrong = false;
 					int registerState = UserDaoJdbcImpl.register(user);
-					if (registerState == -1) {
+					if (registerState == -1) {//如果在数据库中已存在该用户
 						JOptionPane.showMessageDialog(null, "已存在该用户，注册失败");
 						txtName.setText(null);
 						txtPass.setText(null);
 						txtRPass.setText(null);
 						System.out.println("注册失败");
-					} else if (registerState == 0) {
+					} else if (registerState == 0) {//密码长度不符合要求
 						JOptionPane.showMessageDialog(null, "密码不符合要求，注册失败");
 						txtPass.setText(null);
 						txtRPass.setText(null);
 						System.out.println("注册失败");
-					} else if (registerState == 1) {
+					} else if (registerState == 1) {//满足注册条件
 						JOptionPane.showMessageDialog(null, "注册成功");
 						mainJFrame.setVisible(false);
 						Login login = new Login();
 						login.mainJFrame.setVisible(true);
 						System.out.println("注册成功");
-					} else {
+					} else {//否则注册失败
 						JOptionPane.showMessageDialog(null, "注册失败");
 						txtName.setText(null);
 						txtPass.setText(null);
 						txtRPass.setText(null);
 						System.out.println("注册失败");
 					}
-				} else {
+				} else {//密码和确认密码不一致的情况
 					txtPass.setText(null);
 					txtRPass.setText(null);
 					JOptionPane.showMessageDialog(null, "密码不一致,请再次输入密码");
@@ -73,7 +73,7 @@ public class Registry implements ActionListener {
 		}
 	};
 
-	public Registry() {
+	public Registry() {//界面美化
 		try {
 			for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
 				if ("Nimbus".equals(info.getName())) {
@@ -136,7 +136,7 @@ public class Registry implements ActionListener {
 		regBtn = new JButton("注册");
 
 		regBtn.addActionListener(this.loginListener);
-		txtRPass.addKeyListener(new KeyListener() {
+		txtRPass.addKeyListener(new KeyListener() {//键盘监听器
 			public void keyPressed(KeyEvent arg0) {
 				int key = arg0.getKeyCode();
 				if (key == '\n') {
@@ -178,7 +178,7 @@ public class Registry implements ActionListener {
 		return null;
 	}
 
-	public void actionPerformed(ActionEvent e) {
+	public void actionPerformed(ActionEvent e) {//界面监听器
 		if (e.getSource() == regBtn) {
 
 		}
