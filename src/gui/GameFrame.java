@@ -64,10 +64,6 @@ public class GameFrame extends javax.swing.JFrame {
 
 	public static void setEnterMsg(UserEnterGameMsg enterMsg) {
 		GameFrame.enterMsg = enterMsg;
-		String Pname=GameFrame.enterMsg.getUser().getNickName();
-		getName.setText(Pname);
-		String Pcount=String.valueOf(GameFrame.enterMsg.getUser().getScore());
-		getcount.setText(Pcount);
 	}
 
 	public static RestButton getRestMsg() {
@@ -342,7 +338,30 @@ public class GameFrame extends javax.swing.JFrame {
 				String sendmsg = input.getText();
 				Object[] send = new Object[] {GameFrame.this.user,sendmsg};
 				GameFrame.this.connectClient.sendMsg(new ChatMsg(send));
+				
 			}
+		});
+		input.addKeyListener(new KeyListener() {
+			public void keyPressed(KeyEvent arg0) {
+				int key = arg0.getKeyCode();
+				if (key == '\n') {
+					String sendmsg = input.getText();
+					Object[] send = new Object[] {GameFrame.this.user,sendmsg};
+					GameFrame.this.connectClient.sendMsg(new ChatMsg(send));
+				}
+			}
+
+			@Override
+			public void keyTyped(KeyEvent e) {
+
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
 		});
 
 		jLabel5.setText("拾得道具");
