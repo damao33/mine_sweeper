@@ -41,13 +41,16 @@ public class GameFrame extends javax.swing.JFrame {
 		return connectClient;
 	}
 
-	public static void setLoginMsg(UserLoginMsg loginMsg) {
+	//public static void setLoginMsg(UserLoginMsg loginMsg) {
+	
+	/*public static void setLoginMsg(UserLoginMsg loginMsg) {
+>>>>>>> branch 'master' of https://gitee.com/damao33/mine_sweeper.git
 		GameFrame.loginMsg = loginMsg;
 //		String Pname=GameFrame.loginMsg.getUser().getNickName();
 //		getName.setText(Pname);
 //		String Pcount=String.valueOf(GameFrame.loginMsg.getUser().getScore());
 //		getcount.setText(Pcount);
-	}
+	}*/
 
 	public void setBackMsg(UserBackToRoomMsg backMsg) {
 		this.backMsg = backMsg;
@@ -59,25 +62,28 @@ public class GameFrame extends javax.swing.JFrame {
 
 	public static void setEnterMsg(UserEnterGameMsg enterMsg) {
 		GameFrame.enterMsg = enterMsg;
-		String Pname = GameFrame.enterMsg.getUser().getNickName();
+		String Pname=GameFrame.enterMsg.getUser().getNickName();
 		getName.setText(Pname);
-		String Pcount = String.valueOf(GameFrame.enterMsg.getUser().getScore());
+		String Pcount=String.valueOf(GameFrame.enterMsg.getUser().getScore());
 		getcount.setText(Pcount);
 	}
 
-	public static void setMineButton(MineButton[][] o) {
-		GameFrame.mineButton = o;
+	public static RestButton getRestMsg() {
+		return restMsg;
 	}
 
-	public static MineButton[][] getMineButton() {
-		return mineButton;
+	public static void setRestMsg(RestButton restMsg) {
+		GameFrame.restMsg = restMsg;
 	}
 
 	public static void setChatMsg(ChatMsg chatMsg) {
 		GameFrame.chatMsg = chatMsg;
-		String Message = GameFrame.chatMsg.toString();
-		message.append(Message + "\n");
+		String Message=GameFrame.chatMsg.toString();
+		message.append(Message+"\n");
+		input.setText(null);
 	}
+
+
 
 	/**
 	 * This method is called from within the constructor to initialize the form.
@@ -603,7 +609,7 @@ public class GameFrame extends javax.swing.JFrame {
 	private javax.swing.JPanel Name;
 	private javax.swing.JPanel Count;
 	private javax.swing.JButton exit;
-	private javax.swing.JTextField input;
+	private static javax.swing.JTextField input;
 	private javax.swing.JLabel jLabel1;
 	private javax.swing.JLabel jLabel2;
 	private javax.swing.JLabel jLabel3;
@@ -635,9 +641,8 @@ public class GameFrame extends javax.swing.JFrame {
 	private BombJPanel bombJPanel0;
 	private User user = null;
 	private ConnectClient connectClient = null;
-	private static UserLoginMsg loginMsg = null;
 	private UserBackToRoomMsg backMsg = null;
-	private static MineButton[][] mineButton = null;
+	private static RestButton restMsg = null;
 	private static UserEnterGameMsg enterMsg = null;
 	private static ChatMsg chatMsg = null;
 	private static int hasExpendNum = 0;

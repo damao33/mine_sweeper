@@ -169,6 +169,13 @@ public class Registry implements ActionListener {
 		mainJFrame.setSize(400, 400);
 		mainJFrame.setVisible(true);
 		mainJFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		mainJFrame.setLocationRelativeTo(getOwner()); // 打开后居中
+
+	}
+
+	private Component getOwner() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	public void actionPerformed(ActionEvent e) {
