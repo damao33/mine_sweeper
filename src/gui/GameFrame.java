@@ -82,6 +82,7 @@ public class GameFrame extends javax.swing.JFrame {
 		GameFrame.chatMsg = chatMsg;
 		String Message=GameFrame.chatMsg.toString();
 		message.append(Message+"\n");
+		input.setText(null);
 	}
 
 	/**
@@ -618,7 +619,7 @@ public class GameFrame extends javax.swing.JFrame {
 	private javax.swing.JPanel Name;
 	private javax.swing.JPanel Count;
 	private javax.swing.JButton exit;
-	private javax.swing.JTextField input;
+	private static javax.swing.JTextField input;
 	private javax.swing.JLabel jLabel1;
 	private javax.swing.JLabel jLabel2;
 	private javax.swing.JLabel jLabel3;

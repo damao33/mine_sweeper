@@ -31,7 +31,11 @@ public class Login implements ActionListener {
 			JOptionPane.showMessageDialog(null, "密码错误");
 			txtPass.setText(null);// 密码错误清空密码
 			System.out.println("登陆失败");
-		} else if (loginState == 0) {
+		}else if(loginState == -2) {
+			JOptionPane.showMessageDialog(null, "该用户已在线");
+			txtName.setText(null);// 清空用户名
+			txtPass.setText(null);// 清空密码
+		}else if (loginState == 0) {
 			JOptionPane.showMessageDialog(null, "不存在该账号");
 			txtName.setText(null);// 清空用户名
 			txtPass.setText(null);// 清空密码
@@ -151,6 +155,11 @@ public class Login implements ActionListener {
 		mainJFrame.setSize(350, 350);
 		mainJFrame.setVisible(true);
 		mainJFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+
+	private Component getOwner() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	public void actionPerformed(ActionEvent e) {
