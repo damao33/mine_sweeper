@@ -3,6 +3,9 @@ package connection;
 import user.User;
 
 import java.sql.*;
+
+import javax.swing.JOptionPane;
+
 import msg.*;
 
 public class UserDaoJdbcImpl implements UserDao
@@ -186,4 +189,50 @@ public class UserDaoJdbcImpl implements UserDao
 	public static ConnectClient getConnectClient() {
 		return connectClient;
 	}	
+	public static void writeScore(User user,int score)
+	{
+		Connection con = null;
+    	PreparedStatement pStatement = null;
+    	try
+    	{
+    		con = ConnectionManager.getConnection();
+        	String sql = "update userinfo set score = ? where acount = ?";
+        	pStatement = con.prepareStatement(sql);
+            pStatement.setInt(1, score);
+            pStatement.setString(2, user.getAcount());
+            pStatement.executeUpdate();
+            JOptionPane.showMessageDialog(null, "积分保存成功");
+    	}catch(Exception e)
+    	{
+    		e.printStackTrace();
+    	}finally {
+    		ConnectionManager.releaseAll(null, pStatement, con);
+		}
+	}
+	public static int readScore(User user)
+	{
+		int score = 0;
+		Connection con = null;
+    	PreparedStatement pStatement = null;
+    	ResultSet resultSet = null;
+    	try
+    	{
+    		con = ConnectionManager.getConnection();
+        	String sql = "select * from userinfo where acount = ?";
+        	pStatement = con.prepareStatement(sql);
+            pStatement.setString(1, user.getAcount());
+            resultSet = pStatement.executeQuery();
+            if(resultSet.next())
+			{
+				score = resultSet.getInt("score");
+				return score;
+			}	
+    	}catch(Exception e)
+    	{
+    		e.printStackTrace();
+    	}finally {
+    		ConnectionManager.releaseAll(resultSet, pStatement, con);
+		}
+    	return score;
+	}
 }
