@@ -129,6 +129,21 @@ public class GameFrame extends javax.swing.JFrame {
 		GameFrame.restMsg = restMsg;
 		@SuppressWarnings("unused")
 		int UserExpendNum=GameFrame.restMsg.getExpand();
+		User user = restMsg.getUser();
+		if(user.getNickName().equals(getName1.getText()))
+		{
+			String num1=String.valueOf(restMsg.getExpand());
+			getNum1.setText(num1);
+		}else if(user.getNickName().equals(getName2.getText()))
+		{
+			String num2=String.valueOf(restMsg.getExpand());
+			getNum2.setText(num2);
+			
+		}else if(user.getNickName().equals(getName3.getText()))
+		{
+			String num3=String.valueOf(restMsg.getExpand());
+			getNum3.setText(num3);
+		}
 		
 	}
 
@@ -154,6 +169,7 @@ public class GameFrame extends javax.swing.JFrame {
 		String num1=String.valueOf(restMsg.getExpand());
 		getNum.setText(num1);
 	}
+
 	
 
 	public static int getIsRoom() {
@@ -178,10 +194,16 @@ public class GameFrame extends javax.swing.JFrame {
 		jLabel1 = new javax.swing.JLabel();
 		player1 = new javax.swing.JPanel();
 		jLabel2 = new javax.swing.JLabel();
+		jLabel12 = new javax.swing.JLabel();
+		getNum3 = new javax.swing.JLabel();
 		jPanel3 = new javax.swing.JPanel();
 		player2 = new javax.swing.JPanel();
 		jLabel3 = new javax.swing.JLabel();
+		jLabel8 = new javax.swing.JLabel();
+		getNum1 = new javax.swing.JLabel();
 		jPanel1 = new javax.swing.JPanel();
+		jLabel10 = new javax.swing.JLabel();
+		getNum2 = new javax.swing.JLabel();
 		player3 = new javax.swing.JPanel();
 		jLabel4 = new javax.swing.JLabel();
 		jPanel2 = new javax.swing.JPanel();
@@ -249,7 +271,7 @@ public class GameFrame extends javax.swing.JFrame {
 				.addComponent(getName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE,
 						33, Short.MAX_VALUE));
 
-		getcount.setText("100");
+		getcount.setText("0");
 
 		javax.swing.GroupLayout CountLayout = new javax.swing.GroupLayout(Count);
 		Count.setLayout(CountLayout);
@@ -303,15 +325,32 @@ public class GameFrame extends javax.swing.JFrame {
 		jLabel2.setText("玩家1");
 
 		jPanel3.setBackground(new java.awt.Color(204, 255, 255));
+		
+		jLabel8.setFont(new java.awt.Font("宋体", 0, 20)); // NOI18N
+        jLabel8.setText("展开");
+        
+        getNum1.setFont(new java.awt.Font("宋体", 0, 20)); // NOI18N
+        getNum1.setText("0");
 
-		javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-		jPanel3.setLayout(jPanel3Layout);
-
-		jPanel3Layout.setHorizontalGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addGap(0, 140, Short.MAX_VALUE));
-		jPanel3Layout.setVerticalGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addGap(0, 0, Short.MAX_VALUE));
-
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(getNum1, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(getNum1))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 		javax.swing.GroupLayout playerLayout = new javax.swing.GroupLayout(player);
         player.setLayout(playerLayout);
         playerLayout.setHorizontalGroup(
@@ -370,13 +409,32 @@ public class GameFrame extends javax.swing.JFrame {
 		jLabel3.setText("玩家2");
 
 		jPanel1.setBackground(new java.awt.Color(204, 255, 255));
+		
+		jLabel10.setFont(new java.awt.Font("宋体", 0, 20)); // NOI18N
+        jLabel10.setText("展开");
+        
+        getNum2.setFont(new java.awt.Font("宋体", 0, 20)); // NOI18N
+        getNum2.setText("0");
 
-		javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-		jPanel1.setLayout(jPanel1Layout);
-		jPanel1Layout.setHorizontalGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addGap(0, 140, Short.MAX_VALUE));
-		jPanel1Layout.setVerticalGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addGap(0, 0, Short.MAX_VALUE));
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jLabel10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(getNum2, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(getNum2))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
 		javax.swing.GroupLayout player2Layout = new javax.swing.GroupLayout(player2);
         player2.setLayout(player2Layout);
@@ -435,13 +493,33 @@ public class GameFrame extends javax.swing.JFrame {
 		jLabel4.setText("玩家3");
 
 		jPanel2.setBackground(new java.awt.Color(204, 255, 255));
+		
+		jLabel12.setFont(new java.awt.Font("宋体", 0, 20)); // NOI18N
+        jLabel12.setText("展开");
+        
+        getNum3.setFont(new java.awt.Font("宋体", 0, 20)); // NOI18N
+        getNum3.setText("0");
 
-		javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-		jPanel2.setLayout(jPanel2Layout);
-		jPanel2Layout.setHorizontalGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addGap(0, 140, Short.MAX_VALUE));
-		jPanel2Layout.setVerticalGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addGap(0, 0, Short.MAX_VALUE));
+        
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jLabel12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(getNum3, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(getNum3))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
 		javax.swing.GroupLayout player3Layout = new javax.swing.GroupLayout(player3);
         player3.setLayout(player3Layout);
@@ -821,6 +899,8 @@ public class GameFrame extends javax.swing.JFrame {
 	private javax.swing.JButton exit;
 	private static javax.swing.JTextField input;
 	private javax.swing.JLabel jLabel1;
+	private javax.swing.JLabel jLabel10;
+	private javax.swing.JLabel jLabel12;
 	private javax.swing.JLabel jLabel2;
 	private javax.swing.JLabel jLabel3;
 	private javax.swing.JLabel jLabel4;
@@ -847,6 +927,9 @@ public class GameFrame extends javax.swing.JFrame {
 	private static javax.swing.JLabel getName2;
 	private static javax.swing.JLabel getName3;
 	private javax.swing.JLabel getNum;
+	private static javax.swing.JLabel getNum1;
+	private static javax.swing.JLabel getNum2;
+	private static javax.swing.JLabel getNum3;
 	private static javax.swing.JLabel getScore1;
 	private static javax.swing.JLabel getScore2;
 	 private static javax.swing.JLabel getScore3;
@@ -858,6 +941,7 @@ public class GameFrame extends javax.swing.JFrame {
 	private javax.swing.JPanel prop2;
 	private javax.swing.JPanel prop3;
 	private javax.swing.JPanel prop4;
+	private javax.swing.JLabel jLabel8;
 	private javax.swing.JButton ready;
 	private javax.swing.JButton send;
 	private javax.swing.JPanel time;

@@ -113,6 +113,7 @@ public class User implements Serializable
 		} else if (!nickName.equals(other.nickName))
 			return false;
 		return true;
-	}	
+	}
+
 	
 }
