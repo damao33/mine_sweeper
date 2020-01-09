@@ -281,7 +281,7 @@ public class Listener implements MouseListener {
 					}
 
 				}
-
+				
 			}
 
 			// mainFrame.getTimer().stop();
@@ -291,9 +291,8 @@ public class Listener implements MouseListener {
 
 				}
 			}
-
+			JOptionPane.showMessageDialog(null, "胜利");
 		}
-		JOptionPane.showMessageDialog(null, "胜利");
 	}
 
 }
