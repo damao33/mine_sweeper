@@ -150,6 +150,7 @@ public class GameFrame extends javax.swing.JFrame {
 		playername1 = new javax.swing.JLabel();
 		getName1 = new javax.swing.JLabel();
 		getName2 = new javax.swing.JLabel();
+		playername2 = new javax.swing.JLabel();
 		playercount2 = new javax.swing.JLabel();
 		playercount1 = new javax.swing.JLabel();
 		getScore1 = new javax.swing.JLabel();
