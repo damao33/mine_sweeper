@@ -43,16 +43,16 @@ public class GameFrame extends javax.swing.JFrame {
 		return connectClient;
 	}
 
-	//public static void setLoginMsg(UserLoginMsg loginMsg) {
-	
-	/*public static void setLoginMsg(UserLoginMsg loginMsg) {
->>>>>>> branch 'master' of https://gitee.com/damao33/mine_sweeper.git
-		GameFrame.loginMsg = loginMsg;
-//		String Pname=GameFrame.loginMsg.getUser().getNickName();
-//		getName.setText(Pname);
-//		String Pcount=String.valueOf(GameFrame.loginMsg.getUser().getScore());
-//		getcount.setText(Pcount);
-	}*/
+	// public static void setLoginMsg(UserLoginMsg loginMsg) {
+
+	/*
+	 * public static void setLoginMsg(UserLoginMsg loginMsg) { >>>>>>> branch
+	 * 'master' of https://gitee.com/damao33/mine_sweeper.git GameFrame.loginMsg =
+	 * loginMsg; // String Pname=GameFrame.loginMsg.getUser().getNickName(); //
+	 * getName.setText(Pname); // String
+	 * Pcount=String.valueOf(GameFrame.loginMsg.getUser().getScore()); //
+	 * getcount.setText(Pcount); }
+	 */
 
 	public void setBackMsg(UserBackToRoomMsg backMsg) {
 		this.backMsg = backMsg;
@@ -65,13 +65,12 @@ public class GameFrame extends javax.swing.JFrame {
 	public static void setEnterMsg(UserEnterGameMsg enterMsg) {
 		GameFrame.enterMsg = enterMsg;
 		GameFrame.userSet.add(enterMsg.getUser());
-		for(User now:GameFrame.userSet)
-		{
+		for (User now : GameFrame.userSet) {
 			System.out.println(now);
 		}
-		String Pname=GameFrame.enterMsg.getUser().getNickName();
+		String Pname = GameFrame.enterMsg.getUser().getNickName();
 		getName.setText(Pname);
-		String Pcount=String.valueOf(GameFrame.enterMsg.getUser().getScore());
+		String Pcount = String.valueOf(GameFrame.enterMsg.getUser().getScore());
 		getcount.setText(Pcount);
 	}
 
@@ -81,18 +80,16 @@ public class GameFrame extends javax.swing.JFrame {
 
 	public static void setRestMsg(ExpandButton restMsg) {
 		GameFrame.restMsg = restMsg;
-		int UserExpendNum=GameFrame.restMsg.getRest();
-		
+		int UserExpendNum = GameFrame.restMsg.getRest();
+
 	}
 
 	public static void setChatMsg(ChatMsg chatMsg) {
 		GameFrame.chatMsg = chatMsg;
-		String Message=GameFrame.chatMsg.toString();
-		message.append(Message+"\n");
+		String Message = GameFrame.chatMsg.toString();
+		message.append(Message + "\n");
 		input.setText(null);
 	}
-
-
 
 	/**
 	 * This method is called from within the constructor to initialize the form.
@@ -342,7 +339,7 @@ public class GameFrame extends javax.swing.JFrame {
 				String sendmsg = input.getText();
 				Object[] send = new Object[] { GameFrame.this.user, sendmsg };
 				GameFrame.this.connectClient.sendMsg(new ChatMsg(send));
-				
+
 			}
 		});
 		input.addKeyListener(new KeyListener() {
@@ -350,7 +347,7 @@ public class GameFrame extends javax.swing.JFrame {
 				int key = arg0.getKeyCode();
 				if (key == '\n') {
 					String sendmsg = input.getText();
-					Object[] send = new Object[] {GameFrame.this.user,sendmsg};
+					Object[] send = new Object[] { GameFrame.this.user, sendmsg };
 					GameFrame.this.connectClient.sendMsg(new ChatMsg(send));
 				}
 			}
@@ -441,7 +438,7 @@ public class GameFrame extends javax.swing.JFrame {
 
 		javax.swing.GroupLayout count1Layout = new javax.swing.GroupLayout(count1);
 		count1.setLayout(count1Layout);
-		
+
 		count1Layout.setHorizontalGroup(count1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 				.addGap(0, 109, Short.MAX_VALUE));
 		count1Layout.setVerticalGroup(count1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -680,13 +677,14 @@ public class GameFrame extends javax.swing.JFrame {
 	private static ChatMsg chatMsg = null;
 	private static int hasExpendNum = 0;
 	private static Set<User> userSet = new HashSet<>();
+
 	public static int getHasExpendNum() {
 		return hasExpendNum;
 	}
 
 	public void setHasExpendNum(int hasExpendNum) {
 		GameFrame.hasExpendNum = hasExpendNum;
-		Object[] msg = new Object[]{this.user,hasExpendNum};
+		Object[] msg = new Object[] { this.user, hasExpendNum };
 		ExpandButton restMsg = new ExpandButton(msg);
 		GameFrame.this.connectClient.sendMsg(restMsg);
 	}
