@@ -4,6 +4,10 @@ import user.User;
 
 public class UserEnterGameMsg extends Msg
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public User getUser()
 	{
 		User user = null;

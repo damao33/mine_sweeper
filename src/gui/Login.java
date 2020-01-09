@@ -157,11 +157,6 @@ public class Login implements ActionListener {
 		mainJFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
-	private Component getOwner() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == login1) {
 

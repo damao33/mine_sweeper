@@ -3,10 +3,8 @@ package connection;
 import java.io.*;
 import java.net.*;
 
-import gameRule.MineButton;
 import gui.*;
 import msg.*;
-import user.User;
 
 public class ConnectClient implements Runnable
 {

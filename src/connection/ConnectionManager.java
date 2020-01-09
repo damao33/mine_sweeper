@@ -5,7 +5,7 @@ import java.sql.*;
 
 public class ConnectionManager {
 	private static final String URL = "jdbc:mysql://49.235.47.150:3306/user?serverTimezone=GMT%2B8&useSSL=false";
-	private static final String driverName = "com.mysql.cj.jdbc.Driver";
+	//private static final String driverName = "com.mysql.cj.jdbc.Driver";
 	private static final String userName = "root";// root
 	private static final String password = "123456";// 123456
 	private static final String ServerIP= "49.235.47.150";

@@ -4,6 +4,10 @@ import user.User;
 
 public class ChatMsg extends Msg
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public ChatMsg(Object msg)
 	{
 		this.setMsg(msg);
