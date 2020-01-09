@@ -74,6 +74,8 @@ public class GameFrame extends javax.swing.JFrame {
 
 	public static void setRestMsg(RestButton restMsg) {
 		GameFrame.restMsg = restMsg;
+		int UserExpendNum=GameFrame.restMsg.getRest();
+		
 	}
 
 	public static void setChatMsg(ChatMsg chatMsg) {
@@ -403,12 +405,13 @@ public class GameFrame extends javax.swing.JFrame {
 		});
 
 		jLabel6.setFont(new java.awt.Font("宋体", 0, 20)); // NOI18N
-		jLabel6.setText("地雷数");
+		jLabel6.setText("展开");
 
 		count1.setBackground(new java.awt.Color(204, 204, 204));
 
 		javax.swing.GroupLayout count1Layout = new javax.swing.GroupLayout(count1);
 		count1.setLayout(count1Layout);
+		
 		count1Layout.setHorizontalGroup(count1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 				.addGap(0, 109, Short.MAX_VALUE));
 		count1Layout.setVerticalGroup(count1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
