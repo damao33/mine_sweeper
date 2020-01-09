@@ -268,9 +268,7 @@ public class Listener implements MouseListener {
 				if (mineButton[i][j].isExpendTag()) {
 					expendCount++;
 				}
-
 			}
-
 		}
 		if (needCount == expendCount) {
 			for (int i = 0; i < mineButton.length; i++) {
