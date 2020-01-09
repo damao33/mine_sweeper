@@ -10,10 +10,22 @@ import tool.StaticTool;
 public class Listener implements MouseListener {
 	MineButton[][] mineButton;
 	private boolean isDoublePress = false;
+	private boolean isStart = false;
+	private GameFrame gameFrame;
+	private static int expendCount=0;
 
-	public Listener(MineButton[][] buttons) {
+	public static int getExpendCount() {
+		return expendCount;
+	}
+
+	public static void setExpendCount(int expendCount) {
+		Listener.expendCount = expendCount;
+	}
+
+	public Listener(MineButton[][] buttons,GameFrame gameFrame) {
 		super();
 		this.mineButton = buttons;
+		this.gameFrame = gameFrame;
 	}
 
 	@Override
@@ -95,10 +107,10 @@ public class Listener implements MouseListener {
 			}
 
 		} else if (e.getModifiers() == InputEvent.BUTTON1_MASK && mineButton.isFlagTag() == false) {
-			if (StaticTool.isStart == false) {
+			if (this.isStart == false) {
 				LayBomb.lay(this.mineButton, row, col);
 
-				StaticTool.isStart = true;
+				this.isStart = true;
 
 			}
 
@@ -145,19 +157,19 @@ public class Listener implements MouseListener {
 
 	}
 
+	
 	private void expand(int x, int y) {
 
 		int count = mineButton[x][y].getCounAround();
 
 		if (mineButton[x][y].isExpendTag() == false && mineButton[x][y].isFlagTag() == false) {
-
+			
 			if (count == 0) {
 				mineButton[x][y].setIcon(StaticTool.num[count]);
 				mineButton[x][y].setExpendTag(true);
 				for (int i = Math.max(0, x - 1); i <= Math.min(mineButton.length - 1, x + 1); i++) {
 					for (int j = Math.max(0, y - 1); j <= Math.min(mineButton[x].length - 1, y + 1); j++) {
 						expand(i, j);
-
 					}
 
 				}
@@ -168,9 +180,10 @@ public class Listener implements MouseListener {
 				mineButton[x][y].setExpendTag(true);
 
 			}
-
+			expendCount++;
+			this.gameFrame.setHasExpendNum(expendCount);
 		}
-
+		System.out.println(expendCount);
 	}
 
 	private void backIcon(int i, int j) {
@@ -182,7 +195,7 @@ public class Listener implements MouseListener {
 						mineButton[x][y].setIcon(StaticTool.askIcon);
 					} else {
 						mineButton[x][y].setIcon(StaticTool.iconBlank);
-
+						mineButton[x][y].setExpendTag(true);
 					}
 				}
 			}

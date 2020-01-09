@@ -6,17 +6,12 @@ package gui;
  * and open the template in the editor.
  */
 
-
-import java.awt.BorderLayout;
-import java.util.List;
-import java.awt.Toolkit;
+import java.awt.GridLayout;
 /**
  *
  * @author 12892
  */
 import java.awt.event.*;
-import java.util.ArrayList;
-
 import connection.*;
 import gameRule.*;
 import msg.*;
@@ -41,12 +36,15 @@ public class GameFrame extends javax.swing.JFrame {
 	public User getUser() {
 		return user;
 	}
-	
+
 	public ConnectClient getConnectClient() {
 		return connectClient;
 	}
+
+	//public static void setLoginMsg(UserLoginMsg loginMsg) {
 	
 	/*public static void setLoginMsg(UserLoginMsg loginMsg) {
+>>>>>>> branch 'master' of https://gitee.com/damao33/mine_sweeper.git
 		GameFrame.loginMsg = loginMsg;
 //		String Pname=GameFrame.loginMsg.getUser().getNickName();
 //		getName.setText(Pname);
@@ -56,7 +54,7 @@ public class GameFrame extends javax.swing.JFrame {
 
 	public void setBackMsg(UserBackToRoomMsg backMsg) {
 		this.backMsg = backMsg;
-		
+
 	}
 //	public void setEnterMsg(UserEnterGameMsg enterMsg) {
 //		GameFrame.enterMsg = enterMsg;
@@ -66,11 +64,11 @@ public class GameFrame extends javax.swing.JFrame {
 		GameFrame.enterMsg = enterMsg;
 	}
 
-	public static RestButton getRestMsg() {
+	public static ExpandButton getRestMsg() {
 		return restMsg;
 	}
 
-	public static void setRestMsg(RestButton restMsg) {
+	public static void setRestMsg(ExpandButton restMsg) {
 		GameFrame.restMsg = restMsg;
 	}
 
@@ -80,6 +78,8 @@ public class GameFrame extends javax.swing.JFrame {
 		message.append(Message+"\n");
 		input.setText(null);
 	}
+
+
 
 	/**
 	 * This method is called from within the constructor to initialize the form.
@@ -91,16 +91,13 @@ public class GameFrame extends javax.swing.JFrame {
 	private void initComponents() {
 		maingame = new javax.swing.JPanel();
 		bombJPanel0 = new BombJPanel(this);
-		bombJPanel1 = new BombJPanel(this);
-		bombJPanel2 = new BombJPanel(this);
-		bombJPanel3 = new BombJPanel(this);
 		player = new javax.swing.JPanel();
 		playername = new javax.swing.JLabel();
 		Name = new javax.swing.JPanel();
-	    getName = new javax.swing.JLabel();
+		getName = new javax.swing.JLabel();
 		playercount = new javax.swing.JLabel();
 		Count = new javax.swing.JPanel();
-        getcount = new javax.swing.JLabel();
+		getcount = new javax.swing.JLabel();
 		jLabel1 = new javax.swing.JLabel();
 		player1 = new javax.swing.JPanel();
 		jLabel2 = new javax.swing.JLabel();
@@ -130,99 +127,93 @@ public class GameFrame extends javax.swing.JFrame {
 		setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
 		maingame.setBackground(new java.awt.Color(204, 204, 204));
-
-		javax.swing.GroupLayout maingameLayout = new javax.swing.GroupLayout(maingame);
-		maingame.setLayout(new BorderLayout());
+		maingame.setLayout(new GridLayout());
 		maingame.add(bombJPanel0);
-		maingameLayout.setHorizontalGroup(maingameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addGap(0, 0, Short.MAX_VALUE));
-		maingameLayout.setVerticalGroup(maingameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addGap(0, 504, Short.MAX_VALUE));
+//		javax.swing.GroupLayout maingameLayout = new javax.swing.GroupLayout(maingame);
+//		maingameLayout.setHorizontalGroup(maingameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+//				.addGap(0, 0, Short.MAX_VALUE));
+//		maingameLayout.setVerticalGroup(maingameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+//				.addGap(0, 504, Short.MAX_VALUE));
 
 		jLabel1.setFont(new java.awt.Font("宋体", 0, 20)); // NOI18N
 		jLabel1.setText("个人信息");
-		
+
 		playername.setFont(new java.awt.Font("宋体", 0, 18)); // NOI18N
-	    playername.setText("昵称：");
-	    
-	    playercount.setFont(new java.awt.Font("宋体", 0, 18)); // NOI18N
-        playercount.setText("积分：");
+		playername.setText("昵称：");
 
-        Count.setBackground(new java.awt.Color(153, 153, 153));
-        
-        //getName.setText("用户名");
+		playercount.setFont(new java.awt.Font("宋体", 0, 18)); // NOI18N
+		playercount.setText("积分：");
 
-        javax.swing.GroupLayout NameLayout = new javax.swing.GroupLayout(Name);
-        Name.setLayout(NameLayout);
-        NameLayout.setHorizontalGroup(
-            NameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, NameLayout.createSequentialGroup()
-                .addContainerGap(25, Short.MAX_VALUE)
-                .addComponent(getName, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        NameLayout.setVerticalGroup(
-            NameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(getName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
-        );
+		Count.setBackground(new java.awt.Color(153, 153, 153));
 
-        getcount.setText("100");
+		// getName.setText("用户名");
 
-        javax.swing.GroupLayout CountLayout = new javax.swing.GroupLayout(Count);
-        Count.setLayout(CountLayout);
-        CountLayout.setHorizontalGroup(
-            CountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CountLayout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(getcount, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(34, Short.MAX_VALUE))
-        );
-        CountLayout.setVerticalGroup(
-            CountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(getcount, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
-        );
+		javax.swing.GroupLayout NameLayout = new javax.swing.GroupLayout(Name);
+		Name.setLayout(NameLayout);
+		NameLayout.setHorizontalGroup(NameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
+						NameLayout.createSequentialGroup().addContainerGap(25, Short.MAX_VALUE).addComponent(getName,
+								javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+								.addContainerGap()));
+		NameLayout.setVerticalGroup(NameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addComponent(getName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE,
+						33, Short.MAX_VALUE));
 
-        javax.swing.GroupLayout playerLayout = new javax.swing.GroupLayout(player);
-        player.setLayout(playerLayout);
-        playerLayout.setHorizontalGroup(
-            playerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(playerLayout.createSequentialGroup()
-                .addGroup(playerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addGroup(playerLayout.createSequentialGroup()
-                        .addGroup(playerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(playerLayout.createSequentialGroup()
-                                .addGap(36, 36, 36)
-                                .addComponent(playercount))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, playerLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(playername)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(playerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(Name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Count, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        playerLayout.setVerticalGroup(
-                playerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(playerLayout.createSequentialGroup()
-                    .addGroup(playerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(playerLayout.createSequentialGroup()
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(playername)
-                            .addGap(17, 17, 17))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, playerLayout.createSequentialGroup()
-                            .addComponent(Name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                    .addGroup(playerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(playerLayout.createSequentialGroup()
-                            .addComponent(playercount)
-                            .addGap(0, 0, Short.MAX_VALUE))
-                        .addGroup(playerLayout.createSequentialGroup()
-                            .addComponent(Count, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addContainerGap())))
-            );
+		getcount.setText("100");
+
+		javax.swing.GroupLayout CountLayout = new javax.swing.GroupLayout(Count);
+		Count.setLayout(CountLayout);
+		CountLayout.setHorizontalGroup(CountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addGroup(CountLayout
+						.createSequentialGroup().addGap(26, 26, 26).addComponent(getcount,
+								javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+						.addContainerGap(34, Short.MAX_VALUE)));
+		CountLayout.setVerticalGroup(CountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addComponent(getcount, javax.swing.GroupLayout.Alignment.TRAILING,
+						javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE));
+
+		javax.swing.GroupLayout playerLayout = new javax.swing.GroupLayout(player);
+		player.setLayout(playerLayout);
+		playerLayout.setHorizontalGroup(playerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addGroup(playerLayout.createSequentialGroup().addGroup(playerLayout
+						.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(jLabel1)
+						.addGroup(playerLayout.createSequentialGroup()
+								.addGroup(playerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+										.addGroup(playerLayout.createSequentialGroup().addGap(36, 36, 36)
+												.addComponent(playercount))
+										.addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
+												playerLayout.createSequentialGroup().addContainerGap()
+														.addComponent(playername)))
+								.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+								.addGroup(playerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+										.addComponent(Name, javax.swing.GroupLayout.PREFERRED_SIZE,
+												javax.swing.GroupLayout.DEFAULT_SIZE,
+												javax.swing.GroupLayout.PREFERRED_SIZE)
+										.addComponent(Count, javax.swing.GroupLayout.PREFERRED_SIZE,
+												javax.swing.GroupLayout.DEFAULT_SIZE,
+												javax.swing.GroupLayout.PREFERRED_SIZE))))
+						.addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
+		playerLayout.setVerticalGroup(playerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addGroup(playerLayout.createSequentialGroup()
+						.addGroup(playerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+								.addGroup(playerLayout.createSequentialGroup()
+										.addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 39,
+												javax.swing.GroupLayout.PREFERRED_SIZE)
+										.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+										.addComponent(playername).addGap(17, 17, 17))
+								.addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
+										playerLayout.createSequentialGroup()
+												.addComponent(Name, javax.swing.GroupLayout.PREFERRED_SIZE,
+														javax.swing.GroupLayout.DEFAULT_SIZE,
+														javax.swing.GroupLayout.PREFERRED_SIZE)
+												.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+						.addGroup(playerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+								.addGroup(playerLayout.createSequentialGroup().addComponent(playercount).addGap(0, 0,
+										Short.MAX_VALUE))
+								.addGroup(playerLayout.createSequentialGroup()
+										.addComponent(Count, javax.swing.GroupLayout.DEFAULT_SIZE,
+												javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+										.addContainerGap()))));
 
 		player1.setBackground(new java.awt.Color(153, 153, 153));
 
@@ -233,7 +224,7 @@ public class GameFrame extends javax.swing.JFrame {
 
 		javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
 		jPanel3.setLayout(jPanel3Layout);
-		
+
 		jPanel3Layout.setHorizontalGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 				.addGap(0, 140, Short.MAX_VALUE));
 		jPanel3Layout.setVerticalGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -323,7 +314,7 @@ public class GameFrame extends javax.swing.JFrame {
 
 		message.setColumns(20);
 		message.setRows(5);
-		//message.setText("12345");
+		// message.setText("12345");
 		jScrollPane2.setViewportView(message);
 
 		input.addActionListener(new java.awt.event.ActionListener() {
@@ -336,7 +327,7 @@ public class GameFrame extends javax.swing.JFrame {
 		send.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				String sendmsg = input.getText();
-				Object[] send = new Object[] {GameFrame.this.user,sendmsg};
+				Object[] send = new Object[] { GameFrame.this.user, sendmsg };
 				GameFrame.this.connectClient.sendMsg(new ChatMsg(send));
 				
 			}
@@ -404,19 +395,21 @@ public class GameFrame extends javax.swing.JFrame {
 
 		exit.setFont(new java.awt.Font("宋体", 0, 18)); // NOI18N
 		exit.setText("返回");
-        exit.addActionListener(new ActionListener() {
-			
+		exit.addActionListener(new ActionListener() {
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				/*ConnectionManager.releaseAll(null, null, GameFrame.this.getUser().getConn());
-				System.out.println(GameFrame.this.user.getNickName()+"退出成功");
-				GameFrame.this.connectClient.sendMsg(new ExitMsg(GameFrame.this.user));
-				GameFrame.this.setVisible(false);
-				System.exit(0);*/
+				/*
+				 * ConnectionManager.releaseAll(null, null, GameFrame.this.getUser().getConn());
+				 * System.out.println(GameFrame.this.user.getNickName()+"退出成功");
+				 * GameFrame.this.connectClient.sendMsg(new ExitMsg(GameFrame.this.user));
+				 * GameFrame.this.setVisible(false); System.exit(0);
+				 */
 				StaticTool.isStart = false;
 				GameFrame.this.setVisible(false);
 				GameFrame.this.connectClient.sendMsg(GameFrame.this.backMsg);
-				new RoomFrame(user,UserDaoJdbcImpl.getConnectClient()).setVisible(true);				
+				new RoomFrame(user, UserDaoJdbcImpl.getConnectClient()).setVisible(true);
+				Listener.setExpendCount(0);
 			}
 		});
 
@@ -626,9 +619,6 @@ public class GameFrame extends javax.swing.JFrame {
 				GameFrame.this.setIconImage(StaticTool.imageIcon.getImage());
 				GameFrame.this.setTitle("多人扫雷对战");
 				GameFrame.this.setVisible(true);
-				int width = Toolkit.getDefaultToolkit().getScreenSize().width;
-				int height = Toolkit.getDefaultToolkit().getScreenSize().height;
-				GameFrame.this.setLocation(width / 2 - 600, height / 2 - 520);
 			}
 		});
 	}
@@ -657,9 +647,9 @@ public class GameFrame extends javax.swing.JFrame {
 	private javax.swing.JPanel player2;
 	private javax.swing.JPanel player3;
 	private javax.swing.JLabel playercount;
-    private javax.swing.JLabel playername;
-    private static javax.swing.JLabel getName;
-    private static javax.swing.JLabel getcount;
+	private javax.swing.JLabel playername;
+	private static javax.swing.JLabel getName;
+	private static javax.swing.JLabel getcount;
 	private javax.swing.JPanel prop1;
 	private javax.swing.JPanel prop2;
 	private javax.swing.JPanel prop3;
@@ -668,15 +658,25 @@ public class GameFrame extends javax.swing.JFrame {
 	private javax.swing.JButton send;
 	private javax.swing.JPanel time;
 	private BombJPanel bombJPanel0;
-	private BombJPanel bombJPanel1;
-	private BombJPanel bombJPanel2;
-	private BombJPanel bombJPanel3;
 	private User user = null;
 	private ConnectClient connectClient = null;
 	private UserBackToRoomMsg backMsg = null;
-	private static RestButton restMsg = null;
+	private static ExpandButton restMsg = null;
 	private static UserEnterGameMsg enterMsg = null;
 	private static ChatMsg chatMsg = null;
-	//private static List<String> msgList = new ArrayList<>();
+	private static int hasExpendNum = 0;
+
+	public static int getHasExpendNum() {
+		return hasExpendNum;
+	}
+
+	public void setHasExpendNum(int hasExpendNum) {
+		GameFrame.hasExpendNum = hasExpendNum;
+		Object[] msg = new Object[]{this.user,hasExpendNum};
+		ExpandButton restMsg = new ExpandButton(msg);
+		GameFrame.this.connectClient.sendMsg(restMsg);
+	}
+
+	// private static List<String> msgList = new ArrayList<>();
 	// End of variables declaration
 }

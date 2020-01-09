@@ -162,9 +162,9 @@ public class ConnectServer {
 							}else if(o instanceof ChatMsg)
 							{
 								this.sendToAll((ChatMsg)o);
-							}else if(o instanceof RestButton)
+							}else if(o instanceof ExpandButton)
 							{
-								this.sendToAll((RestButton)o);
+								this.sendToAll((ExpandButton)o);
 							}
 							System.out.println((Msg)o);
 							System.out.println(((Msg)o).getMsgType()+" has sent back to client");
