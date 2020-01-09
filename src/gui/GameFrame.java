@@ -651,8 +651,11 @@ public class GameFrame extends javax.swing.JFrame {
 		return hasExpendNum;
 	}
 
-	public static void setHasExpendNum(int hasExpendNum) {
+	public void setHasExpendNum(int hasExpendNum) {
 		GameFrame.hasExpendNum = hasExpendNum;
+		Object[] msg = new Object[]{this.user,hasExpendNum};
+		RestButton restMsg = new RestButton(msg);
+		GameFrame.this.connectClient.sendMsg(restMsg);
 	}
 
 	// private static List<String> msgList = new ArrayList<>();
