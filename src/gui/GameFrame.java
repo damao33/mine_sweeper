@@ -12,6 +12,8 @@ import java.awt.GridLayout;
  * @author 12892
  */
 import java.awt.event.*;
+import java.util.*;
+
 import connection.*;
 import gameRule.*;
 import msg.*;
@@ -62,6 +64,15 @@ public class GameFrame extends javax.swing.JFrame {
 
 	public static void setEnterMsg(UserEnterGameMsg enterMsg) {
 		GameFrame.enterMsg = enterMsg;
+		GameFrame.userSet.add(enterMsg.getUser());
+		for(User now:GameFrame.userSet)
+		{
+			System.out.println(now);
+		}
+		String Pname=GameFrame.enterMsg.getUser().getNickName();
+		getName.setText(Pname);
+		String Pcount=String.valueOf(GameFrame.enterMsg.getUser().getScore());
+		getcount.setText(Pcount);
 	}
 
 	public static ExpandButton getRestMsg() {
@@ -665,7 +676,7 @@ public class GameFrame extends javax.swing.JFrame {
 	private static UserEnterGameMsg enterMsg = null;
 	private static ChatMsg chatMsg = null;
 	private static int hasExpendNum = 0;
-
+	private static Set<User> userSet = new HashSet<>();
 	public static int getHasExpendNum() {
 		return hasExpendNum;
 	}
