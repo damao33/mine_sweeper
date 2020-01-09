@@ -135,6 +135,7 @@ public class GameFrame extends javax.swing.JFrame {
 		ready = new javax.swing.JButton();
 		jLabel6 = new javax.swing.JLabel();
 		count1 = new javax.swing.JPanel();
+		getNum = new javax.swing.JLabel();
 		jLabel7 = new javax.swing.JLabel();
 		time = new javax.swing.JPanel();
 
@@ -440,13 +441,23 @@ public class GameFrame extends javax.swing.JFrame {
 
 		count1.setBackground(new java.awt.Color(204, 204, 204));
 
-		javax.swing.GroupLayout count1Layout = new javax.swing.GroupLayout(count1);
-		count1.setLayout(count1Layout);
-		
-		count1Layout.setHorizontalGroup(count1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addGap(0, 109, Short.MAX_VALUE));
-		count1Layout.setVerticalGroup(count1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addGap(0, 26, Short.MAX_VALUE));
+		getNum.setFont(new java.awt.Font("宋体", 0, 18)); // NOI18N
+        getNum.setText("test1");
+
+        javax.swing.GroupLayout count1Layout = new javax.swing.GroupLayout(count1);
+        count1.setLayout(count1Layout);
+        count1Layout.setHorizontalGroup(
+            count1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(count1Layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(getNum)
+                .addContainerGap(35, Short.MAX_VALUE))
+        );
+        count1Layout.setVerticalGroup(
+            count1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(getNum, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+        );
+
 
 		jLabel7.setFont(new java.awt.Font("宋体", 0, 20)); // NOI18N
 		jLabel7.setText("时间");
@@ -664,6 +675,7 @@ public class GameFrame extends javax.swing.JFrame {
 	private javax.swing.JLabel playercount;
 	private javax.swing.JLabel playername;
 	private static javax.swing.JLabel getName;
+	private javax.swing.JLabel getNum;
 	private static javax.swing.JLabel getcount;
 	private javax.swing.JPanel prop1;
 	private javax.swing.JPanel prop2;
