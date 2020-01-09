@@ -100,7 +100,6 @@ public class GameFrame extends javax.swing.JFrame {
 			String score1=String.valueOf(enterMsg.getUser().getScore());
 			getName1.setText(name1);
 			getScore1.setText(score1);
-			
 		}
 		if(num==3) {
 			String name2=enterMsg.getUser().getNickName();
@@ -126,7 +125,7 @@ public class GameFrame extends javax.swing.JFrame {
 		return ExpandMsg;
 	}
 
-	public static void setRestMsg(ExpandMsg restMsg) {
+	public static void setExpendMsg(ExpandMsg restMsg) {
 		GameFrame.ExpandMsg = restMsg;
 		@SuppressWarnings("unused")
 		int UserExpendNum=GameFrame.ExpandMsg.getExpand();
@@ -159,11 +158,11 @@ public class GameFrame extends javax.swing.JFrame {
 		
 	}
 	public static int getHasExpendNum() {
-		return hasExpendNum;
+		return expendNum;
 	}
 
 	public void setHasExpendNum(int hasExpendNum) {
-		GameFrame.hasExpendNum = hasExpendNum;
+		GameFrame.expendNum = hasExpendNum;
 		Object[] msg = new Object[]{this.user,hasExpendNum};
 		ExpandMsg restMsg = new ExpandMsg(msg);
 		GameFrame.this.connectClient.sendMsg(restMsg);
@@ -954,7 +953,7 @@ public class GameFrame extends javax.swing.JFrame {
 	private static ExpandMsg ExpandMsg = null;
 	private static UserEnterGameMsg enterMsg = null;
 	private static ChatMsg chatMsg = null;
-	private static int hasExpendNum = 0;
+	private static int expendNum = 0;
 	private static Set<User> userSet = new HashSet<>();
 	private static int isRoom = 0;
 	private static WinMsg winMsg = null;

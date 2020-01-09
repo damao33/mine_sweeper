@@ -57,7 +57,7 @@ public class ConnectClient implements Runnable
 							GameFrame.setLoginMsg((UserLoginMsg)o);
 						}*/else if(o instanceof ExpandMsg)
 						{
-							GameFrame.setRestMsg((ExpandMsg)o);
+							GameFrame.setExpendMsg((ExpandMsg)o);
 						}else if(o instanceof ChatMsg)
 						{
 							GameFrame.setChatMsg((ChatMsg)o);
