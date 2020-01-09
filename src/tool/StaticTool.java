@@ -23,6 +23,7 @@ public class StaticTool {
 	public static ImageIcon errorBombIcon = new ImageIcon("./image/error.jpg");
 	public static ImageIcon blackBombIcon = new ImageIcon("./image/mine.jpg");
 	public static ImageIcon imageIcon = new ImageIcon("./image/icon.jpg");
+	public static ImageIcon headImage=new ImageIcon("./image/headImage");
 
 	static {
 		int width, height;
@@ -39,6 +40,7 @@ public class StaticTool {
 		askPressIcon = changeIcon(askPressIcon, width, height);
 		errorBombIcon = changeIcon(errorBombIcon, width, height);
 		blackBombIcon = changeIcon(blackBombIcon, width, height);
+		headImage= changeIcon(blackBombIcon, 40, 40);
 
 	}
 
