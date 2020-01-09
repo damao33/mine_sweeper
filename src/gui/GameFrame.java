@@ -249,7 +249,7 @@ public class GameFrame extends javax.swing.JFrame {
 				.addComponent(getName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE,
 						33, Short.MAX_VALUE));
 
-		getcount.setText("100");
+		getcount.setText("0");
 
 		javax.swing.GroupLayout CountLayout = new javax.swing.GroupLayout(Count);
 		Count.setLayout(CountLayout);
@@ -308,7 +308,7 @@ public class GameFrame extends javax.swing.JFrame {
         jLabel8.setText("展开");
         
         getNum1.setFont(new java.awt.Font("宋体", 0, 20)); // NOI18N
-        getNum1.setText("100");
+        getNum1.setText("0");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -392,7 +392,7 @@ public class GameFrame extends javax.swing.JFrame {
         jLabel10.setText("展开");
         
         getNum2.setFont(new java.awt.Font("宋体", 0, 20)); // NOI18N
-        getNum2.setText("100");
+        getNum2.setText("0");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -476,8 +476,9 @@ public class GameFrame extends javax.swing.JFrame {
         jLabel12.setText("展开");
         
         getNum3.setFont(new java.awt.Font("宋体", 0, 20)); // NOI18N
-        getNum3.setText("100");
+        getNum3.setText("0");
 
+        
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
