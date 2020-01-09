@@ -93,7 +93,7 @@ public class Registry implements ActionListener {
 		con.add(labTitle);
 		con.add(Box.createHorizontalStrut(30000));
 
-		labName = new JLabel("用户名:    ");
+		labName = new JLabel("账号:        ");
 		txtName = new JTextField();
 		txtName.setColumns(20);
 		con.add(labName);

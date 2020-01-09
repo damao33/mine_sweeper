@@ -26,7 +26,7 @@ public class ExpandButton extends Msg
 		if(msg[0] instanceof User)user = (User)msg[0];
 		return user;
 	}
-	public Integer getRest()
+	public Integer getExpand()
 	{
 		Integer rest = -1;
 		Object[] msg = (Object[])this.getMsg();
@@ -35,7 +35,7 @@ public class ExpandButton extends Msg
 	}
 	public String toString()
 	{
-		return this.getMsgType()+":"+this.getUser().getAcount()+" has expanded "+this.getRest();
+		return this.getMsgType()+":"+this.getUser().getAcount()+" has expanded "+this.getExpand();
 	}
 
 }

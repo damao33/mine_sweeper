@@ -69,7 +69,7 @@ public class Login implements ActionListener {
 		con.setLayout(new FlowLayout());
 		labTitle = new JLabel("<html><body><h1> 欢迎使用扫雷 \n <br> </h1> </body>  </html>");
 
-		labName = new JLabel("  用户名: ");
+		labName = new JLabel("     账号: ");
 		txtName = new JTextField();
 		txtName.setColumns(20);
 
@@ -97,7 +97,7 @@ public class Login implements ActionListener {
 		con.setLayout(new FlowLayout());
 		labTitle = new JLabel("<html><body><h1> 欢迎使用扫雷 \n <br> </h1> </body>  </html>");
 
-		labName = new JLabel("  用户名: ");
+		labName = new JLabel("     账号: ");
 		txtName = new JTextField();
 		txtName.setColumns(20);
 
