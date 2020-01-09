@@ -66,7 +66,7 @@ public class ConnectClient implements Runnable
 							GameFrame.setEnterMsg((UserEnterGameMsg)o);
 						}else if(o instanceof WinMsg)
 						{
-							//G
+							//GameFrame.set
 						}
 					}
 				}
