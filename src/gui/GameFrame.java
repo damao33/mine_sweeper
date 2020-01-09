@@ -72,6 +72,28 @@ public class GameFrame extends javax.swing.JFrame {
 //		{
 //			System.out.println(now);
 //		}
+		if(num==1) {
+			String name1=enterMsg.getUser().getNickName();
+			String score1=String.valueOf(enterMsg.getUser().getScore());
+			getName1.setText(name1);
+			getScore1.setText(score1);
+			
+		}
+		if(num==2) {
+			String name2=enterMsg.getUser().getNickName();
+			String score2=String.valueOf(enterMsg.getUser().getScore());
+			getName2.setText(name2);
+			getScore2.setText(score2);
+			
+		}
+		if(num==3) {
+			String name3=enterMsg.getUser().getNickName();
+			String score3=String.valueOf(enterMsg.getUser().getScore());
+			getName3.setText(name3);
+			getScore3.setText(score3);
+			
+		}
+		
 		String Pname=GameFrame.enterMsg.getUser().getNickName();
 		getName.setText(Pname);
 		String Pcount=String.valueOf(GameFrame.enterMsg.getUser().getScore());
@@ -789,13 +811,13 @@ public class GameFrame extends javax.swing.JFrame {
 	private javax.swing.JLabel playercount3;
 	private javax.swing.JLabel playername;
 	private static javax.swing.JLabel getName;
-	private javax.swing.JLabel getName1;
-	private javax.swing.JLabel getName2;
-	private javax.swing.JLabel getName3;
+	private static javax.swing.JLabel getName1;
+	private static javax.swing.JLabel getName2;
+	private static javax.swing.JLabel getName3;
 	private javax.swing.JLabel getNum;
-	private javax.swing.JLabel getScore1;
-	private javax.swing.JLabel getScore2;
-	 private javax.swing.JLabel getScore3;
+	private static javax.swing.JLabel getScore1;
+	private static javax.swing.JLabel getScore2;
+	 private static javax.swing.JLabel getScore3;
 	private static javax.swing.JLabel getcount;
 	private javax.swing.JLabel playername1;
 	private javax.swing.JLabel playername2;
