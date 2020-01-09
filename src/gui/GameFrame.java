@@ -79,6 +79,7 @@ public class GameFrame extends javax.swing.JFrame {
 	public void setBackMsg(UserBackToRoomMsg backMsg) {
 		this.backMsg = backMsg;
 		GameFrame.num--;
+		this.setIsRoom(0);
 		//GameFrame.userSet.remove(backMsg.getUser());
 	}
 //	public void setEnterMsg(UserEnterGameMsg enterMsg) {

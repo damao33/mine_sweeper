@@ -281,6 +281,8 @@ public class RoomFrame extends javax.swing.JFrame {
 				Object[] room2Msg = new Object[] {user,2};
 				GameFrame gameFrame = new GameFrame(RoomFrame.this.user,RoomFrame.this.connectClient);
 				gameFrame.setBackMsg(new UserBackToRoomMsg(room2Msg));	
+				gameFrame.setEnterMsg(new UserEnterGameMsg(room2Msg));
+				GameFrame.setIsRoom(1);
 				gameFrame.runGame();
 				RoomFrame.this.connectClient.sendMsg(new UserEnterGameMsg(room2Msg));
 				RoomFrame.this.setVisible(false);
@@ -336,6 +338,8 @@ public class RoomFrame extends javax.swing.JFrame {
 				Object[] room3Msg = new Object[] {user,3};
 				GameFrame gameFrame = new GameFrame(RoomFrame.this.user,RoomFrame.this.connectClient);
 				gameFrame.setBackMsg(new UserBackToRoomMsg(room3Msg));	
+				gameFrame.setEnterMsg(new UserEnterGameMsg(room3Msg));
+				GameFrame.setIsRoom(1);
 				gameFrame.runGame();
 				RoomFrame.this.connectClient.sendMsg(new UserEnterGameMsg(room3Msg));
 				RoomFrame.this.setVisible(false);
@@ -373,6 +377,8 @@ public class RoomFrame extends javax.swing.JFrame {
 				Object[] room4Msg = new Object[] {user,4};
 				GameFrame gameFrame = new GameFrame(RoomFrame.this.user,RoomFrame.this.connectClient);
 				gameFrame.setBackMsg(new UserBackToRoomMsg(room4Msg));	
+				gameFrame.setEnterMsg(new UserEnterGameMsg(room4Msg));
+				GameFrame.setIsRoom(1);
 				gameFrame.runGame();
 				RoomFrame.this.connectClient.sendMsg(new UserEnterGameMsg(room4Msg));
 				RoomFrame.this.setVisible(false);
