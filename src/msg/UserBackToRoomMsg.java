@@ -4,6 +4,10 @@ import user.User;
 
 public class UserBackToRoomMsg extends Msg
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public UserBackToRoomMsg(Object msg)
 	{
 		this.setMsg(msg);

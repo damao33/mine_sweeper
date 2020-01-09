@@ -4,7 +4,6 @@ import java.io.*;
 import java.net.*;
 import java.util.*;
 
-import gameRule.*;
 import msg.*;
 import user.User;
 
@@ -187,31 +186,31 @@ public class ConnectServer {
 			Msg msg = null;
 			if(msgType.equals("GameRoomMsg"))
 			{
-				Object[] gameRoomMsg = new Object[] {ConnectServer.this.getUserOnline(),ConnectServer.this.getRoom1Online(),
-						ConnectServer.this.getRoom2Online(),ConnectServer.this.getRoom3Online(),ConnectServer.this.getRoom4Online()
+				Object[] gameRoomMsg = new Object[] {ConnectServer.this.getUserOnline(),ConnectServer.getRoom1Online(),
+						ConnectServer.getRoom2Online(),ConnectServer.getRoom3Online(),ConnectServer.getRoom4Online()
 						,user};
 				msg = new GameRoomMsg(gameRoomMsg);
 			}
 			return msg;
 		}
-		private boolean sendMsg(Msg msg)
-		{
-			try
-			{	
-				OutputStream os = this.imcoming.getOutputStream();
-				ObjectOutputStream oos = new ObjectOutputStream(os);
-				oos.writeObject(msg);
-				oos.flush();		
-				System.out.println(msg.getMsgType()+"写入成功");
-				return true;
-			}
-			catch(Exception e)
-			{
-				e.printStackTrace();
-				System.out.println(msg.getMsgType()+"写入失败");
-				return false;
-			}
-		}
+//		private boolean sendMsg(Msg msg)
+//		{
+//			try
+//			{	
+//				OutputStream os = this.imcoming.getOutputStream();
+//				ObjectOutputStream oos = new ObjectOutputStream(os);
+//				oos.writeObject(msg);
+//				oos.flush();		
+//				System.out.println(msg.getMsgType()+"写入成功");
+//				return true;
+//			}
+//			catch(Exception e)
+//			{
+//				e.printStackTrace();
+//				System.out.println(msg.getMsgType()+"写入失败");
+//				return false;
+//			}
+//		}
 		public void sendToAll(Msg msg)
 		{
 			for(ConnectedUserHandler now:ConnectServer.userSet)

@@ -1,11 +1,14 @@
 package msg;
 
-import java.util.*;
 
 import user.User;
 
 public class GameRoomMsg extends Msg
 {	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public GameRoomMsg(Object msg)
 	{
 		this.setMsg(msg);

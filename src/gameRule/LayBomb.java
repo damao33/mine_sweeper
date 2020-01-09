@@ -14,7 +14,7 @@ public class LayBomb {
 			int y = random.nextInt(StaticTool.allcol);
 			if (button[x][y].isMineTag() == false && !(x == row && y == col)) {
 				button[x][y].setMineTag(true);
-				button[x][y].setCounAround(9);
+				//button[x][y].setCounAround(9);
 
 				count++;
 			}

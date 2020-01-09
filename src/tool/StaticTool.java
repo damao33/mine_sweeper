@@ -6,7 +6,7 @@ import javax.swing.ImageIcon;
 
 public class StaticTool {
 
-	public static int allcount = 60;
+	public static int allcount = 5;
 	public static int allcol = 20;
 	public static int allrow = 20;
 	public static int bombCount = allcount;
