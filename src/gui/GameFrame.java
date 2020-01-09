@@ -84,7 +84,7 @@ public class GameFrame extends javax.swing.JFrame {
 
 	public static void setRestMsg(ExpandButton restMsg) {
 		GameFrame.restMsg = restMsg;
-		int UserExpendNum=GameFrame.restMsg.getRest();
+		int UserExpendNum=GameFrame.restMsg.getExpand();
 		
 	}
 
@@ -453,7 +453,7 @@ public class GameFrame extends javax.swing.JFrame {
 		count1.setBackground(new java.awt.Color(204, 204, 204));
 
 		getNum.setFont(new java.awt.Font("宋体", 0, 18)); // NOI18N
-        getNum.setText("test1");
+        getNum.setText("0");
 
         javax.swing.GroupLayout count1Layout = new javax.swing.GroupLayout(count1);
         count1.setLayout(count1Layout);
@@ -704,8 +704,25 @@ public class GameFrame extends javax.swing.JFrame {
 	private static UserEnterGameMsg enterMsg = null;
 	private static ChatMsg chatMsg = null;
 	private static int hasExpendNum = 0;
+<<<<<<< HEAD
 	//private static Set<User> userSet = new HashSet<>();
 	
+=======
+	private static Set<User> userSet = new HashSet<>();
+	public static int getHasExpendNum() {
+		return hasExpendNum;
+	}
+
+	public void setHasExpendNum(int hasExpendNum) {
+		GameFrame.hasExpendNum = hasExpendNum;
+		Object[] msg = new Object[]{this.user,hasExpendNum};
+		ExpandButton restMsg = new ExpandButton(msg);
+		GameFrame.this.connectClient.sendMsg(restMsg);
+		String num1=String.valueOf(restMsg.getExpand());
+		getNum.setText(num1);
+		
+	}
+>>>>>>> branch 'master' of https://gitee.com/damao33/mine_sweeper.git
 
 	// private static List<String> msgList = new ArrayList<>();
 	// End of variables declaration
