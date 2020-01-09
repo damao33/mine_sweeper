@@ -1,7 +1,6 @@
 package user;
 
 import java.io.*;
-import java.net.*;
 import java.sql.*;
 import java.util.*;
 
@@ -27,6 +26,9 @@ public class User implements Serializable
 		String nickName="player";
 		Random r = new Random();		
 		return nickName+r.nextInt(99999);
+	}
+	public void setScore(int score) {
+		this.score = score;
 	}
 	public String getAcount() {
 		return acount;
@@ -91,6 +93,7 @@ public class User implements Serializable
 		} else if (!nickName.equals(other.nickName))
 			return false;
 		return true;
-	}	
+	}
+
 	
 }
