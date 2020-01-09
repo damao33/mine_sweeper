@@ -4,6 +4,8 @@ import java.awt.event.InputEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.swing.JOptionPane;
+
 import gui.GameFrame;
 import tool.StaticTool;
 
@@ -291,7 +293,7 @@ public class Listener implements MouseListener {
 			}
 
 		}
-
+		JOptionPane.showMessageDialog(null, "胜利");
 	}
 
 }
