@@ -291,6 +291,7 @@ public class Listener implements MouseListener {
 
 				}
 			}
+			
 			JOptionPane.showMessageDialog(null, "胜利");
 		}
 	}
