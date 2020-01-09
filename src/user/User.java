@@ -62,6 +62,35 @@ public class User implements Serializable
 	@Override
 	public String toString() {
 		return "User "+this.getNickName();
+	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((acount == null) ? 0 : acount.hashCode());
+		result = prime * result + ((nickName == null) ? 0 : nickName.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		User other = (User) obj;
+		if (acount == null) {
+			if (other.acount != null)
+				return false;
+		} else if (!acount.equals(other.acount))
+			return false;
+		if (nickName == null) {
+			if (other.nickName != null)
+				return false;
+		} else if (!nickName.equals(other.nickName))
+			return false;
+		return true;
 	}	
 	
 }
