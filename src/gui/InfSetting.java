@@ -68,7 +68,7 @@ public class InfSetting extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         constellation = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        animals = new javax.swing.JTextField();
+        pwd = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         innermost = new javax.swing.JTextArea();
@@ -76,59 +76,14 @@ public class InfSetting extends javax.swing.JFrame {
         save = new javax.swing.JButton();
         cancel = new javax.swing.JButton();
 
-        jButton2.setFont(new java.awt.Font("宋体", 0, 18)); // NOI18N
-        jButton2.setText("保存");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                /*String nickName = jLabel3.getText();
-                String pwd = jLabel9.getText();
-                if(pwd.length()<6)
-                {
-                	JOptionPane.showMessageDialog(null, "密码不符合要求");
-                }else
-                {
-                	Connection con = null;
-                	PreparedStatement pStatement = null;
-                	try
-                	{
-                		con = ConnectionManager.getConnection();
-                    	String sql = "update userinfo set password = ? where acount = ?";
-                    	pStatement = con.prepareStatement(sql);
-                        pStatement.setString(1, pwd);
-                        pStatement.setString(2, InfSetting.this.getUser().getAcount());
-                        pStatement.executeUpdate();
-                        JOptionPane.showMessageDialog(null, "密码保存成功");
-                	}catch(Exception e)
-                	{
-                		e.printStackTrace();
-                	}finally {
-                		ConnectionManager.releaseAll(null, pStatement, con);
-					}
-                }
-                if(nickName.length()!=0)
-                {
-                	Connection con = null;
-                	PreparedStatement pStatement = null;
-                	try
-                	{
-                		con = ConnectionManager.getConnection();
-                    	String sql = "update userinfo set nickName = ? where acount = ?";
-                    	pStatement = con.prepareStatement(sql);
-                        pStatement.setString(1, nickName);
-                        pStatement.setString(2, InfSetting.this.getUser().getAcount());
-                        pStatement.executeUpdate();
-                        JOptionPane.showMessageDialog(null, "昵称保存成功");
-                	}catch(Exception e)
-                	{
-                		e.printStackTrace();
-                	}finally {
-                		ConnectionManager.releaseAll(null, pStatement, con);
-					}
-                	
-                }*/
-                
-            }
-        });
+//        jButton2.setFont(new java.awt.Font("宋体", 0, 18)); // NOI18N
+//        jButton2.setText("保存");
+//        jButton2.addActionListener(new java.awt.event.ActionListener() {
+//            public void actionPerformed(java.awt.event.ActionEvent evt) {
+//                
+//                
+//            }
+//        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
@@ -209,9 +164,9 @@ public class InfSetting extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("宋体", 0, 18)); // NOI18N
         jLabel9.setText("密码：");
 
-        animals.addActionListener(new java.awt.event.ActionListener() {
+        pwd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                animalsActionPerformed(evt);
+                pwdActionPerformed(evt);
             }
         });
 
@@ -226,7 +181,53 @@ public class InfSetting extends javax.swing.JFrame {
         save.setText("保存");
         save.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                saveActionPerformed(evt);
+            	String nickName = name.getText();
+                String pwd = InfSetting.this.pwd.getText();
+                if(pwd.length()<6)
+                {
+                	JOptionPane.showMessageDialog(null, "密码不符合要求");
+                }
+                else
+                {
+                	Connection con = null;
+                	PreparedStatement pStatement = null;
+                	try
+                	{
+                		con = ConnectionManager.getConnection();
+                    	String sql = "update userinfo set password = ? where acount = ?";
+                    	pStatement = con.prepareStatement(sql);
+                        pStatement.setString(1, pwd);
+                        pStatement.setString(2, InfSetting.this.getUser().getAcount());
+                        pStatement.executeUpdate();
+                        JOptionPane.showMessageDialog(null, "密码保存成功");
+                	}catch(Exception e)
+                	{
+                		e.printStackTrace();
+                	}finally {
+                		ConnectionManager.releaseAll(null, pStatement, con);
+					}
+                }
+                if(!nickName.equals(""))
+                {
+                	Connection con = null;
+                	PreparedStatement pStatement = null;
+                	try
+                	{
+                		con = ConnectionManager.getConnection();
+                    	String sql = "update userinfo set nickName = ? where acount = ?";
+                    	pStatement = con.prepareStatement(sql);
+                        pStatement.setString(1, nickName);
+                        pStatement.setString(2, InfSetting.this.getUser().getAcount());
+                        pStatement.executeUpdate();
+                        JOptionPane.showMessageDialog(null, "昵称保存成功");
+                	}catch(Exception e)
+                	{
+                		e.printStackTrace();
+                	}finally {
+                		ConnectionManager.releaseAll(null, pStatement, con);
+					}
+                	
+                }
             }
         });
 
@@ -280,7 +281,7 @@ public class InfSetting extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(jLabel9)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(animals, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE))
+                                .addComponent(pwd, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(jLabel8)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -325,7 +326,7 @@ public class InfSetting extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(animals, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pwd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel10)
@@ -362,7 +363,7 @@ public class InfSetting extends javax.swing.JFrame {
         // TODO add your handling code here:
     }                                             
 
-    private void animalsActionPerformed(java.awt.event.ActionEvent evt) {                                        
+    private void pwdActionPerformed(java.awt.event.ActionEvent evt) {                                        
         // TODO add your handling code here:
     }                                       
 
@@ -417,7 +418,7 @@ public class InfSetting extends javax.swing.JFrame {
 
     // Variables declaration - do not modify                     
     private javax.swing.JTextField age;
-    private javax.swing.JTextField animals;
+    private javax.swing.JTextField pwd;
     private javax.swing.JTextField area;
     private javax.swing.JButton cancel;
     private javax.swing.JTextField constellation;

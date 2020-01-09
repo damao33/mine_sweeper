@@ -46,13 +46,13 @@ public class GameFrame extends javax.swing.JFrame {
 		return connectClient;
 	}
 	
-	public static void setLoginMsg(UserLoginMsg loginMsg) {
+	/*public static void setLoginMsg(UserLoginMsg loginMsg) {
 		GameFrame.loginMsg = loginMsg;
 //		String Pname=GameFrame.loginMsg.getUser().getNickName();
 //		getName.setText(Pname);
 //		String Pcount=String.valueOf(GameFrame.loginMsg.getUser().getScore());
 //		getcount.setText(Pcount);
-	}
+	}*/
 
 	public void setBackMsg(UserBackToRoomMsg backMsg) {
 		this.backMsg = backMsg;
@@ -653,7 +653,6 @@ public class GameFrame extends javax.swing.JFrame {
 	private BombJPanel bombJPanel3;
 	private User user = null;
 	private ConnectClient connectClient = null;
-	private static UserLoginMsg loginMsg = null;
 	private UserBackToRoomMsg backMsg = null;
 	private static RestButton restMsg = null;
 	private static UserEnterGameMsg enterMsg = null;
