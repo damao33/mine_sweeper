@@ -72,21 +72,21 @@ public class GameFrame extends javax.swing.JFrame {
 //		{
 //			System.out.println(now);
 //		}
-		if(num==1) {
+		if(num==2) {
 			String name1=enterMsg.getUser().getNickName();
 			String score1=String.valueOf(enterMsg.getUser().getScore());
 			getName1.setText(name1);
 			getScore1.setText(score1);
 			
 		}
-		if(num==2) {
+		if(num==3) {
 			String name2=enterMsg.getUser().getNickName();
 			String score2=String.valueOf(enterMsg.getUser().getScore());
 			getName2.setText(name2);
 			getScore2.setText(score2);
 			
 		}
-		if(num==3) {
+		if(num==4) {
 			String name3=enterMsg.getUser().getNickName();
 			String score3=String.valueOf(enterMsg.getUser().getScore());
 			getName3.setText(name3);
