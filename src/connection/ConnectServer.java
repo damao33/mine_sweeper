@@ -58,7 +58,7 @@ public class ConnectServer {
 		if(msg instanceof UserEnterGameMsg)
 		{
 			UserEnterGameMsg enterMsg = (UserEnterGameMsg)msg;
-			room = (enterMsg).getRoom();
+			room = enterMsg.getRoom();
 			if(room==1)room1Online++;
 			else if(room==2)room2Online++;
 			else if(room==3)room3Online++;
