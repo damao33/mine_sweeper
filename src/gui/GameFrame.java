@@ -56,7 +56,8 @@ public class GameFrame extends javax.swing.JFrame {
 
 	public void setBackMsg(UserBackToRoomMsg backMsg) {
 		this.backMsg = backMsg;
-		GameFrame.userSet.remove(backMsg.getUser());
+		GameFrame.num--;
+		//GameFrame.userSet.remove(backMsg.getUser());
 	}
 //	public void setEnterMsg(UserEnterGameMsg enterMsg) {
 //		GameFrame.enterMsg = enterMsg;
@@ -64,12 +65,13 @@ public class GameFrame extends javax.swing.JFrame {
 
 	public static void setEnterMsg(UserEnterGameMsg enterMsg) {
 		GameFrame.enterMsg = enterMsg;
-		GameFrame.userSet.add(enterMsg.getUser());
-		System.out.println("目前房间里用户：");
-		for(User now:GameFrame.userSet)
-		{
-			System.out.println(now);
-		}
+		GameFrame.num++;
+//		GameFrame.userSet.add(enterMsg.getUser());
+//		System.out.println("目前房间里用户：");
+//		for(User now:GameFrame.userSet)
+//		{
+//			System.out.println(now);
+//		}
 		String Pname=GameFrame.enterMsg.getUser().getNickName();
 		getName.setText(Pname);
 		String Pcount=String.valueOf(GameFrame.enterMsg.getUser().getScore());
@@ -92,7 +94,16 @@ public class GameFrame extends javax.swing.JFrame {
 		message.append(Message+"\n");
 		input.setText(null);
 	}
+	public static int getHasExpendNum() {
+		return hasExpendNum;
+	}
 
+	public void setHasExpendNum(int hasExpendNum) {
+		GameFrame.hasExpendNum = hasExpendNum;
+		Object[] msg = new Object[]{this.user,hasExpendNum};
+		ExpandButton restMsg = new ExpandButton(msg);
+		GameFrame.this.connectClient.sendMsg(restMsg);
+	}
 
 
 	/**
@@ -686,23 +697,15 @@ public class GameFrame extends javax.swing.JFrame {
 	private javax.swing.JPanel time;
 	private BombJPanel bombJPanel0;
 	private User user = null;
+	private static int num = 0;
 	private ConnectClient connectClient = null;
 	private UserBackToRoomMsg backMsg = null;
 	private static ExpandButton restMsg = null;
 	private static UserEnterGameMsg enterMsg = null;
 	private static ChatMsg chatMsg = null;
 	private static int hasExpendNum = 0;
-	private static Set<User> userSet = new HashSet<>();
-	public static int getHasExpendNum() {
-		return hasExpendNum;
-	}
-
-	public void setHasExpendNum(int hasExpendNum) {
-		GameFrame.hasExpendNum = hasExpendNum;
-		Object[] msg = new Object[]{this.user,hasExpendNum};
-		ExpandButton restMsg = new ExpandButton(msg);
-		GameFrame.this.connectClient.sendMsg(restMsg);
-	}
+	//private static Set<User> userSet = new HashSet<>();
+	
 
 	// private static List<String> msgList = new ArrayList<>();
 	// End of variables declaration
