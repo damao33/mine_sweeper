@@ -103,6 +103,8 @@ public class GameFrame extends javax.swing.JFrame {
 		Object[] msg = new Object[]{this.user,hasExpendNum};
 		ExpandButton restMsg = new ExpandButton(msg);
 		GameFrame.this.connectClient.sendMsg(restMsg);
+		String num1=String.valueOf(restMsg.getExpand());
+		getNum.setText(num1);
 	}
 
 
@@ -133,6 +135,9 @@ public class GameFrame extends javax.swing.JFrame {
 		player3 = new javax.swing.JPanel();
 		jLabel4 = new javax.swing.JLabel();
 		jPanel2 = new javax.swing.JPanel();
+		playername3 = new javax.swing.JLabel();
+		getName3 = new javax.swing.JLabel();
+		playercount3 = new javax.swing.JLabel();
 		jScrollPane2 = new javax.swing.JScrollPane();
 		getScore2 = new javax.swing.JLabel();
 		message = new javax.swing.JTextArea();
@@ -153,6 +158,7 @@ public class GameFrame extends javax.swing.JFrame {
 		playername2 = new javax.swing.JLabel();
 		playercount2 = new javax.swing.JLabel();
 		playercount1 = new javax.swing.JLabel();
+		getScore3 = new javax.swing.JLabel();
 		getScore1 = new javax.swing.JLabel();
 		getNum = new javax.swing.JLabel();
 		jLabel7 = new javax.swing.JLabel();
@@ -372,6 +378,8 @@ public class GameFrame extends javax.swing.JFrame {
         playercount2.setText("积分：");
         
         getScore2.setText("score2");
+        
+        getScore3.setText("score3");
 
 		jLabel4.setFont(new java.awt.Font("宋体", 0, 20)); // NOI18N
 		jLabel4.setText("玩家3");
@@ -386,22 +394,49 @@ public class GameFrame extends javax.swing.JFrame {
 				.addGap(0, 0, Short.MAX_VALUE));
 
 		javax.swing.GroupLayout player3Layout = new javax.swing.GroupLayout(player3);
-		player3.setLayout(player3Layout);
-		player3Layout.setHorizontalGroup(player3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addGroup(player3Layout.createSequentialGroup()
-						.addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 90,
-								javax.swing.GroupLayout.PREFERRED_SIZE)
-						.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED,
-								javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE,
-								javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)));
-		player3Layout.setVerticalGroup(player3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addGroup(player3Layout.createSequentialGroup()
-						.addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 35,
-								javax.swing.GroupLayout.PREFERRED_SIZE)
-						.addGap(0, 85, Short.MAX_VALUE))
-				.addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE,
-						Short.MAX_VALUE));
+        player3.setLayout(player3Layout);
+        player3Layout.setHorizontalGroup(
+            player3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(player3Layout.createSequentialGroup()
+                .addGroup(player3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(player3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(player3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(player3Layout.createSequentialGroup()
+                                .addComponent(playername3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(getName3, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(player3Layout.createSequentialGroup()
+                                .addComponent(playercount3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(getScore3, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        player3Layout.setVerticalGroup(
+            player3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(player3Layout.createSequentialGroup()
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(player3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(playername3)
+                    .addComponent(getName3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(player3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(playercount3)
+                    .addComponent(getScore3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 27, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+		
+		playername3.setFont(new java.awt.Font("宋体", 0, 18)); // NOI18N
+        playername3.setText("昵称：");
+        
+        getName3.setText("name3");
+        
+        playercount3.setFont(new java.awt.Font("宋体", 0, 18)); // NOI18N
+        playercount3.setText("积分：");
 
 		message.setColumns(20);
 		message.setRows(5);
@@ -751,16 +786,20 @@ public class GameFrame extends javax.swing.JFrame {
 	private javax.swing.JLabel playercount;
 	private javax.swing.JLabel playercount1;
 	private javax.swing.JLabel playercount2;
+	private javax.swing.JLabel playercount3;
 	private javax.swing.JLabel playername;
 	private static javax.swing.JLabel getName;
 	private javax.swing.JLabel getName1;
 	private javax.swing.JLabel getName2;
+	private javax.swing.JLabel getName3;
 	private javax.swing.JLabel getNum;
 	private javax.swing.JLabel getScore1;
 	private javax.swing.JLabel getScore2;
+	 private javax.swing.JLabel getScore3;
 	private static javax.swing.JLabel getcount;
 	private javax.swing.JLabel playername1;
 	private javax.swing.JLabel playername2;
+	private javax.swing.JLabel playername3;
 	private javax.swing.JPanel prop1;
 	private javax.swing.JPanel prop2;
 	private javax.swing.JPanel prop3;
