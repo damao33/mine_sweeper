@@ -41,20 +41,26 @@ public class RoomFrame extends javax.swing.JFrame {
 			return connectClient;
 	}    
     public static void setRoomMsg(GameRoomMsg roomMsg) {
+    	int j=0;
 		RoomFrame.roomMsg = roomMsg;
 		String num2=String.valueOf(RoomFrame.roomMsg.getOnline());
 		String Unum1=String.valueOf(RoomFrame.roomMsg.getRoomOnline(1))+"/4";
 		String Unum2=String.valueOf(RoomFrame.roomMsg.getRoomOnline(2))+"/4";
 		String Unum3=String.valueOf(RoomFrame.roomMsg.getRoomOnline(3))+"/4";
 		String Unum4=String.valueOf(RoomFrame.roomMsg.getRoomOnline(4))+"/4";
-		String Nickname=RoomFrame.roomMsg.getUser().getNickName();
+		
 		String Score=String.valueOf(RoomFrame.roomMsg.getUser().getScore());
+		if(j==0) {
+			String Nickname=RoomFrame.roomMsg.getUser().getNickName();
+			getName.setText(Nickname);
+			j++;
+		}
         getNum.setText(num2);
         Rnum1.setText(Unum1);
         Rnum2.setText(Unum2);
         Rnum3.setText(Unum3);
         Rnum4.setText(Unum4);
-        getName.setText(Nickname);
+        
         getScore.setText(Score);
 	}
 
