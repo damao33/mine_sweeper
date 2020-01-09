@@ -14,7 +14,7 @@ public class Listener implements MouseListener {
 	private boolean isDoublePress = false;
 	private boolean isStart = false;
 	private GameFrame gameFrame;
-	private static int expendCount=0;
+	private static int expendCount = 0;
 
 	public static int getExpendCount() {
 		return expendCount;
@@ -24,7 +24,7 @@ public class Listener implements MouseListener {
 		Listener.expendCount = expendCount;
 	}
 
-	public Listener(MineButton[][] buttons,GameFrame gameFrame) {
+	public Listener(MineButton[][] buttons, GameFrame gameFrame) {
 		super();
 		this.mineButton = buttons;
 		this.gameFrame = gameFrame;
@@ -149,7 +149,9 @@ public class Listener implements MouseListener {
 		}
 
 		// mainFrame.getTimer().stop();
-
+		int score = this.gameFrame.getUser().getScore() - 2;
+		this.gameFrame.getUser().setScore(score);
+		JOptionPane.showMessageDialog(null, "失败");
 		for (int i = 0; i < mineButton.length; i++) {
 			for (int j = 0; j < mineButton[i].length; j++) {
 				mineButton[i][j].removeMouseListener(this);
@@ -159,13 +161,12 @@ public class Listener implements MouseListener {
 
 	}
 
-	
 	private void expand(int x, int y) {
 
 		int count = mineButton[x][y].getCounAround();
 
 		if (mineButton[x][y].isExpendTag() == false && mineButton[x][y].isFlagTag() == false) {
-			
+
 			if (count == 0) {
 				mineButton[x][y].setIcon(StaticTool.num[count]);
 				mineButton[x][y].setExpendTag(true);
@@ -281,7 +282,7 @@ public class Listener implements MouseListener {
 					}
 
 				}
-				
+
 			}
 
 			// mainFrame.getTimer().stop();
@@ -291,8 +292,10 @@ public class Listener implements MouseListener {
 
 				}
 			}
-			
+
 			JOptionPane.showMessageDialog(null, "胜利");
+			int score = this.gameFrame.getUser().getScore() + 2;
+			this.gameFrame.getUser().setScore(score);
 		}
 	}
 

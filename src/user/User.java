@@ -28,6 +28,9 @@ public class User implements Serializable
 		Random r = new Random();		
 		return nickName+r.nextInt(99999);
 	}
+	public void setScore(int score) {
+		this.score = score;
+	}
 	public String getAcount() {
 		return acount;
 	}
