@@ -6,6 +6,7 @@ import java.sql.*;
 
 import javax.swing.JOptionPane;
 
+import gui.InfSetting;
 import msg.*;
 
 public class UserDaoJdbcImpl implements UserDao
@@ -234,5 +235,45 @@ public class UserDaoJdbcImpl implements UserDao
     		ConnectionManager.releaseAll(resultSet, pStatement, con);
 		}
     	return score;
+	}
+	public static void writePwd(User user,String pwd)
+	{
+		Connection con = null;
+    	PreparedStatement pStatement = null;
+    	try
+    	{
+    		con = ConnectionManager.getConnection();
+        	String sql = "update userinfo set password = ? where acount = ?";
+        	pStatement = con.prepareStatement(sql);
+            pStatement.setString(1, pwd);
+            pStatement.setString(2, user.getAcount());
+            pStatement.executeUpdate();
+            JOptionPane.showMessageDialog(null, "密码保存成功");
+    	}catch(Exception e)
+    	{
+    		e.printStackTrace();
+    	}finally {
+    		ConnectionManager.releaseAll(null, pStatement, con);
+		}
+	}
+	public static void writeNickName(User user,String nickName)
+	{
+		Connection con = null;
+    	PreparedStatement pStatement = null;
+    	try
+    	{
+    		con = ConnectionManager.getConnection();
+        	String sql = "update userinfo set nickName = ? where acount = ?";
+        	pStatement = con.prepareStatement(sql);
+            pStatement.setString(1, nickName);
+            pStatement.setString(2, user.getAcount());
+            pStatement.executeUpdate();
+            JOptionPane.showMessageDialog(null, "昵称保存成功");
+    	}catch(Exception e)
+    	{
+    		e.printStackTrace();
+    	}finally {
+    		ConnectionManager.releaseAll(null, pStatement, con);
+		}
 	}
 }

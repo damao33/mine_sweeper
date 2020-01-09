@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 
 import connection.ConnectClient;
 import connection.ConnectionManager;
+import connection.UserDaoJdbcImpl;
 import tool.StaticTool;
 import user.User;
 
@@ -182,43 +183,11 @@ public class InfSetting extends javax.swing.JFrame {
                 }
                 else
                 {
-                	Connection con = null;
-                	PreparedStatement pStatement = null;
-                	try
-                	{
-                		con = ConnectionManager.getConnection();
-                    	String sql = "update userinfo set password = ? where acount = ?";
-                    	pStatement = con.prepareStatement(sql);
-                        pStatement.setString(1, pwd);
-                        pStatement.setString(2, InfSetting.this.getUser().getAcount());
-                        pStatement.executeUpdate();
-                        JOptionPane.showMessageDialog(null, "密码保存成功");
-                	}catch(Exception e)
-                	{
-                		e.printStackTrace();
-                	}finally {
-                		ConnectionManager.releaseAll(null, pStatement, con);
-					}
+                	UserDaoJdbcImpl.writePwd(user, pwd);
                 }
                 if(!nickName.equals(""))
                 {
-                	Connection con = null;
-                	PreparedStatement pStatement = null;
-                	try
-                	{
-                		con = ConnectionManager.getConnection();
-                    	String sql = "update userinfo set nickName = ? where acount = ?";
-                    	pStatement = con.prepareStatement(sql);
-                        pStatement.setString(1, nickName);
-                        pStatement.setString(2, InfSetting.this.getUser().getAcount());
-                        pStatement.executeUpdate();
-                        JOptionPane.showMessageDialog(null, "昵称保存成功");
-                	}catch(Exception e)
-                	{
-                		e.printStackTrace();
-                	}finally {
-                		ConnectionManager.releaseAll(null, pStatement, con);
-					}
+                	UserDaoJdbcImpl.writeNickName(user, nickName);
                 	
                 }
             }
