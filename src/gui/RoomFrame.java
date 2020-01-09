@@ -41,27 +41,25 @@ public class RoomFrame extends javax.swing.JFrame {
 			return connectClient;
 	}    
     public static void setRoomMsg(GameRoomMsg roomMsg) {
-    	int j=0;
+    	
 		RoomFrame.roomMsg = roomMsg;
 		String num2=String.valueOf(RoomFrame.roomMsg.getOnline());
 		String Unum1=String.valueOf(RoomFrame.roomMsg.getRoomOnline(1))+"/4";
 		String Unum2=String.valueOf(RoomFrame.roomMsg.getRoomOnline(2))+"/4";
 		String Unum3=String.valueOf(RoomFrame.roomMsg.getRoomOnline(3))+"/4";
-		String Unum4=String.valueOf(RoomFrame.roomMsg.getRoomOnline(4))+"/4";
-		
-		String Score=String.valueOf(RoomFrame.roomMsg.getUser().getScore());
+		String Unum4=String.valueOf(RoomFrame.roomMsg.getRoomOnline(4))+"/4";				
 		if(j==0) {
 			String Nickname=RoomFrame.roomMsg.getUser().getNickName();
 			getName.setText(Nickname);
+			String Score=String.valueOf(RoomFrame.roomMsg.getUser().getScore());
+			getScore.setText(Score);
 			j++;
 		}
         getNum.setText(num2);
         Rnum1.setText(Unum1);
         Rnum2.setText(Unum2);
         Rnum3.setText(Unum3);
-        Rnum4.setText(Unum4);
-        
-        getScore.setText(Score);
+        Rnum4.setText(Unum4);        
 	}
 
 	/**
@@ -687,7 +685,7 @@ public class RoomFrame extends javax.swing.JFrame {
     private User user = null;
     private ConnectClient connectClient = null;
     private static GameRoomMsg roomMsg = null;
-    
+    private static int j=0;
     //private static String num2=null;
     // End of variables declaration                   
 }
