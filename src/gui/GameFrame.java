@@ -66,12 +66,12 @@ public class GameFrame extends javax.swing.JFrame {
 	public static void setEnterMsg(UserEnterGameMsg enterMsg) {
 		GameFrame.enterMsg = enterMsg;
 		GameFrame.num++;
-//		GameFrame.userSet.add(enterMsg.getUser());
-//		System.out.println("目前房间里用户：");
-//		for(User now:GameFrame.userSet)
-//		{
-//			System.out.println(now);
-//		}
+		GameFrame.userSet.add(enterMsg.getUser());
+		System.out.println("目前房间里用户：");
+		for(User now:GameFrame.userSet)
+		{
+			System.out.println(now);
+		}
 		if(num==2) {
 			String name1=enterMsg.getUser().getNickName();
 			String score1=String.valueOf(enterMsg.getUser().getScore());
@@ -84,7 +84,6 @@ public class GameFrame extends javax.swing.JFrame {
 			String score2=String.valueOf(enterMsg.getUser().getScore());
 			getName2.setText(name2);
 			getScore2.setText(score2);
-			
 		}
 		if(num==4) {
 			String name3=enterMsg.getUser().getNickName();
@@ -94,10 +93,10 @@ public class GameFrame extends javax.swing.JFrame {
 			
 		}
 		
-		String Pname=GameFrame.enterMsg.getUser().getNickName();
-		getName.setText(Pname);
-		String Pcount=String.valueOf(GameFrame.enterMsg.getUser().getScore());
-		getcount.setText(Pcount);
+//		String Pname=GameFrame.enterMsg.getUser().getNickName();
+//		getName.setText(Pname);
+//		String Pcount=String.valueOf(GameFrame.this.getUser().getScore());
+//		getcount.setText(Pcount);
 	}
 
 	public static ExpandButton getRestMsg() {
@@ -111,10 +110,14 @@ public class GameFrame extends javax.swing.JFrame {
 	}
 
 	public static void setChatMsg(ChatMsg chatMsg) {
-		GameFrame.chatMsg = chatMsg;
-		String Message=GameFrame.chatMsg.toString();
-		message.append(Message+"\n");
-		input.setText(null);
+		if(GameFrame.getIsRoom()==1)
+		{
+			GameFrame.chatMsg = chatMsg;
+			String Message=GameFrame.chatMsg.toString();
+			message.append(Message+"\n");
+			input.setText(null);
+		}
+		
 	}
 	public static int getHasExpendNum() {
 		return hasExpendNum;
@@ -128,7 +131,15 @@ public class GameFrame extends javax.swing.JFrame {
 		String num1=String.valueOf(restMsg.getExpand());
 		getNum.setText(num1);
 	}
+	
 
+	public static int getIsRoom() {
+		return isRoom;
+	}
+
+	public static void setIsRoom(int isRoom) {
+		GameFrame.isRoom = isRoom;
+	}
 
 	/**
 	 * This method is called from within the constructor to initialize the form.
@@ -777,6 +788,10 @@ public class GameFrame extends javax.swing.JFrame {
 				// new GameFrame(user).setVisible(true);
 				GameFrame.this.setIconImage(StaticTool.imageIcon.getImage());
 				GameFrame.this.setTitle("多人扫雷对战");
+				String Pname=GameFrame.enterMsg.getUser().getNickName();
+				getName.setText(Pname);
+				String Pcount=String.valueOf(GameFrame.this.getUser().getScore());
+				getcount.setText(Pcount);
 				GameFrame.this.setVisible(true);
 			}
 		});
@@ -838,8 +853,8 @@ public class GameFrame extends javax.swing.JFrame {
 	private static UserEnterGameMsg enterMsg = null;
 	private static ChatMsg chatMsg = null;
 	private static int hasExpendNum = 0;
-	//private static Set<User> userSet = new HashSet<>();
-	
+	private static Set<User> userSet = new HashSet<>();
+	private static int isRoom = 0;
 
 	// private static List<String> msgList = new ArrayList<>();
 	// End of variables declaration
