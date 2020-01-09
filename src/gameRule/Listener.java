@@ -197,7 +197,7 @@ public class Listener implements MouseListener {
 						mineButton[x][y].setIcon(StaticTool.askIcon);
 					} else {
 						mineButton[x][y].setIcon(StaticTool.iconBlank);
-						mineButton[x][y].setExpendTag(true);
+						//mineButton[x][y].setExpendTag(true);
 					}
 				}
 			}
