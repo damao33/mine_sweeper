@@ -412,6 +412,7 @@ public class InfSetting extends javax.swing.JFrame {
             	InfSetting.this.setIconImage(StaticTool.imageIcon.getImage());
             	InfSetting.this.setTitle("信息设置");
                 InfSetting.this.setVisible(true);
+                InfSetting.this.setLocationRelativeTo(getOwner()); // 打开后居中
             }
         });
     }

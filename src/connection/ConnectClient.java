@@ -57,9 +57,9 @@ public class ConnectClient implements Runnable
 						}/*else if(o instanceof UserLoginMsg)
 						{
 							GameFrame.setLoginMsg((UserLoginMsg)o);
-						}*/else if(o instanceof RestButton)
+						}*/else if(o instanceof ExpandButton)
 						{
-							GameFrame.setRestMsg((RestButton)o);
+							GameFrame.setRestMsg((ExpandButton)o);
 						}else if(o instanceof ChatMsg)
 						{
 							GameFrame.setChatMsg((ChatMsg)o);

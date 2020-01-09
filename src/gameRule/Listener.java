@@ -11,6 +11,7 @@ public class Listener implements MouseListener {
 	MineButton[][] mineButton;
 	private boolean isDoublePress = false;
 	private boolean isStart = false;
+	private GameFrame gameFrame;
 	private static int expendCount=0;
 
 	public static int getExpendCount() {
@@ -21,9 +22,10 @@ public class Listener implements MouseListener {
 		Listener.expendCount = expendCount;
 	}
 
-	public Listener(MineButton[][] buttons) {
+	public Listener(MineButton[][] buttons,GameFrame gameFrame) {
 		super();
 		this.mineButton = buttons;
+		this.gameFrame = gameFrame;
 	}
 
 	@Override
@@ -179,7 +181,7 @@ public class Listener implements MouseListener {
 
 			}
 			expendCount++;
-			GameFrame.setHasExpendNum(expendCount);
+			this.gameFrame.setHasExpendNum(expendCount);
 		}
 		System.out.println(expendCount);
 	}
