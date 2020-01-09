@@ -184,7 +184,7 @@ public class RoomFrame extends javax.swing.JFrame {
 
         grade.setBackground(new java.awt.Color(153, 153, 153));
         
-        getScore.setText("100");
+        getScore.setText("0");
 
         javax.swing.GroupLayout gradeLayout = new javax.swing.GroupLayout(grade);
         gradeLayout.setHorizontalGroup(
