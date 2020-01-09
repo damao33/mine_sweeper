@@ -68,11 +68,11 @@ public class GameFrame extends javax.swing.JFrame {
 		getcount.setText(Pcount);
 	}
 
-	public static RestButton getRestMsg() {
+	public static ExpandButton getRestMsg() {
 		return restMsg;
 	}
 
-	public static void setRestMsg(RestButton restMsg) {
+	public static void setRestMsg(ExpandButton restMsg) {
 		GameFrame.restMsg = restMsg;
 	}
 
@@ -642,7 +642,7 @@ public class GameFrame extends javax.swing.JFrame {
 	private User user = null;
 	private ConnectClient connectClient = null;
 	private UserBackToRoomMsg backMsg = null;
-	private static RestButton restMsg = null;
+	private static ExpandButton restMsg = null;
 	private static UserEnterGameMsg enterMsg = null;
 	private static ChatMsg chatMsg = null;
 	private static int hasExpendNum = 0;
@@ -654,7 +654,7 @@ public class GameFrame extends javax.swing.JFrame {
 	public void setHasExpendNum(int hasExpendNum) {
 		GameFrame.hasExpendNum = hasExpendNum;
 		Object[] msg = new Object[]{this.user,hasExpendNum};
-		RestButton restMsg = new RestButton(msg);
+		ExpandButton restMsg = new ExpandButton(msg);
 		GameFrame.this.connectClient.sendMsg(restMsg);
 	}
 

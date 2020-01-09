@@ -12,12 +12,12 @@ import gameRule.*;
 import tool.StaticTool;
 import user.User;
 
-public class RestButton extends Msg
+public class ExpandButton extends Msg
 {
-	public RestButton (Object msg)
+	public ExpandButton (Object msg)
 	{
 		this.setMsg(msg);
-		this.setMsgType("RestButton");
+		this.setMsgType("ExpandButton");
 	}
 	public User getUser()
 	{
@@ -35,7 +35,7 @@ public class RestButton extends Msg
 	}
 	public String toString()
 	{
-		return this.getMsgType()+":"+this.getUser().getAcount()+" rest "+this.getRest();
+		return this.getMsgType()+":"+this.getUser().getAcount()+" has expanded "+this.getRest();
 	}
 
 }
