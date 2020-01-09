@@ -5,7 +5,13 @@
  */
 package gui;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
+import javax.swing.JOptionPane;
+
 import connection.ConnectClient;
+import connection.ConnectionManager;
 import connection.UserDaoJdbcImpl;
 import tool.StaticTool;
 import user.User;
@@ -14,14 +20,14 @@ import user.User;
  *
  * @author 12892
  */
-public class infSetting extends javax.swing.JFrame {
+public class InfSetting extends javax.swing.JFrame {
 	
 	private static final long serialVersionUID = 1L;
 
 	/**
      * Creates new form infSetting
      */
-    public infSetting(User user, ConnectClient connectClient) {
+    public InfSetting(User user, ConnectClient connectClient) {
     	this.user = user;
 		this.connectClient = connectClient;
         initComponents();
@@ -74,7 +80,53 @@ public class infSetting extends javax.swing.JFrame {
         jButton2.setText("保存");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                /*String nickName = jLabel3.getText();
+                String pwd = jLabel9.getText();
+                if(pwd.length()<6)
+                {
+                	JOptionPane.showMessageDialog(null, "密码不符合要求");
+                }else
+                {
+                	Connection con = null;
+                	PreparedStatement pStatement = null;
+                	try
+                	{
+                		con = ConnectionManager.getConnection();
+                    	String sql = "update userinfo set password = ? where acount = ?";
+                    	pStatement = con.prepareStatement(sql);
+                        pStatement.setString(1, pwd);
+                        pStatement.setString(2, InfSetting.this.getUser().getAcount());
+                        pStatement.executeUpdate();
+                        JOptionPane.showMessageDialog(null, "密码保存成功");
+                	}catch(Exception e)
+                	{
+                		e.printStackTrace();
+                	}finally {
+                		ConnectionManager.releaseAll(null, pStatement, con);
+					}
+                }
+                if(nickName.length()!=0)
+                {
+                	Connection con = null;
+                	PreparedStatement pStatement = null;
+                	try
+                	{
+                		con = ConnectionManager.getConnection();
+                    	String sql = "update userinfo set nickName = ? where acount = ?";
+                    	pStatement = con.prepareStatement(sql);
+                        pStatement.setString(1, nickName);
+                        pStatement.setString(2, InfSetting.this.getUser().getAcount());
+                        pStatement.executeUpdate();
+                        JOptionPane.showMessageDialog(null, "昵称保存成功");
+                	}catch(Exception e)
+                	{
+                		e.printStackTrace();
+                	}finally {
+                		ConnectionManager.releaseAll(null, pStatement, con);
+					}
+                	
+                }*/
+                
             }
         });
 
@@ -183,7 +235,7 @@ public class infSetting extends javax.swing.JFrame {
         cancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cancelActionPerformed(evt);
-                infSetting.this.setVisible(false);
+                InfSetting.this.setVisible(false);
             }
         });
 
@@ -343,22 +395,22 @@ public class infSetting extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(infSetting.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InfSetting.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(infSetting.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InfSetting.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(infSetting.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InfSetting.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(infSetting.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InfSetting.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-            	infSetting.this.setIconImage(StaticTool.imageIcon.getImage());
-            	infSetting.this.setTitle("信息设置");
-                infSetting.this.setVisible(true);
+            	InfSetting.this.setIconImage(StaticTool.imageIcon.getImage());
+            	InfSetting.this.setTitle("信息设置");
+                InfSetting.this.setVisible(true);
             }
         });
     }

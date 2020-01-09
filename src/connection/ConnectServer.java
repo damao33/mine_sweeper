@@ -159,14 +159,12 @@ public class ConnectServer {
 								this.sendToAll(gameRoomMsg);
 								//this.send
 								this.sendToAll(chatMsg);
-								if(o instanceof UserEnterGameMsg)
-								{
-									MineButton[][] mineButton = ServerMineButton.getMineButton();
-									this.sendMsg(new ServerMineButton(mineButton));
-								}
 							}else if(o instanceof ChatMsg)
 							{
 								this.sendToAll((ChatMsg)o);
+							}else if(o instanceof RestButton)
+							{
+								this.sendToAll((RestButton)o);
 							}
 							System.out.println((Msg)o);
 							System.out.println(((Msg)o).getMsgType()+" has sent back to client");

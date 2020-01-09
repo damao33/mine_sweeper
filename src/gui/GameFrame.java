@@ -70,14 +70,14 @@ public class GameFrame extends javax.swing.JFrame {
 		getcount.setText(Pcount);
 	}
 
-	public static void setMineButton(MineButton[][] o) {
-		GameFrame.mineButton = o;
+	public static RestButton getRestMsg() {
+		return restMsg;
 	}
-	
-	public static MineButton[][] getMineButton() {
-		return mineButton;
+
+	public static void setRestMsg(RestButton restMsg) {
+		GameFrame.restMsg = restMsg;
 	}
-	
+
 	public static void setChatMsg(ChatMsg chatMsg) {
 		GameFrame.chatMsg = chatMsg;
 		String Message=GameFrame.chatMsg.toString();
@@ -655,7 +655,7 @@ public class GameFrame extends javax.swing.JFrame {
 	private ConnectClient connectClient = null;
 	private static UserLoginMsg loginMsg = null;
 	private UserBackToRoomMsg backMsg = null;
-	private static MineButton[][] mineButton = null;
+	private static RestButton restMsg = null;
 	private static UserEnterGameMsg enterMsg = null;
 	private static ChatMsg chatMsg = null;
 	//private static List<String> msgList = new ArrayList<>();
