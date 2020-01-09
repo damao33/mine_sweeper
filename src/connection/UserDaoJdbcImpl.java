@@ -59,25 +59,27 @@ public class UserDaoJdbcImpl implements UserDao
 				System.out.println("连接失败");
 				return -1;
 			}
-			else if(user.getOnlineState()==1)
-			{
-				System.out.println("用户已在线");
-				return -2;
-			}
 			pStatement = conn.prepareStatement(loginsql);
 			pStatement.setString(1, user.getAcount());	
 			resultSet = pStatement.executeQuery();	
 			String pwd = null;
 			String nickName = null;
+			int onlineState = 0;
 			if(resultSet.next())
 			{
 				pwd	= resultSet.getString("password");
 				nickName = resultSet.getString("nickName");
+				onlineState = resultSet.getInt("onlineState");
 				if(nickName!=null)
 				{
 					user.setNickName(nickName);
 				}
-			}			
+			}	
+			if(onlineState==1)
+			{
+				System.out.println("用户已在线！");
+				return -2;
+			}
 			System.out.println("Acount:"+user.getAcount());
 			System.out.println("Pwd:"+pwd);
 			connectClient = new ConnectClient(ConnectionManager.getSocket());
