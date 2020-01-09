@@ -1,5 +1,7 @@
 package msg;
 
+import java.util.*;
+
 import user.User;
 
 public class GameRoomMsg extends Msg
@@ -23,6 +25,13 @@ public class GameRoomMsg extends Msg
 		if(msg[room] instanceof Integer)roomOnline = (Integer)msg[room];
 		return roomOnline;
 	}
+//	public Set getUserSet()
+//	{
+//		Set<User> userSet = new HashSet<>();
+//		Object[] msg = (Object[])this.getMsg();
+//		if(msg[5] instanceof GameRoomMsg)userSet = (HashSet)msg[5];
+//		return userSet;
+//	}
 	public User getUser()
 	{
 		User user = null;
