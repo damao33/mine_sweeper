@@ -168,6 +168,9 @@ public class ConnectServer {
 							}else if(o instanceof ExpandButton)
 							{
 								this.sendToAll((ExpandButton)o);
+							}else if(o instanceof WinMsg)
+							{
+								this.sendToAll((WinMsg)o);
 							}
 							System.out.println((Msg)o);
 							System.out.println(((Msg)o).getMsgType()+" has sent back to client");
