@@ -1,19 +1,15 @@
 package msg;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Insets;
-import java.util.Random;
 
-import javax.swing.BorderFactory;
-import javax.swing.border.Border;
 
-import gameRule.*;
-import tool.StaticTool;
 import user.User;
 
 public class ExpandButton extends Msg
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public ExpandButton (Object msg)
 	{
 		this.setMsg(msg);

@@ -2,8 +2,6 @@ package connection;
 
 import user.User;
 
-import java.io.*;
-import java.net.*;
 import java.sql.*;
 import msg.*;
 
@@ -45,6 +43,7 @@ public class UserDaoJdbcImpl implements UserDao
 		return -1;
 	}
 
+	@SuppressWarnings("resource")
 	public static int login(User user) {
 		if(UserDaoJdbcImpl.findUser(user)==0)return 0;	//不存在该用户
 		Connection conn = null;
@@ -126,6 +125,7 @@ public class UserDaoJdbcImpl implements UserDao
 		return -1;
 	}
 
+	@SuppressWarnings("static-access")
 	public static int register(User user) {	
 		if(UserDaoJdbcImpl.findUser(user)==1)
 		{

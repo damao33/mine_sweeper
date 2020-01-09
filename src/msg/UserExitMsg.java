@@ -4,6 +4,10 @@ import user.User;
 
 public class UserExitMsg extends Msg
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public UserExitMsg(Object msg)
 	{
 		this.setMsg(msg);

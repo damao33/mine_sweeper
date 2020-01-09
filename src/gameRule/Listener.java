@@ -152,6 +152,8 @@ public class Listener implements MouseListener {
 		int score = this.gameFrame.getUser().getScore() - 2;
 		this.gameFrame.getUser().setScore(score);
 		JOptionPane.showMessageDialog(null, "失败");
+		
+	
 		for (int i = 0; i < mineButton.length; i++) {
 			for (int j = 0; j < mineButton[i].length; j++) {
 				mineButton[i][j].removeMouseListener(this);
@@ -186,7 +188,7 @@ public class Listener implements MouseListener {
 			expendCount++;
 			this.gameFrame.setHasExpendNum(expendCount);
 		}
-		System.out.println(expendCount);
+		//System.out.println(expendCount);
 	}
 
 	private void backIcon(int i, int j) {
