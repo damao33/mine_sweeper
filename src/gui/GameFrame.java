@@ -14,6 +14,8 @@ import java.awt.GridLayout;
 import java.awt.event.*;
 import java.util.*;
 
+import javax.swing.JOptionPane;
+
 import connection.*;
 import gameRule.*;
 import msg.*;
@@ -42,7 +44,7 @@ public class GameFrame extends javax.swing.JFrame {
 	public ConnectClient getConnectClient() {
 		return connectClient;
 	}
-
+	
 	//public static void setLoginMsg(UserLoginMsg loginMsg) {
 	
 	/*public static void setLoginMsg(UserLoginMsg loginMsg) {
@@ -53,6 +55,26 @@ public class GameFrame extends javax.swing.JFrame {
 //		String Pcount=String.valueOf(GameFrame.loginMsg.getUser().getScore());
 //		getcount.setText(Pcount);
 	}*/
+
+	public static WinMsg getWinMsg() {
+		return winMsg;
+	}
+
+	public  void setWinMsg(WinMsg winMsg) {
+		GameFrame.winMsg = winMsg;
+		String winner = winMsg.getUser().getNickName();
+		if(winner.equals(this.user.getNickName()))
+		{
+			JOptionPane.showMessageDialog(null, "胜利");
+			int score = this.user.getScore() + 2;
+			this.user.setScore(score);
+		}else
+		{
+			JOptionPane.showMessageDialog(null, "失败");
+			int score = this.user.getScore() - 2;
+			this.user.setScore(score);
+		}
+	}
 
 	public void setBackMsg(UserBackToRoomMsg backMsg) {
 		this.backMsg = backMsg;
@@ -850,7 +872,7 @@ public class GameFrame extends javax.swing.JFrame {
 	private static int hasExpendNum = 0;
 	private static Set<User> userSet = new HashSet<>();
 	private static int isRoom = 0;
-
+	private static WinMsg winMsg = null;
 	// private static List<String> msgList = new ArrayList<>();
 	// End of variables declaration
 }

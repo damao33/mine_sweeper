@@ -4,7 +4,10 @@ import java.io.*;
 import java.sql.*;
 import java.util.*;
 
+import javax.swing.JOptionPane;
+
 import connection.ConnectionManager;
+import gui.InfSetting;
 
 public class User implements Serializable
 {
@@ -29,6 +32,23 @@ public class User implements Serializable
 	}
 	public void setScore(int score) {
 		this.score = score;
+		Connection con = null;
+    	PreparedStatement pStatement = null;
+    	try
+    	{
+    		con = ConnectionManager.getConnection();
+        	String sql = "update userinfo set score = ? where acount = ?";
+        	pStatement = con.prepareStatement(sql);
+            pStatement.setInt(1, score);
+            pStatement.setString(2, this.getAcount());
+            pStatement.executeUpdate();
+            JOptionPane.showMessageDialog(null, "积分保存成功");
+    	}catch(Exception e)
+    	{
+    		e.printStackTrace();
+    	}finally {
+    		ConnectionManager.releaseAll(null, pStatement, con);
+		}
 	}
 	public String getAcount() {
 		return acount;

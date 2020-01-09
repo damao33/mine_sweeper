@@ -7,6 +7,7 @@ import java.awt.event.MouseListener;
 import javax.swing.JOptionPane;
 
 import gui.GameFrame;
+import msg.WinMsg;
 import tool.StaticTool;
 
 public class Listener implements MouseListener {
@@ -147,11 +148,6 @@ public class Listener implements MouseListener {
 			}
 
 		}
-
-		// mainFrame.getTimer().stop();
-		int score = this.gameFrame.getUser().getScore() - 2;
-		this.gameFrame.getUser().setScore(score);
-		JOptionPane.showMessageDialog(null, "失败");
 		
 	
 		for (int i = 0; i < mineButton.length; i++) {
@@ -289,13 +285,10 @@ public class Listener implements MouseListener {
 			for (int i = 0; i < mineButton.length; i++) {
 				for (int j = 0; j < mineButton[i].length; j++) {
 					mineButton[i][j].removeMouseListener(this);
-
 				}
 			}
 
-			JOptionPane.showMessageDialog(null, "胜利");
-			int score = this.gameFrame.getUser().getScore() + 2;
-			this.gameFrame.getUser().setScore(score);
+			this.gameFrame.setWinMsg(new WinMsg(this.gameFrame.getUser()));
 		}
 	}
 
