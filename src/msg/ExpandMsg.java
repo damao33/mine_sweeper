@@ -4,13 +4,13 @@ package msg;
 
 import user.User;
 
-public class ExpandButton extends Msg
+public class ExpandMsg extends Msg
 {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	public ExpandButton (Object msg)
+	public ExpandMsg (Object msg)
 	{
 		this.setMsg(msg);
 		this.setMsgType("ExpandButton");

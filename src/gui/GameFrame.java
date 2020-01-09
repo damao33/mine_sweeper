@@ -122,14 +122,14 @@ public class GameFrame extends javax.swing.JFrame {
 //		getcount.setText(Pcount);
 	}
 
-	public static ExpandButton getRestMsg() {
-		return restMsg;
+	public static ExpandMsg getExpandMsg() {
+		return ExpandMsg;
 	}
 
-	public static void setRestMsg(ExpandButton restMsg) {
-		GameFrame.restMsg = restMsg;
+	public static void setRestMsg(ExpandMsg restMsg) {
+		GameFrame.ExpandMsg = restMsg;
 		@SuppressWarnings("unused")
-		int UserExpendNum=GameFrame.restMsg.getExpand();
+		int UserExpendNum=GameFrame.ExpandMsg.getExpand();
 		User user = restMsg.getUser();
 		if(user.getNickName().equals(getName1.getText()))
 		{
@@ -165,7 +165,7 @@ public class GameFrame extends javax.swing.JFrame {
 	public void setHasExpendNum(int hasExpendNum) {
 		GameFrame.hasExpendNum = hasExpendNum;
 		Object[] msg = new Object[]{this.user,hasExpendNum};
-		ExpandButton restMsg = new ExpandButton(msg);
+		ExpandMsg restMsg = new ExpandMsg(msg);
 		GameFrame.this.connectClient.sendMsg(restMsg);
 		String num1=String.valueOf(restMsg.getExpand());
 		getNum.setText(num1);
@@ -951,7 +951,7 @@ public class GameFrame extends javax.swing.JFrame {
 	private static int num = 0;
 	private ConnectClient connectClient = null;
 	private UserBackToRoomMsg backMsg = null;
-	private static ExpandButton restMsg = null;
+	private static ExpandMsg ExpandMsg = null;
 	private static UserEnterGameMsg enterMsg = null;
 	private static ChatMsg chatMsg = null;
 	private static int hasExpendNum = 0;

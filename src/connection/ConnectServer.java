@@ -165,9 +165,9 @@ public class ConnectServer {
 							}else if(o instanceof ChatMsg)
 							{
 								this.sendToAll((ChatMsg)o);
-							}else if(o instanceof ExpandButton)
+							}else if(o instanceof ExpandMsg)
 							{
-								this.sendToAll((ExpandButton)o);
+								this.sendToAll((ExpandMsg)o);
 							}else if(o instanceof WinMsg)
 							{
 								this.sendToAll((WinMsg)o);
