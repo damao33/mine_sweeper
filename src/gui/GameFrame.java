@@ -65,14 +65,17 @@ public class GameFrame extends javax.swing.JFrame {
 	public static void setEnterMsg(UserEnterGameMsg enterMsg) {
 		GameFrame.enterMsg = enterMsg;
 		GameFrame.userSet.add(enterMsg.getUser());
-		for (User now : GameFrame.userSet) {
+		System.out.println("目前房间里用户：");
+		for(User now:GameFrame.userSet)
+		{
 			System.out.println(now);
 		}
-		String Pname = GameFrame.enterMsg.getUser().getNickName();
+		String Pname=GameFrame.enterMsg.getUser().getNickName();
 		getName.setText(Pname);
-		String Pcount = String.valueOf(GameFrame.enterMsg.getUser().getScore());
+		String Pcount=String.valueOf(GameFrame.enterMsg.getUser().getScore());
 		getcount.setText(Pcount);
 	}
+
 
 	public static ExpandButton getRestMsg() {
 		return restMsg;
